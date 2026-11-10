@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183d32">
+  <meta name="description"
+        content="Unser Familien- und Golfurlaub in Bergamo: Reiseplanung, Kosten und gemeinsame Zeit.">
+  <title>Bergamo 2027 · Glatter on Tour</title>
+
+  <style>
+    :root {
+      --bg: #f5f4ee;
+      --paper: #fffefb;
+      --green: #183d32;
+      --green-soft: #e7efe8;
+      --text: #25362f;
+      --muted: #68736c;
+      --line: #e1e5dc;
+      --gold: #ebc580;
+      --amber-bg: #fff0d8;
+      --amber-text: #80551a;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: wait; opacity: .65; }
+    a { color: var(--green); text-underline-offset: 4px; }
+    img { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+
+    :focus-visible {
+      outline: 3px solid #b08132;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -100px;
+      z-index: 10;
+      padding: 10px 16px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .skip-link:focus { top: 12px; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 0;
+    }
+
+    .brand {
+      font-weight: 850;
+      letter-spacing: -.5px;
+    }
+
+    .topbar small { color: var(--muted); }
+
+    .hero {
+      overflow: hidden;
+      border-radius: 26px;
+      background: var(--green);
+      color: white;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+    }
+
+    .hero-copy { padding: 44px; }
+
+    .eyebrow {
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero .eyebrow { color: var(--gold); }
+
+    h1 {
+      margin: 16px 0;
+      font-family: Georgia, serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+      font-weight: normal;
+      line-height: 1.08;
+    }
+
+    .hero p { color: #deebe2; }
+
+    .hero-photo {
+      position: relative;
+      display: grid;
+      place-items: center;
+      min-height: 380px;
+      background: #285143;
+    }
+
+    .hero-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .photo-placeholder {
+      padding: 32px;
+      text-align: center;
+      color: #e1ebe5;
+    }
+
+    .photo-placeholder span {
+      display: block;
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-caption {
+      position: absolute;
+      z-index: 1;
+      left: 18px;
+      bottom: 18px;
+      right: 18px;
+      padding: 11px 15px;
+      border-radius: 12px;
+      background: #15362de6;
+      font-size: .8rem;
+      color: white;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      padding: 6px 11px;
+      border: 1px solid #ffffff35;
+      background: #ffffff09;
+      border-radius: 30px;
+      font-size: .78rem;
+    }
+
+    .tabs {
+      display: flex;
+      overflow-x: auto;
+      gap: 7px;
+      padding: 23px 2px 18px;
+    }
+
+    .tab {
+      flex-shrink: 0;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: 750;
+    }
+
+    .tab:hover { background: #e8ece4; }
+
+    .tab[aria-selected="true"] {
+      background: var(--green);
+      color: white;
+    }
+
+    .syncbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .syncbar[data-state="error"] {
+      background: var(--amber-bg);
+      color: var(--amber-text);
+    }
+
+    .button {
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--paper);
+      color: var(--green);
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .button:hover { background: var(--green-soft); }
+
+    main { padding-bottom: 36px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 18px;
+      margin: 8px 0 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.7rem;
+      letter-spacing: -.7px;
+      line-height: 1.25;
+    }
+
+    h3 { margin: 0 0 14px; font-size: 1.1rem; }
+    p { margin: 8px 0 16px; }
+    .section-head p { margin-bottom: 0; }
+    .muted { color: var(--muted); }
+    .small { font-size: .82rem; }
+    .space { margin-top: 20px; }
+
+    .grid { display: grid; gap: 18px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .card {
+      min-width: 0;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+
+    .dark {
+      background: var(--green);
+      border-color: var(--green);
+      color: white;
+    }
+
+    .stat-label { color: var(--muted); font-size: .8rem; }
+    .stat-note { color: var(--muted); font-size: .75rem; }
+
+    .stat-value {
+      margin: 8px 0;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      line-height: 1.3;
+      font-weight: 850;
+      letter-spacing: -.7px;
+    }
+
+    .dark .stat-label,
+    .dark .stat-note,
+    .dark .muted { color: #d7e4db; }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 30px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: .75rem;
+      font-weight: 750;
+    }
+
+    .badge.amber {
+      background: var(--amber-bg);
+      color: var(--amber-text);
+    }
+
+    .notice {
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      font-size: .84rem;
+    }
+
+    .notice.amber {
+      background: var(--amber-bg);
+      color: var(--amber-text);
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .87rem;
+    }
+
+    th, td {
+      padding: 14px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .num {
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    tfoot td {
+      background: #f1f5ed;
+      font-weight: 800;
+    }
+
+    .table-note {
+      color: var(--muted);
+      font-size: .77rem;
+      margin-bottom: 0;
+    }
+
+    .facts { margin: 0; }
+    .facts > div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .facts > div:last-child { border-bottom: 0; }
+    dt { color: var(--muted); font-size: .77rem; margin-bottom: 3px; }
+    dd { margin: 0; font-weight: 650; overflow-wrap: anywhere; }
+
+    .golf-list { display: grid; gap: 14px; }
+
+    .golf-card {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .date-tile {
+      padding: 12px 7px;
+      border-radius: 14px;
+      background: var(--green-soft);
+      color: var(--green);
+      text-align: center;
+    }
+
+    .date-tile strong {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1.1;
+    }
+
+    .date-tile span { font-size: .7rem; }
+    .golf-card h3 { margin: 0 0 4px; }
+    .golf-price { text-align: right; }
+    .golf-price strong { display: block; font-size: 1.35rem; }
+
+    .flight-time {
+      margin: 20px 0;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 850;
+      letter-spacing: -1px;
+    }
+
+    .participants {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .participant { padding: 0; overflow: hidden; }
+
+    .portrait {
+      position: relative;
+      display: grid;
+      place-items: center;
+      aspect-ratio: 1;
+      background: var(--green-soft);
+    }
+
+    .initials {
+      color: var(--green);
+      font-family: Georgia, serif;
+      font-size: 4rem;
+    }
+
+    .portrait img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .participant-body { padding: 22px; }
+    .participant h3 { margin-bottom: 5px; }
+
+    footer {
+      padding: 22px 0 32px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .75rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo { min-height: 0; aspect-ratio: 16 / 9; }
+      .stats, .participants {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .two { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .topbar { align-items: flex-start; }
+      .topbar small { font-size: .7rem; text-align: right; }
+      .hero-copy { padding: 30px 24px; }
+      .hero { border-radius: 20px; }
+      .hero-photo { aspect-ratio: 4 / 3; }
+      .hero-caption { font-size: .7rem; }
+      .card { padding: 18px; }
+      .stats { gap: 10px; }
+      .stats .card { padding: 16px 12px; }
+      .stat-value { font-size: 1.35rem; }
+      .section-head { flex-direction: column; }
+      .syncbar { flex-direction: column; align-items: flex-start; }
+      .golf-card { grid-template-columns: 58px 1fr; gap: 14px; }
+      .golf-price { grid-column: 2; text-align: left; }
+      .golf-price strong { display: inline; margin-right: 6px; }
+      .participants { grid-template-columns: 1fr; }
+      .participant { padding: 0; }
+      .tab { padding: 10px 13px; }
+    }
+
+    @media print {
+      body { background: white; }
+      .tabs, .syncbar, .skip-link { display: none; }
+      [role="tabpanel"][hidden] { display: block !important; }
+      [role="tabpanel"] { break-before: page; }
+      #overview { break-before: auto; }
+      .card { break-inside: avoid; }
+      .hero { display: block; }
+      .hero-photo { display: none; }
+      .hero, .dark { background: white; color: black; }
+      .hero p, .hero .eyebrow,
+      .dark .stat-label, .dark .stat-note { color: black; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt</a>
+
+  <div class="wrap">
+    <header>
+      <div class="topbar">
+        <div class="brand">⛳ GLATTER / ON TOUR</div>
+        <small id="trip-title">Bergamo · Unser Familienurlaub</small>
+      </div>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Familienzeit. Fairways. Italien.</div>
+          <h1>Vier Glatters.<br>Eine gute Zeit.</h1>
+          <p>
+            Gemeinsam unterwegs in Bergamo: Golf, Familienzeit
+            und Opa Winfried als unser aller Caddy.
+          </p>
+          <div class="chips">
+            <span class="chip">Marcel</span>
+            <span class="chip">Julian</span>
+            <span class="chip">Steffen</span>
+            <span class="chip">Opa Winfried ♥</span>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <div class="photo-placeholder" aria-hidden="true">
+            <span>⛳</span>
+            Unser Gruppenfoto
+          </div>
+          <img id="group-photo"
+               alt="Unsere Reisegruppe mit Marcel, Julian, Steffen und Winfried"
+               fetchpriority="high">
+          <div class="hero-caption">
+            Gemeinsam unterwegs · Erinnerungen, die bleiben.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Reisebereiche">
+      <button class="tab" id="tab-overview" role="tab"
+              aria-selected="true" aria-controls="overview"
+              tabindex="0">Übersicht & Kosten</button>
+      <button class="tab" id="tab-golf" role="tab"
+              aria-selected="false" aria-controls="golf"
+              tabindex="-1">Golfplätze</button>
+      <button class="tab" id="tab-hotel" role="tab"
+              aria-selected="false" aria-controls="hotel"
+              tabindex="-1">Unterkunft</button>
+      <button class="tab" id="tab-flights" role="tab"
+              aria-selected="false" aria-controls="flights"
+              tabindex="-1">Flüge</button>
+      <button class="tab" id="tab-car" role="tab"
+              aria-selected="false" aria-controls="car"
+              tabindex="-1">Mietwagen</button>
+      <button class="tab" id="tab-participants" role="tab"
+              aria-selected="false" aria-controls="participants"
+              tabindex="-1">Teilnehmer</button>
+    </nav>
+
+    <div class="syncbar" id="syncbar">
+      <span id="sync-status" role="status" aria-live="polite">
+        Reisedaten werden geladen …
+      </span>
+      <button class="button" id="refresh-button" type="button">
+        Jetzt aktualisieren
+      </button>
+    </div>
+
+    <noscript>
+      <div class="notice amber">
+        Bitte aktiviere JavaScript, damit die Reiseinformationen
+        aus Google Sheets geladen und die Tabs bedient werden können.
+      </div>
+    </noscript>
+
+    <main id="main">
+      <section id="overview" role="tabpanel"
+               aria-labelledby="tab-overview" tabindex="0">
+        <div class="notice">Aktuelle Reiseinformationen werden geladen …</div>
+      </section>
+
+      <section id="golf" role="tabpanel"
+               aria-labelledby="tab-golf" tabindex="0" hidden></section>
+
+      <section id="hotel" role="tabpanel"
+               aria-labelledby="tab-hotel" tabindex="0" hidden></section>
+
+      <section id="flights" role="tabpanel"
+               aria-labelledby="tab-flights" tabindex="0" hidden></section>
+
+      <section id="car" role="tabpanel"
+               aria-labelledby="tab-car" tabindex="0" hidden></section>
+
+      <section id="participants" role="tabpanel"
+               aria-labelledby="tab-participants" tabindex="0" hidden></section>
+    </main>
+
+    <footer>
+      Bergamo · Marcel, Julian, Steffen & Winfried<br>
+      Reisedaten: veröffentlichtes Google Sheet.
+      Automatischer Abruf alle fünf Minuten bei sichtbarer Seite.
+      Fotos und Handicaps werden separat im Website-Projekt gepflegt.
+    </footer>
+  </div>
+
+  <script>
+    "use strict";
+
+    /* =====================================================
+       EINSTELLUNGEN
+       ===================================================== */
+
+    const CSV_URL =
+      "https://docs.google.com/spreadsheets/d/e/" +
+      "2PACX-1vRnS2jILRMuE3YArvod2KpwTQOEkc1fGrnn_R6o_" +
+      "RydPSioNX8sHx4uD5_559WQCubOqPnzClVaE269/pub?output=csv";
+
+    const REFRESH_INTERVAL = 5 * 60 * 1000;
+
+    // Exakte Schreibweise beachten: gruppe.JPEG
+    const GROUP_PHOTO = "gruppe.JPEG";
+
+    // Hier kannst du Fotos, Handicaps und Beschreibungen ändern.
+    const PARTICIPANTS = [
+      {
+        name: "Marcel",
+        fullName: "Marcel Glatter",
+        initials: "MG",
+        handicap: "5,7",
+        role: "Golfspieler",
+        photo: "fotos/marcel.jpg"
+      },
+      {
+        name: "Julian",
+        fullName: "Julian Glatter",
+        initials: "JG",
+        handicap: "9,6",
+        role: "Golfspieler",
+        photo: "fotos/julian.jpg"
+      },
+      {
+        name: "Steffen",
+        fullName: "Steffen Glatter",
+        initials: "SG",
+        handicap: "23",
+        role: "Vater & Golfspieler",
+        photo: "fotos/steffen.jpg"
+      },
+      {
+        name: "Winfried",
+        fullName: "Winfried Glatter",
+        initials: "WG",
+        handicap: null,
+        role: "Opa & unser aller Caddy",
+        photo: "fotos/winfried.jpg"
+      }
+    ];
+
+    const DATA_PANELS = ["overview", "golf", "hotel", "flights", "car"];
+
+    /* =====================================================
+       HILFSFUNKTIONEN
+       ===================================================== */
+
+    const euroFormatter = new Intl.NumberFormat("de-DE", {
+      style: "currency",
+      currency: "EUR"
+    });
+
+    function money(value) {
+      return euroFormatter.format(value);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, character => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function normalize(value) {
+      return String(value ?? "")
+        .trim()
+        .replace(/:$/, "")
+        .replace(/\s+/g, " ")
+        .toLocaleLowerCase("de-DE");
+    }
+
+    // Erwartet deutsche Zahlenformate, z. B. 1.183,92 €.
+    function parseAmount(value) {
+      const cleaned = String(value ?? "")
+        .replace(/€/g, "")
+        .replace(/\s/g, "")
+        .replace(/\./g, "")
+        .replace(",", ".");
+
+      if (!/^-?\d+(?:\.\d+)?$/.test(cleaned)) {
+        return NaN;
+      }
+
+      return Number(cleaned);
+    }
+
+    function requiredAmount(value, label) {
+      const result = parseAmount(value);
+
+      if (!Number.isFinite(result) || result < 0) {
+        throw new Error("Ungültiger oder fehlender Betrag: " + label);
+      }
+
+      return result;
+    }
+
+    function sum(values) {
+      return values.reduce(
+        (total, value) => total + Math.round(value * 100), 0
+      ) / 100;
+    }
+
+    function differs(left, right) {
+      return Math.round(left * 100) !== Math.round(right * 100);
+    }
+
+    function requiredText(value, label) {
+      if (!value) throw new Error("Fehlende Angabe: " + label);
+      return value;
+    }
+
+    function safeUrl(value) {
+      try {
+        const url = new URL(value);
+        return url.protocol === "https:" ? url.href : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function linkButton(url, label) {
+      const checked = safeUrl(url);
+
+      if (!checked) return "";
+
+      return `
+        <a class="button"
+           href="${escapeHtml(checked)}"
+           target="_blank"
+           rel="noopener noreferrer">
+          ${escapeHtml(label)}
+        </a>
+      `;
+    }
+
+    function heading(title, subtitle) {
+      return `
+        <div class="section-head">
+          <div>
+            <h2>${escapeHtml(title)}</h2>
+            <p class="muted">${escapeHtml(subtitle)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function fact(label, value) {
+      return `
+        <div>
+          <dt>${escapeHtml(label)}</dt>
+          <dd>${escapeHtml(value || "Noch nicht angegeben")}</dd>
+        </div>
+      `;
+    }
+
+    function table(headers, rows, totals = null) {
+      return `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                ${headers.map((header, index) => `
+                  <th scope="col" class="${index ? "num" : ""}">
+                    ${escapeHtml(header)}
+                  </th>
+                `).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map(row => `
+                <tr>
+                  ${row.map((cell, index) => `
+                    <td class="${index ? "num" : ""}">
+                      ${escapeHtml(cell)}
+                    </td>
+                  `).join("")}
+                </tr>
+              `).join("")}
+            </tbody>
+            ${totals ? `
+              <tfoot>
+                <tr>
+                  ${totals.map((cell, index) => `
+                    <td class="${index ? "num" : ""}">
+                      ${escapeHtml(cell)}
+                    </td>
+                  `).join("")}
+                </tr>
+              </tfoot>
+            ` : ""}
+          </table>
+        </div>
+      `;
+    }
+
+    function formatTimestamp(date) {
+      return date.toLocaleString("de-DE", {
+        dateStyle: "short",
+        timeStyle: "medium"
+      });
+    }
+
+    /* =====================================================
+       CSV-PARSER
+       Unterstützt Anführungszeichen, Kommas und mehrzeilige
+       Zellen. Leere Spalten werden nicht entfernt.
+       ===================================================== */
+
+    function parseCsv(text) {
+      text = text.replace(/^\uFEFF/, "");
+
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let quoted = false;
+
+      for (let index = 0; index < text.length; index++) {
+        const character = text[index];
+
+        if (character === '"') {
+          if (quoted && text[index + 1] === '"') {
+            cell += '"';
+            index++;
+          } else if (quoted) {
+            quoted = false;
+          } else if (cell === "") {
+            quoted = true;
+          } else {
+            cell += character;
+          }
+        } else if (character === "," && !quoted) {
+          row.push(cell.trim());
+          cell = "";
+        } else if (
+          (character === "\n" || character === "\r") &&
+          !quoted
+        ) {
+          if (
+            character === "\r" &&
+            text[index + 1] === "\n"
+          ) {
+            index++;
+          }
+
+          row.push(cell.trim());
+          rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += character;
+        }
+      }
+
+      if (quoted) {
+        throw new Error("Unvollständiges Textfeld in der CSV-Datei.");
+      }
+
+      if (cell !== "" || row.length) {
+        row.push(cell.trim());
+        rows.push(row);
+      }
+
+      return rows.filter(row => row.some(cell => cell !== ""));
+    }
+
+    /* =====================================================
+       REISETABELLE LESEN
+
+       Abschnittsüberschriften und Spaltenreihenfolge müssen
+       dem bereitgestellten Google Sheet entsprechen.
+       ===================================================== */
+
+    function readTrip(rows) {
+      const names = [
+        "Golfplätze",
+        "Flüge",
+        "Unterkunft",
+        "Mietwagen",
+        "Kostenübersicht"
+      ];
+
+      const positions = names.map(name =>
+        rows.findIndex(row => normalize(row[0]) === normalize(name))
+      );
+
+      if (
+        positions.some(position => position < 0) ||
+        positions.some((position, index) =>
+          index > 0 && position <= positions[index - 1]
+        )
+      ) {
+        throw new Error(
+          "Tabellenabschnitte fehlen oder ihre Reihenfolge wurde geändert."
+        );
+      }
+
+      const sections = {};
+
+      names.forEach((name, index) => {
+        sections[name] = rows.slice(
+          positions[index] + 1,
+          index + 1 < positions.length
+            ? positions[index + 1]
+            : rows.length
+        );
+      });
+
+      function field(section, label) {
+        const row = section.find(row =>
+          normalize(row[0]) === normalize(label)
+        );
+
+        return row
+          ? row.slice(1).filter(Boolean).join(" · ")
+          : "";
+      }
+
+      function statusNote(section) {
+        return section
+          .flat()
+          .filter(cell => /bezahlt|bezahlung/i.test(cell))
+          .join(" · ");
+      }
+
+      const golf = sections["Golfplätze"]
+        .filter(row =>
+          /^\d{1,2}\.\d{1,2}\.\d{4}$/.test(row[0] || "")
+        )
+        .map(row => ({
+          date: row[0],
+          name: requiredText(row[1], "Golfclub"),
+          perPerson: requiredAmount(row[2], "Greenfee pro Person"),
+          total: requiredAmount(row[3], "Greenfees gesamt"),
+          map: row.find(cell => /^https:\/\//i.test(cell)) || ""
+        }));
+
+      if (!golf.length) {
+        throw new Error("Keine Golftermine gefunden.");
+      }
+
+      const flightSection = sections["Flüge"];
+
+      function flight(label) {
+        const row = flightSection.find(row =>
+          normalize(row[0]) === normalize(label)
+        );
+
+        if (!row || !row[1] || !row[2]) {
+          throw new Error("Flugdaten fehlen: " + label);
+        }
+
+        return {
+          date: row[1],
+          time: row[2],
+          airline: row[3] || "Nicht angegeben"
+        };
+      }
+
+      const flightPeople = flightSection
+        .filter(row =>
+          row[0] &&
+          [row[1], row[2], row[3]].every(value =>
+            Number.isFinite(parseAmount(value))
+          )
+        )
+        .map(row => ({
+          name: row[0],
+          fare: requiredAmount(row[1], "Flugpreis"),
+          baggage: requiredAmount(row[2], "Gepäckpreis"),
+          total: requiredAmount(row[3], "Flugpreis gesamt")
+        }));
+
+      if (!flightPeople.length) {
+        throw new Error("Keine Flugkosten gefunden.");
+      }
+
+      const hotelSection = sections["Unterkunft"];
+
+      const rooms = hotelSection
+        .filter(row =>
+          row[0] &&
+          row[1] &&
+          Number.isFinite(parseAmount(row[2])) &&
+          Number.isFinite(parseAmount(row[3]))
+        )
+        .map(row => ({
+          name: row[0],
+          guests: row[1],
+          perPerson: requiredAmount(row[2], "Zimmer pro Person"),
+          total: requiredAmount(row[3], "Zimmer gesamt")
+        }));
+
+      if (!rooms.length) {
+        throw new Error("Keine Zimmer gefunden.");
+      }
+
+      const carSection = sections["Mietwagen"];
+
+      const carPriceRow = carSection.find(row =>
+        normalize(row[0]) === "gesamtpreis"
+      );
+
+      const carShareRow = carSection.find(row =>
+        normalize(row[0]) === "preis pro person"
+      );
+
+      const carDescriptionRow = carSection.find(row =>
+        row[0] &&
+        !row.slice(1).some(Boolean) &&
+        !row[0].includes(":")
+      );
+
+      const costSection = sections["Kostenübersicht"];
+
+      const costs = costSection
+        .filter(row =>
+          row[0] &&
+          [row[1], row[2], row[3]].every(value =>
+            Number.isFinite(parseAmount(value))
+          )
+        )
+        .map(row => ({
+          name: row[0],
+          total: requiredAmount(row[1], "Person gesamt"),
+          paid: requiredAmount(row[2], "Person bezahlt"),
+          open: requiredAmount(row[3], "Person offen")
+        }));
+
+      if (!costs.length) {
+        throw new Error("Keine persönliche Kostenübersicht gefunden.");
+      }
+
+      const totalRow = costSection.find(row =>
+        !row[0] &&
+        [row[1], row[2], row[3]].every(value =>
+          Number.isFinite(parseAmount(value))
+        )
+      );
+
+      const totals = totalRow ? {
+        total: requiredAmount(totalRow[1], "Gesamtbudget"),
+        paid: requiredAmount(totalRow[2], "Gesamt bezahlt"),
+        open: requiredAmount(totalRow[3], "Gesamt offen")
+      } : {
+        total: sum(costs.map(person => person.total)),
+        paid: sum(costs.map(person => person.paid)),
+        open: sum(costs.map(person => person.open))
+      };
+
+      // PIN und Buchungsnummer werden bewusst nicht übernommen.
+      return {
+        title: rows[0].filter(Boolean).join(" "),
+        golf,
+        golfNote: statusNote(sections["Golfplätze"]),
+        outbound: flight("Hinflug"),
+        inbound: flight("Rückflug"),
+        flightPeople,
+        flightNote: statusNote(flightSection),
+
+        hotel: {
+          name: requiredText(
+            field(hotelSection, "Hotel"),
+            "Hotelname"
+          ),
+          map: field(hotelSection, "Link"),
+          checkin: field(hotelSection, "Checkin"),
+          checkout: field(hotelSection, "Checkout"),
+          payment: field(hotelSection, "Zahlungsbedingungen"),
+          cancellation:
+            field(hotelSection, "Stornierungsbedingungen") ||
+            field(hotelSection, "Stornierungsbedigungen"),
+          rooms
+        },
+
+        car: {
+          portal: field(carSection, "Vergleichsportal"),
+          description: carDescriptionRow?.[0] || "Fahrzeug noch offen",
+          link: field(carSection, "Link"),
+          status: field(carSection, "Status"),
+          total: requiredAmount(carPriceRow?.[1], "Mietwagen"),
+          share: parseAmount(carShareRow?.[1])
+        },
+
+        costs,
+        totals
+      };
+    }
+
+    /* =====================================================
+       SEITENINHALTE ERZEUGEN
+       ===================================================== */
+
+    function buildPages(trip) {
+      const golfTotal = sum(trip.golf.map(course => course.total));
+      const golfPerPerson = sum(
+        trip.golf.map(course => course.perPerson)
+      );
+      const hotelTotal = sum(
+        trip.hotel.rooms.map(room => room.total)
+      );
+      const flightTotal = sum(
+        trip.flightPeople.map(person => person.total)
+      );
+
+      const categoryTotal = sum([
+        golfTotal, hotelTotal, flightTotal, trip.car.total
+      ]);
+
+      const warnings = [];
+
+      [
+        ["total", "Gesamtkosten"],
+        ["paid", "bezahlten Beträge"],
+        ["open", "offenen Beträge"]
+      ].forEach(([key, label]) => {
+        const individualSum = sum(
+          trip.costs.map(person => person[key])
+        );
+
+        if (differs(individualSum, trip.totals[key])) {
+          warnings.push(
+            `Die Summe der persönlichen ${label} beträgt ` +
+            `${money(individualSum)}; die Summenzeile enthält ` +
+            `${money(trip.totals[key])}. ` +
+            "Bitte Rundung bzw. Formeln im Sheet prüfen."
+          );
+        }
+      });
+
+      if (differs(categoryTotal, trip.totals.total)) {
+        warnings.push(
+          `Die Kategorien ergeben ${money(categoryTotal)} und ` +
+          "weichen von der Gesamtsumme der Kostenübersicht ab."
+        );
+      }
+
+      if (differs(
+        sum([trip.totals.paid, trip.totals.open]),
+        trip.totals.total
+      )) {
+        warnings.push(
+          "Bezahlt plus offen entspricht nicht dem Gesamtbudget."
+        );
+      }
+
+      if (trip.costs.some(person =>
+        differs(sum([person.paid, person.open]), person.total)
+      )) {
+        warnings.push(
+          "Bei mindestens einer Person stimmen bezahlt plus offen " +
+          "nicht mit den persönlichen Gesamtkosten überein."
+        );
+      }
+
+      const statItems = [
+        ["Gesamtbudget", money(trip.totals.total), "Laut Kostenübersicht"],
+        ["Bereits bezahlt", money(trip.totals.paid), "Laut Reisetabelle"],
+        ["Offen / geplant", money(trip.totals.open), "Inklusive geplanter Kosten"],
+        ["Golfbudget", money(golfTotal), `${trip.golf.length} Golftermine`]
+      ];
+
+      const overview = `
+        ${heading("Alles auf einen Blick", trip.title)}
+
+        <div class="grid stats">
+          ${statItems.map((item, index) => `
+            <div class="card ${index === 0 ? "dark" : ""}">
+              <div class="stat-label">${escapeHtml(item[0])}</div>
+              <div class="stat-value">${escapeHtml(item[1])}</div>
+              <div class="stat-note">${escapeHtml(item[2])}</div>
+            </div>
+          `).join("")}
+        </div>
+
+        ${warnings.length ? `
+          <div class="notice amber space">
+            <strong>Hinweise zur Kostenübersicht</strong>
+            <ul>
+              ${warnings.map(warning => `
+                <li>${escapeHtml(warning)}</li>
+              `).join("")}
+            </ul>
+          </div>
+        ` : ""}
+
+        <div class="card space">
+          <h3>Wer zahlt wie viel?</h3>
+          ${table(
+            ["Person", "Gesamt", "Bezahlt", "Offen / geplant"],
+            trip.costs.map(person => [
+              person.name,
+              money(person.total),
+              money(person.paid),
+              money(person.open)
+            ]),
+            [
+              "Gesamt",
+              money(trip.totals.total),
+              money(trip.totals.paid),
+              money(trip.totals.open)
+            ]
+          )}
+          <p class="table-note">
+            Persönliche Beträge werden unverändert aus Google Sheets
+            übernommen. Es erfolgt kein automatischer Rundungsausgleich.
+          </p>
+        </div>
+
+        <div class="grid two space">
+          <div class="card">
+            <h3>Zahlungen & Fälligkeiten</h3>
+            <dl class="facts">
+              ${fact(
+                "Unterkunft · " + money(hotelTotal),
+                trip.hotel.payment
+              )}
+              ${fact(
+                "Golf · " + money(golfTotal),
+                trip.golfNote
+              )}
+              ${fact(
+                "Flüge · " + money(flightTotal),
+                trip.flightNote
+              )}
+              ${fact(
+                "Mietwagen · " + money(trip.car.total),
+                trip.car.status
+              )}
+              ${fact(
+                "Unterkunft · Stornierung",
+                trip.hotel.cancellation
+              )}
+            </dl>
+            <p class="table-note">
+              Ein erreichtes Zahlungsdatum bedeutet nicht automatisch
+              „bezahlt“. Maßgeblich ist der gepflegte Status im Sheet.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Unser Budget nach Kategorien</h3>
+            ${table(
+              ["Kategorie", "Betrag"],
+              [
+                ["Unterkunft", money(hotelTotal)],
+                ["Golfplätze", money(golfTotal)],
+                ["Flüge inklusive Gepäck", money(flightTotal)],
+                ["Mietwagen laut Plan", money(trip.car.total)]
+              ],
+              ["Summe der Kategorien", money(categoryTotal)]
+            )}
+            <div class="notice space">
+              Verpflegung, Kraftstoff, Parken, mögliche örtliche
+              Abgaben und weitere Extras sind nur enthalten,
+              wenn sie ausdrücklich in der Tabelle erfasst wurden.
+            </div>
+          </div>
+        </div>
+      `;
+
+      const golf = `
+        ${heading(
+          "Unsere Fairways",
+          "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy."
+        )}
+
+        <div class="golf-list">
+          ${trip.golf.map(course => `
+            <article class="card golf-card">
+              <div class="date-tile">
+                <strong>${escapeHtml(course.date.split(".")[0])}</strong>
+                <span>${escapeHtml(course.date.split(".").slice(1).join("."))}</span>
+              </div>
+              <div>
+                <h3>${escapeHtml(course.name)}</h3>
+                <p class="small muted">
+                  ${escapeHtml(course.date)} ·
+                  Gesamt ${escapeHtml(money(course.total))}
+                </p>
+                ${linkButton(course.map, "Platz auf Google Maps ↗")}
+              </div>
+              <div class="golf-price">
+                <strong>${escapeHtml(money(course.perPerson))}</strong>
+                <span class="small muted">pro Spieler</span>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+
+        <div class="grid two space">
+          <div class="card dark">
+            <h3>Unser Spielformat</h3>
+            <p>
+              <strong>Nettoschläge über Par</strong> –
+              der niedrigste Wert gewinnt.
+            </p>
+            <p>Bruttoschläge − Spielvorgabe − Platz-Par</p>
+            <p class="small muted">
+              Die Spielvorgabe wird aus Handicap und den jeweiligen
+              Platz-/Abschlagsdaten sowie gegebenenfalls der
+              vereinbarten Handicap-Anrechnung ermittelt.
+              Der Handicap-Index wird nicht einfach als Dezimalzahl
+              von den Schlägen abgezogen.
+            </p>
+            <div class="chips">
+              ${PARTICIPANTS.filter(person => person.handicap).map(person => `
+                <span class="chip">
+                  ${escapeHtml(person.name)} ·
+                  HCP ${escapeHtml(person.handicap)}
+                </span>
+              `).join("")}
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Golfbudget & Organisation</h3>
+            <dl class="facts">
+              ${fact("Alle Runden pro Spieler", money(golfPerPerson))}
+              ${fact("Greenfees gesamt", money(golfTotal))}
+              ${fact("Zahlungsinformation", trip.golfNote)}
+              ${fact("Winfried", "Gemeinsamer Caddy · keine eigene Golfwertung")}
+            </dl>
+            <p class="table-note">
+              Startzeiten, Buchungsbestätigungen und Platz-/Abschlagsdaten
+              sind in der bisherigen Tabellenstruktur nicht hinterlegt.
+            </p>
+          </div>
+        </div>
+      `;
+
+      const hotel = `
+        ${heading("Unser Zuhause in Bergamo", trip.hotel.name)}
+        ${linkButton(trip.hotel.map, "Hotel auf Google Maps ↗")}
+
+        <div class="grid two space">
+          <div class="card">
+            <h3>Ankommen & Abreisen</h3>
+            <dl class="facts">
+              ${fact("Check-in", trip.hotel.checkin)}
+              ${fact("Check-out", trip.hotel.checkout)}
+              ${fact("Zimmer", String(trip.hotel.rooms.length))}
+            </dl>
+          </div>
+
+          <div class="card">
+            <h3>Zahlung & Stornierung</h3>
+            <dl class="facts">
+              ${fact("Gesamtpreis", money(hotelTotal))}
+              ${fact("Zahlungsbedingungen", trip.hotel.payment)}
+              ${fact("Stornierungsbedingungen", trip.hotel.cancellation)}
+            </dl>
+          </div>
+        </div>
+
+        <div class="grid space">
+          ${trip.hotel.rooms.map(room => `
+            <article class="card">
+              <h3>${escapeHtml(room.name)}</h3>
+              <p>${escapeHtml(room.guests)}</p>
+              <p>
+                <strong>${escapeHtml(money(room.total))}</strong>
+                für das Zimmer ·
+                ${escapeHtml(money(room.perPerson))} pro Person
+              </p>
+            </article>
+          `).join("")}
+        </div>
+
+        <div class="notice space">
+          Buchungsnummer und Hotel-PIN gehören in die privaten
+          Reiseunterlagen. Sie werden auf dieser Website nicht angezeigt.
+        </div>
+      `;
+
+      const flights = `
+        ${heading(
+          "Hin und zurück",
+          "Unsere Flugdaten und Gepäckkosten aus der Reisetabelle."
+        )}
+
+        <div class="grid two">
+          ${[
+            ["Hinflug", trip.outbound],
+            ["Rückflug", trip.inbound]
+          ].map(([label, flight]) => `
+            <article class="card">
+              <div class="eyebrow muted">${escapeHtml(label)}</div>
+              <h3 style="margin-top:16px">${escapeHtml(flight.date)}</h3>
+              <div class="flight-time">${escapeHtml(flight.time)}</div>
+              <span class="badge">${escapeHtml(flight.airline)}</span>
+            </article>
+          `).join("")}
+        </div>
+
+        <div class="card space">
+          <h3>Flug- und Gepäckkosten</h3>
+          ${table(
+            ["Person", "Flugpreis", "Gepäck", "Gesamt"],
+            trip.flightPeople.map(person => [
+              person.name,
+              money(person.fare),
+              money(person.baggage),
+              money(person.total)
+            ]),
+            [
+              "Gesamt",
+              money(sum(trip.flightPeople.map(person => person.fare))),
+              money(sum(trip.flightPeople.map(person => person.baggage))),
+              money(flightTotal)
+            ]
+          )}
+          <p class="table-note">${escapeHtml(trip.flightNote)}</p>
+        </div>
+
+        <div class="notice space">
+          Abflug- und Zielflughäfen, Flugnummern, Gepäckarten und
+          Freigepäckgrenzen sind in der bisherigen Tabelle nicht angegeben.
+          Die aufgeführten Gepäckbeträge sind Kosten, keine Gewichtsangaben.
+        </div>
+      `;
+
+      const car = `
+        ${heading(
+          "Mobil vor Ort",
+          "Unser Mietwagen für die gemeinsame Zeit in Italien."
+        )}
+
+        <div class="grid two">
+          <div class="card dark">
+            <div class="eyebrow">Fahrzeug laut Reiseplanung</div>
+            <h3 style="margin-top:18px;font-size:1.6rem">
+              ${escapeHtml(trip.car.description)}
+            </h3>
+            <div class="stat-value">${escapeHtml(money(trip.car.total))}</div>
+            <p class="small muted">
+              Gesamtpreis laut Tabelle. Bei noch offener Buchung
+              handelt es sich um einen Planwert.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Buchungsstand</h3>
+            <dl class="facts">
+              ${fact("Vergleichsportal", trip.car.portal)}
+              ${fact("Status", trip.car.status)}
+              ${fact(
+                "Pro Person laut Tabelle",
+                Number.isFinite(trip.car.share)
+                  ? money(trip.car.share)
+                  : ""
+              )}
+            </dl>
+            <div class="space">
+              ${linkButton(trip.car.link, "Mietwagenangebot öffnen ↗") || `
+                <p class="small muted">
+                  In der Tabelle ist noch kein vollständiger
+                  HTTPS-Angebotslink hinterlegt.
+                </p>
+              `}
+            </div>
+          </div>
+        </div>
+
+        <div class="card space">
+          <h3>Vor der Buchung prüfen</h3>
+          <ul>
+            <li>Platz für vier Personen, Reisegepäck und Golfbags.</li>
+            <li>Vermieter sowie Abhol- und Rückgabeort und -zeit.</li>
+            <li>Versicherung, Selbstbeteiligung und Kaution.</li>
+            <li>Zusatzfahrer, Tankregelung und Kilometerregelung.</li>
+          </ul>
+          <p class="table-note">
+            Eine gleichmäßige Aufteilung auf vier Personen kann
+            einen Rundungsausgleich von einem Cent erfordern.
+          </p>
+        </div>
+      `;
+
+      return { overview, golf, hotel, flights, car };
+    }
+
+    /* =====================================================
+       TEILNEHMER UND FOTOS
+       ===================================================== */
+
+    function loadImage(image, path) {
+      image.onerror = () => { image.hidden = true; };
+      image.onload = () => { image.hidden = false; };
+      image.src = path;
+    }
+
+    function renderParticipants() {
+      document.getElementById("participants").innerHTML = `
+        ${heading(
+          "Unser Reiseteam",
+          "Drei Golfer. Ein Lieblings-Caddy. Eine gemeinsame Reise."
+        )}
+
+        <div class="participants">
+          ${PARTICIPANTS.map(person => `
+            <article class="card participant">
+              <div class="portrait">
+                <span class="initials" aria-hidden="true">
+                  ${escapeHtml(person.initials)}
+                </span>
+                <img
+                  data-photo="${escapeHtml(person.photo)}"
+                  alt="Porträt von ${escapeHtml(person.fullName)}"
+                  loading="lazy"
+                  decoding="async">
+              </div>
+              <div class="participant-body">
+                <h3>${escapeHtml(person.name)}</h3>
+                <p class="muted">${escapeHtml(person.role)}</p>
+                <span class="badge">
+                  ${person.handicap
+                    ? "Handicap " + escapeHtml(person.handicap)
+                    : "Caddy für alle ♥"}
+                </span>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+
+        <div class="notice space">
+          Winfried begleitet uns als gemeinsamer Caddy und nimmt
+          nicht an der Golfwertung teil.
+        </div>
+      `;
+
+      document.querySelectorAll("[data-photo]").forEach(image => {
+        loadImage(image, image.dataset.photo);
+      });
+    }
+
+    loadImage(document.getElementById("group-photo"), GROUP_PHOTO);
+    renderParticipants();
+
+    /* =====================================================
+       TAB-NAVIGATION MIT TASTATURBEDIENUNG
+       ===================================================== */
+
+    const tabs = Array.from(
+      document.querySelectorAll('[role="tab"]')
+    );
+
+    function activateTab(tab, focus = false) {
+      tabs.forEach(item => {
+        const selected = item === tab;
+
+        item.setAttribute("aria-selected", String(selected));
+        item.tabIndex = selected ? 0 : -1;
+
+        document.getElementById(
+          item.getAttribute("aria-controls")
+        ).hidden = !selected;
+      });
+
+      if (focus) {
+        tab.focus();
+        tab.scrollIntoView({
+          block: "nearest",
+          inline: "nearest"
+        });
+      }
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => activateTab(tab));
+
+      tab.addEventListener("keydown", event => {
+        let target;
+
+        if (event.key === "ArrowRight") {
+          target = (index + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft") {
+          target = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          target = 0;
+        } else if (event.key === "End") {
+          target = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        activateTab(tabs[target], true);
+      });
+    });
+
+    /* =====================================================
+       AUTOMATISCHE AKTUALISIERUNG
+
+       - Beim Öffnen
+       - Alle fünf Minuten bei sichtbarer Seite
+       - Beim Zurückkehren zum Browser-Tab
+       - Nach Wiederherstellung der Internetverbindung
+
+       Bei Fehlern bleiben bereits geladene Daten erhalten.
+       Es werden keine Reisedaten lokal dauerhaft gespeichert.
+       ===================================================== */
+
+    let loading = false;
+    let lastSuccess = null;
+    let lastCsv = null;
+
+    async function refreshData() {
+      if (loading) return;
+      loading = true;
+
+      const status = document.getElementById("sync-status");
+      const statusBar = document.getElementById("syncbar");
+      const button = document.getElementById("refresh-button");
+
+      button.disabled = true;
+
+      status.textContent = lastSuccess
+        ? "Aktualisiere … letzter erfolgreicher Abruf: " +
+          formatTimestamp(lastSuccess)
+        : "Reisedaten werden aus Google Sheets geladen …";
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+
+      try {
+        const url = new URL(CSV_URL);
+
+        // Reduziert Browser-Caching. Googles eigener
+        // Veröffentlichungscache kann trotzdem verzögern.
+        url.searchParams.set("_refresh", String(Date.now()));
+
+        const response = await fetch(url.href, {
+          cache: "no-store",
+          credentials: "omit",
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error("HTTP " + response.status);
+        }
+
+        const text = await response.text();
+
+        if (/^\s*</.test(text)) {
+          throw new Error(
+            "Google hat HTML statt einer CSV-Datei zurückgegeben."
+          );
+        }
+
+        // Nur neu rendern, wenn sich die CSV geändert hat.
+        if (text !== lastCsv) {
+          const trip = readTrip(parseCsv(text));
+
+          // Erst vollständig aufbereiten, dann anzeigen.
+          const pages = buildPages(trip);
+
+          Object.entries(pages).forEach(([id, html]) => {
+            document.getElementById(id).innerHTML = html;
+          });
+
+          document.getElementById("trip-title").textContent = trip.title;
+          document.title = trip.title + " · Glatter on Tour";
+
+          lastCsv = text;
+        }
+
+        lastSuccess = new Date();
+        statusBar.dataset.state = "ok";
+
+        status.textContent =
+          "Zuletzt erfolgreich abgerufen: " +
+          formatTimestamp(lastSuccess) +
+          " · Automatisch alle 5 Minuten";
+      } catch (error) {
+        statusBar.dataset.state = "error";
+
+        status.textContent = lastSuccess
+          ? "Aktualisierung fehlgeschlagen. Angezeigt werden die " +
+            "zuletzt geladenen Daten vom " +
+            formatTimestamp(lastSuccess) + "."
+          : "Reisedaten konnten nicht geladen werden. " +
+            "Bitte Verbindung, Veröffentlichung und CSV-Link prüfen.";
+
+        if (!lastSuccess) {
+          DATA_PANELS.forEach(id => {
+            document.getElementById(id).innerHTML = `
+              <div class="notice amber">
+                <strong>Die Reiseinformationen sind gerade nicht verfügbar.</strong>
+                <p>
+                  Bitte versuche es mit „Jetzt aktualisieren“ erneut.
+                  Der Teilnehmerbereich bleibt verfügbar.
+                </p>
+                <p class="small">
+                  Technischer Hinweis:
+                  ${escapeHtml(error.message)}
+                </p>
+              </div>
+            `;
+          });
+        }
+
+        console.error("Google-Sheets-Abruf fehlgeschlagen:", error);
+      } finally {
+        clearTimeout(timeout);
+        button.disabled = false;
+        loading = false;
+      }
+    }
+
+    document.getElementById("refresh-button")
+      .addEventListener("click", refreshData);
+
+    setInterval(() => {
+      if (!document.hidden) refreshData();
+    }, REFRESH_INTERVAL);
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) refreshData();
+    });
+
+    window.addEventListener("online", refreshData);
+
+    refreshData();
+  </script>
+</body>
+</html>
