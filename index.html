@@ -52,6 +52,7 @@ img { display:block; max-width:100%; }
 }
 .brand { font-weight:850; letter-spacing:-.5px; }
 .topbar small { color:var(--muted); }
+
 .hero {
   display:grid;
   grid-template-columns:1fr 1.1fr;
@@ -114,6 +115,7 @@ h1 {
   background:#ffffff09;
   font-size:.78rem;
 }
+
 .navigation {
   display:flex;
   justify-content:space-between;
@@ -127,7 +129,7 @@ h1 {
 }
 .navigation strong { display:block; }
 .navigation small { color:var(--muted); }
-.select-wrap { width:320px; max-width:100%; }
+.select-wrap { width:340px; max-width:100%; }
 .select-wrap label {
   display:block;
   margin-bottom:5px;
@@ -173,6 +175,7 @@ select {
 }
 .button:hover { background:var(--soft); }
 .actions { display:flex; flex-wrap:wrap; gap:8px; }
+
 main { padding-bottom:36px; }
 .section-head { margin:8px 0 22px; }
 h2 {
@@ -197,7 +200,11 @@ p { margin:8px 0 16px; }
   border-radius:20px;
   background:var(--paper);
 }
-.dark { background:var(--green); border-color:var(--green); color:white; }
+.dark {
+  background:var(--green);
+  border-color:var(--green);
+  color:white;
+}
 .stat-label { color:var(--muted); font-size:.8rem; }
 .stat-note { color:var(--muted); font-size:.75rem; }
 .stat-value {
@@ -207,7 +214,9 @@ p { margin:8px 0 16px; }
   letter-spacing:-.7px;
   line-height:1.3;
 }
-.dark .stat-label,.dark .stat-note,.dark .muted { color:#d7e4db; }
+.dark .stat-label,
+.dark .stat-note,
+.dark .muted { color:#d7e4db; }
 .badge {
   display:inline-block;
   padding:5px 11px;
@@ -217,16 +226,27 @@ p { margin:8px 0 16px; }
   font-size:.75rem;
   font-weight:750;
 }
-.badge.amber { background:var(--amber-bg); color:var(--amber-text); }
+.badge.amber {
+  background:var(--amber-bg);
+  color:var(--amber-text);
+}
 .notice {
   padding:16px 18px;
   border-radius:14px;
   background:var(--soft);
   font-size:.84rem;
 }
-.notice.amber { background:var(--amber-bg); color:var(--amber-text); }
+.notice.amber {
+  background:var(--amber-bg);
+  color:var(--amber-text);
+}
 .table-wrap { overflow-x:auto; }
-table { width:100%; border-collapse:collapse; font-size:.87rem; }
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:.87rem;
+  font-variant-numeric:tabular-nums;
+}
 th,td {
   padding:14px 10px;
   border-bottom:1px solid var(--line);
@@ -239,9 +259,13 @@ th {
   letter-spacing:.5px;
   text-transform:uppercase;
 }
-.num { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+.num { text-align:right; white-space:nowrap; }
 tfoot td { background:#f1f5ed; font-weight:800; }
-.table-note { margin-bottom:0; color:var(--muted); font-size:.77rem; }
+.table-note {
+  margin-bottom:0;
+  color:var(--muted);
+  font-size:.77rem;
+}
 .facts { margin:0; }
 .facts > div { padding:12px 0; border-bottom:1px solid var(--line); }
 .facts > div:last-child { border-bottom:0; }
@@ -288,10 +312,22 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   gap:12px;
   margin-bottom:7px;
 }
-.event-type { font-size:.72rem; color:var(--muted); font-weight:750; }
+.event-type {
+  font-size:.72rem;
+  color:var(--muted);
+  font-weight:750;
+}
 .event h3 { margin:0 0 5px; }
-.event p { margin:0 0 12px; font-size:.85rem; color:var(--muted); }
-.event-time { font-weight:800; font-size:.85rem; color:var(--green); }
+.event p {
+  margin:0 0 12px;
+  font-size:.85rem;
+  color:var(--muted);
+}
+.event-time {
+  font-weight:800;
+  font-size:.85rem;
+  color:var(--green);
+}
 .event.pending { border-color:#e6cfaa; }
 .event.pending::before { background:#b38438; }
 
@@ -330,8 +366,14 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   border-radius:20px;
   background:var(--paper);
 }
-.golf-entry .travel-photo { margin:0; border:0; border-radius:0; }
-.golf-entry .travel-photo img { height:clamp(210px,29vw,350px); }
+.golf-entry .travel-photo {
+  margin:0;
+  border:0;
+  border-radius:0;
+}
+.golf-entry .travel-photo img {
+  height:clamp(210px,29vw,350px);
+}
 .golf-card {
   display:grid;
   grid-template-columns:72px 1fr auto;
@@ -346,12 +388,21 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   color:var(--green);
   text-align:center;
 }
-.date-tile strong { display:block; font-size:1.7rem; line-height:1.1; }
+.date-tile strong {
+  display:block;
+  font-size:1.7rem;
+  line-height:1.1;
+}
 .date-tile span { font-size:.7rem; }
 .golf-card h3 { margin:0 0 4px; }
 .golf-price { text-align:right; }
 .golf-price strong { display:block; font-size:1.35rem; }
-.flight-time { margin:20px 0; font-size:2rem; font-weight:850; }
+.flight-time {
+  margin:20px 0;
+  font-size:2rem;
+  font-weight:850;
+}
+
 .participants {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
@@ -365,7 +416,11 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   aspect-ratio:1;
   background:var(--soft);
 }
-.initials { color:var(--green); font-family:Georgia,serif; font-size:4rem; }
+.initials {
+  color:var(--green);
+  font-family:Georgia,serif;
+  font-size:4rem;
+}
 .portrait img {
   position:absolute;
   inset:0;
@@ -376,14 +431,39 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
 .participant-body { padding:22px; }
 .participant h3 { margin-bottom:5px; }
 .photo-error { color:var(--amber-text); font-size:.75rem; }
-.restaurant-head {
+
+.restaurant-head,
+.results-summary {
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
+  flex-wrap:wrap;
   gap:14px;
   margin-bottom:12px;
 }
-.restaurant-head h3 { margin:0; }
+.restaurant-head h3,
+.results-summary h3 { margin:0; }
+
+.rules-list { display:grid; gap:12px; }
+.rule-section {
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:var(--paper);
+}
+.rule-section summary {
+  padding:18px 20px;
+  cursor:pointer;
+  color:var(--green);
+  font-weight:800;
+}
+.rule-section[open] summary {
+  border-bottom:1px solid var(--line);
+}
+.rule-content { padding:8px 20px 18px; }
+.rule-content p { margin:12px 0; white-space:pre-line; }
+.rule-label { font-weight:750; }
+
 footer {
   padding:22px 0 32px;
   border-top:1px solid var(--line);
@@ -393,7 +473,9 @@ footer {
 @media(max-width:900px) {
   .hero { grid-template-columns:1fr; }
   .hero-photo { min-height:0; aspect-ratio:16/9; }
-  .stats,.participants { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .stats,.participants {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
   .two { grid-template-columns:1fr; }
 }
 @media(max-width:560px) {
@@ -404,7 +486,11 @@ footer {
   .hero { border-radius:20px; }
   .hero-photo { aspect-ratio:4/3; }
   .hero-caption { font-size:.7rem; }
-  .navigation { flex-direction:column; align-items:stretch; gap:12px; }
+  .navigation {
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
   .select-wrap { width:100%; }
   .card { padding:18px; }
   .stats { gap:10px; }
@@ -421,7 +507,11 @@ footer {
     flex-direction:column;
     gap:6px;
   }
-  .golf-card { grid-template-columns:58px 1fr; gap:14px; padding:18px; }
+  .golf-card {
+    grid-template-columns:58px 1fr;
+    gap:14px;
+    padding:18px;
+  }
   .golf-price { grid-column:2; text-align:left; }
   .golf-price strong { display:inline; margin-right:6px; }
   .participants { grid-template-columns:1fr; }
@@ -433,7 +523,9 @@ footer {
   .page[hidden] { display:block !important; }
   .page { break-before:page; }
   #home { break-before:auto; }
-  .card,.golf-entry,.travel-photo,.event { break-inside:avoid; }
+  .card,.golf-entry,.travel-photo,.event,.rule-section {
+    break-inside:avoid;
+  }
   .hero { display:block; }
   .hero-photo { display:none; }
   .hero,.dark { background:white; color:black; }
@@ -493,7 +585,9 @@ footer {
       <label for="page-select">Bereich auswählen</label>
       <select id="page-select" aria-controls="main">
         <option value="home">🏡 Startseite & Ablaufplan</option>
-        <option value="golf">⛳ Golfplätze</option>
+        <option value="golf">⛳ Unsere Courses</option>
+        <option value="golf-results">🏆 Golf-Ergebnisse</option>
+        <option value="romme">🃏 Rommé: Ergebnisse & Regeln</option>
         <option value="hotel">🏨 Unterkunft</option>
         <option value="flights">✈ Flüge</option>
         <option value="car">🚗 Mietwagen</option>
@@ -515,7 +609,7 @@ footer {
 
   <noscript>
     <div class="notice amber">
-      Bitte aktiviere JavaScript für die Navigation und den Abruf der Reisedaten.
+      Bitte aktiviere JavaScript für Navigation, Bilder und Reisedaten.
     </div>
   </noscript>
 
@@ -524,6 +618,8 @@ footer {
       <div class="notice">Reiseinformationen werden geladen …</div>
     </section>
     <section class="page" id="golf" aria-label="Golfplätze" hidden></section>
+    <section class="page" id="golf-results" aria-label="Golf-Ergebnisse" hidden></section>
+    <section class="page" id="romme" aria-label="Rommé Ergebnisse und Regeln" hidden></section>
     <section class="page" id="hotel" aria-label="Unterkunft" hidden></section>
     <section class="page" id="flights" aria-label="Flüge" hidden></section>
     <section class="page" id="car" aria-label="Mietwagen" hidden></section>
@@ -543,7 +639,9 @@ footer {
 <script>
 "use strict";
 
-/* ===================== EINSTELLUNGEN ===================== */
+/* =====================================================
+   EINSTELLUNGEN
+   ===================================================== */
 
 const CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/" +
@@ -552,17 +650,10 @@ const CSV_URL =
 
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
-/*
-  Die Abholung ist ein geplanter Programmpunkt.
-  Datum und Bezug zur Landung kommen aus dem Hinflug.
-  Ein genauer Mailänder Flughafen ist bislang nicht angegeben.
-*/
-const CAR_PICKUP = {
-  title:"Mietwagen am Flughafen abholen",
-  location:"Flughafen in Mailand",
-  time:"Nach der Landung",
-  note:"Geplante Abholung nach Ankunft. Genaue Abholzeit und Station noch offen."
-};
+const DATA_PAGES = [
+  "home", "golf", "golf-results", "romme", "hotel",
+  "flights", "car", "restaurants", "costs"
+];
 
 const PARTICIPANTS = [
   {
@@ -579,55 +670,72 @@ const PARTICIPANTS = [
   },
   {
     name:"Winfried", initials:"WG", handicap:null,
-    role:"Opa & unser aller Caddy", photos:["winfried.jpg","fotos/winfried.jpg"]
+    role:"Opa & unser aller Caddy",
+    photos:["winfried.jpg","fotos/winfried.jpg"]
   }
 ];
 
+const GOLF_PLAYERS = ["Steffen","Julian","Marcel"];
+const ROMME_PLAYERS = ["Winfried","Steffen","Julian","Marcel"];
+
 /*
-  Bildnachweise bei Bedarf ergänzen.
-  Eine Quellenangabe ersetzt keine Nutzungserlaubnis.
+  Bilder werden zuerst im Ordner "bilder" gesucht,
+  alternativ im Hauptverzeichnis.
+
+  Falls nötig, Bildnachweise ergänzen:
+  credit: "Foto: Name"
+  source: "https://..."
 */
 const PHOTOS = {
   hotel:{
-    file:"hotel.jpg", alt:"Hotel Cappello D’Oro in Bergamo",
+    file:"hotel.jpg",
+    alt:"Hotel Cappello D’Oro in Bergamo",
     credit:"", source:""
   },
   flights:{
-    file:"eurowings.jpg", alt:"Flugzeug von Eurowings",
+    file:"eurowings.jpg",
+    alt:"Flugzeug von Eurowings",
     credit:"", source:""
   },
   golf:{
     "golfclub milano":{
-      file:"golf-milano.jpg", alt:"Golfplatz des Golfclub Milano",
+      file:"golf-milano.jpg",
+      alt:"Golfplatz des Golfclub Milano",
       credit:"", source:""
     },
     "golf club bergamo l'albenza":{
-      file:"golf-bergamo.jpg", alt:"Golfplatz des Golf Club Bergamo L’Albenza",
+      file:"golf-bergamo.jpg",
+      alt:"Golfplatz des Golf Club Bergamo L’Albenza",
       credit:"", source:""
     },
     "golf brianza country club a.s.d.":{
-      file:"golf-brianza.jpg", alt:"Golfplatz des Golf Brianza Country Club",
+      file:"golf-brianza.jpg",
+      alt:"Golfplatz des Golf Brianza Country Club",
       credit:"", source:""
     },
     "golf club franciacorta":{
-      file:"golf-franciacorta.jpg", alt:"Golfplatz des Golf Club Franciacorta",
+      file:"golf-franciacorta.jpg",
+      alt:"Golfplatz des Golf Club Franciacorta",
       credit:"", source:""
     },
     "golf club villa paradiso":{
-      file:"golf-villa-paradiso.jpg", alt:"Golfplatz des Golf Club Villa Paradiso",
+      file:"golf-villa-paradiso.jpg",
+      alt:"Golfplatz des Golf Club Villa Paradiso",
       credit:"", source:""
     }
   }
 };
 
-const DATA_PAGES = [
-  "home","golf","hotel","flights","car","restaurants","costs"
-];
-
-/* ===================== HILFSFUNKTIONEN ===================== */
+/* =====================================================
+   FORMATIERUNG
+   ===================================================== */
 
 const euro = new Intl.NumberFormat("de-DE", {
   style:"currency", currency:"EUR"
+});
+
+const resultFormatter = new Intl.NumberFormat("de-DE", {
+  maximumFractionDigits:2
 });
 
 const money = value => euro.format(value);
@@ -648,8 +756,12 @@ function photoKey(value) {
 }
 
 function amount(value) {
-  const text = String(value ?? "").replace(/€/g,"")
-    .replace(/\s/g,"").replace(/\./g,"").replace(",",".");
+  const text = String(value ?? "")
+    .replace(/€/g,"")
+    .replace(/\s/g,"")
+    .replace(/\./g,"")
+    .replace(",",".");
+
   return /^-?\d+(?:\.\d+)?$/.test(text) ? Number(text) : NaN;
 }
 
@@ -662,8 +774,9 @@ function requiredAmount(value,label) {
 }
 
 function sum(values) {
-  return values.reduce((total,value) =>
-    total + Math.round(value*100),0)/100;
+  return values.reduce(
+    (total,value) => total + Math.round(value*100),0
+  )/100;
 }
 
 function differs(a,b) {
@@ -704,16 +817,28 @@ function detailButton(page,label="Details ansehen") {
     data-page="${esc(page)}">${esc(label)} →</button>`;
 }
 
-function table(headers,rows,totals) {
+/*
+  numericColumns ist optional.
+  Standard: alle Spalten außer der ersten rechtsbündig.
+*/
+function table(headers,rows,totals=null,numericColumns=null) {
+  const numeric = numericColumns ??
+    headers.map((_,index)=>index).filter(index=>index>0);
+
   function cells(row,tag) {
-    return row.map((cell,index) => `
+    return row.map((cell,index)=>`
       <${tag} ${tag==="th" ? 'scope="col"' : ""}
-        class="${index ? "num" : ""}">${esc(cell)}</${tag}>
+        class="${numeric.includes(index) ? "num" : ""}">
+        ${esc(cell)}
+      </${tag}>
     `).join("");
   }
+
   return `<div class="table-wrap"><table>
     <thead><tr>${cells(headers,"th")}</tr></thead>
-    <tbody>${rows.map(row=>`<tr>${cells(row,"td")}</tr>`).join("")}</tbody>
+    <tbody>
+      ${rows.map(row=>`<tr>${cells(row,"td")}</tr>`).join("")}
+    </tbody>
     ${totals ? `<tfoot><tr>${cells(totals,"td")}</tr></tfoot>` : ""}
   </table></div>`;
 }
@@ -725,15 +850,15 @@ function timestamp(date) {
 }
 
 function parseDate(text) {
-  const match = String(text).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
-  if (!match) return null;
+  const match=String(text).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+  if(!match) return null;
 
   const day=Number(match[1]);
   const month=Number(match[2]);
   const year=Number(match[3]);
-  const date = new Date(year,month-1,day);
+  const date=new Date(year,month-1,day);
 
-  if (
+  if(
     date.getFullYear()!==year ||
     date.getMonth()!==month-1 ||
     date.getDate()!==day
@@ -743,10 +868,10 @@ function parseDate(text) {
 }
 
 function dateLabel(text) {
-  const date = parseDate(text);
+  const date=parseDate(text);
   return date ? date.toLocaleDateString("de-DE",{
     day:"2-digit",month:"2-digit",year:"numeric"
-  }) : text;
+  }) : String(text ?? "");
 }
 
 function weekday(text) {
@@ -762,11 +887,12 @@ function timeOnly(text) {
     .replace(/^[\s·,–-]+/,"").trim();
 }
 
-function timeMinutes(text,fallback=Number.POSITIVE_INFINITY) {
-  const clean=String(text).replace(/\d{1,2}\.\d{1,2}\.\d{4}/g,"");
-  const colon=clean.match(/\b([01]?\d|2[0-3]):([0-5]\d)\b/);
+function timeMinutes(text,fallback=1500) {
+  const clean=String(text)
+    .replace(/\d{1,2}\.\d{1,2}\.\d{4}/g,"");
 
-  if (colon) return Number(colon[1])*60+Number(colon[2]);
+  const colon=clean.match(/\b([01]?\d|2[0-3]):([0-5]\d)\b/);
+  if(colon) return Number(colon[1])*60+Number(colon[2]);
 
   const hours=clean.match(/\b([01]?\d|2[0-3])\s*Uhr/i);
   return hours ? Number(hours[1])*60 : fallback;
@@ -777,7 +903,7 @@ function flightArrivalMinutes(flight) {
     String(flight.time).matchAll(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g)
   );
 
-  if (times.length>=2) {
+  if(times.length>=2) {
     const last=times[times.length-1];
     return Number(last[1])*60+Number(last[2]);
   }
@@ -790,7 +916,18 @@ function reservationPending(reservation) {
     .test(reservation.time);
 }
 
-/* ===================== BILDER ===================== */
+function warningBox(messages) {
+  if(!messages.length) return "";
+  return `
+    <div class="notice amber space">
+      <strong>Bitte im Google Sheet prüfen</strong>
+      <ul>${messages.map(message=>`<li>${esc(message)}</li>`).join("")}</ul>
+    </div>`;
+}
+
+/* =====================================================
+   BILDER
+   ===================================================== */
 
 function loadImage(image,paths,onFailure,onSuccess) {
   let index=0;
@@ -847,7 +984,9 @@ function loadVisiblePhotos() {
       const placeholder=image.closest("figure")
         .querySelector(".image-placeholder");
 
-      loadImage(image,["bilder/"+file,file],
+      loadImage(
+        image,
+        ["bilder/"+file,file],
         ()=>{
           placeholder.hidden=false;
           placeholder.textContent="Bild nicht verfügbar: "+file;
@@ -892,8 +1031,8 @@ function renderParticipants() {
     </div>
 
     <div class="notice space">
-      Winfried begleitet uns als gemeinsamer Caddy und
-      nimmt nicht an der Golfwertung teil.
+      Winfried begleitet uns beim Golf als gemeinsamer Caddy.
+      Bei Rommé spielt er selbstverständlich mit.
     </div>`;
 
   PARTICIPANTS.forEach((person,index)=>{
@@ -905,7 +1044,9 @@ function renderParticipants() {
   });
 }
 
-/* ===================== CSV AUSLESEN ===================== */
+/* =====================================================
+   CSV-PARSER
+   ===================================================== */
 
 function parseCsv(text) {
   text=text.replace(/^\uFEFF/,"");
@@ -951,14 +1092,173 @@ function parseCsv(text) {
   return rows.filter(row=>row.some(cell=>cell!==""));
 }
 
-function readTrip(rows) {
+/* =====================================================
+   ERGEBNISSE AUSLESEN
+   Keine festen Zeilennummern: zusätzliche Runden erlaubt.
+   ===================================================== */
+
+function readResultNumber(value) {
+  const text=String(value ?? "")
+    .trim()
+    .replace(/\s/g,"")
+    .replace(/[−–]/g,"-")
+    .replace(",",".");
+
+  if(text==="") return null;
+  if(!/^[+-]?\d+(?:\.\d+)?$/.test(text)) return NaN;
+
+  return Number(text);
+}
+
+function resultText(value) {
+  return value===null || !Number.isFinite(value)
+    ? "—"
+    : resultFormatter.format(value);
+}
+
+function golfResultText(value) {
+  if(value===null || !Number.isFinite(value)) return "—";
+  if(value===0) return "E";
+  return (value>0 ? "+" : "")+resultFormatter.format(value);
+}
+
+function completeResultRow(row) {
+  return row.values.every(value=>
+    value!==null && Number.isFinite(value)
+  );
+}
+
+function resultColumns(rows,count) {
+  return Array.from({length:count},(_,index)=>{
+    const values=rows.map(row=>row.values[index])
+      .filter(value=>value!==null && Number.isFinite(value));
+
+    return {
+      count:values.length,
+      total:values.length ? sum(values) : null
+    };
+  });
+}
+
+function readGames(sections) {
+  const warnings={golf:[],romme:[]};
+
+  function values(cells,count,label,game,nonNegative=false) {
+    return Array.from({length:count},(_,index)=>{
+      const original=cells[index] ?? "";
+      const value=readResultNumber(original);
+
+      if(value===null) return null;
+
+      if(!Number.isFinite(value) || (nonNegative && value<0)) {
+        warnings[game].push(
+          `${label}: „${original}“ wurde nicht gewertet. `+
+          (nonNegative
+            ? "Minuspunkte bitte als positive Zahl oder 0 eintragen."
+            : "Bitte ein numerisches Ergebnis eintragen, z. B. +3, 0 oder -2.")
+        );
+        return null;
+      }
+
+      return value;
+    });
+  }
+
+  const golfSection=sections["Scoring Golf"]||[];
+
+  const golfRows=golfSection
+    .filter(row=>
+      /^\d{1,2}\.\d{1,2}\.\d{4}$/.test(row[0]||"")
+    )
+    .map(row=>({
+      date:row[0],
+      values:values(
+        row.slice(1,4),3,"Golf am "+row[0],"golf"
+      )
+    }))
+    .sort((a,b)=>
+      (parseDate(a.date)?.getTime()||0)-
+      (parseDate(b.date)?.getTime()||0)
+    );
+
+  const golfSum=golfSection.find(row=>
+    norm(row[0])==="summe nettoschläge"
+  );
+
+  const golfTotals=golfSum
+    ? values(golfSum.slice(1,4),3,"Golf-Summenzeile","golf")
+    : [null,null,null];
+
+  const rommeSection=sections["Romme Spielstand"]||[];
+
+  const headerIndex=rommeSection.findIndex(row=>
+    norm(row[0]).startsWith("minuspunkte")
+  );
+
+  const sumIndex=rommeSection.findIndex(row=>
+    norm(row[0])==="summe minuspunkte"
+  );
+
   /*
-    Abschnitte werden anhand ihrer Überschrift erkannt.
-    "Reservierungen" kann auch an einer anderen Stelle stehen.
+    Alle Zeilen zwischen Überschrift und Summe einlesen.
+    Zusätzliche 20, 50 oder mehr Zeilen funktionieren genauso.
+    Vollständig leere Zeilen werden ignoriert.
   */
+  const roundRows=rommeSection.slice(
+    headerIndex>=0 ? headerIndex+1 : 0,
+    sumIndex>=0 ? sumIndex : rommeSection.length
+  );
+
+  const rommeRows=roundRows
+    .filter(row=>row.slice(0,4).some(cell=>
+      String(cell ?? "").trim()!==""
+    ))
+    .map((row,index)=>({
+      round:index+1,
+      values:values(
+        row.slice(0,4),4,
+        "Rommé-Runde "+(index+1),"romme",true
+      )
+    }));
+
+  /*
+    A = Beschriftung "Summe Minuspunkte".
+    Optionale vier Summen stehen dann in B–E.
+  */
+  const rommeSum=sumIndex>=0 ? rommeSection[sumIndex] : null;
+
+  const rommeTotals=rommeSum
+    ? values(rommeSum.slice(1,5),4,"Rommé-Summenzeile","romme",true)
+    : [null,null,null,null];
+
+  const rules=(sections["Regelwerk Romme"]||[])
+    .map(row=>row.filter(Boolean).join(" "))
+    .filter(Boolean);
+
+  return {
+    golf:{
+      rows:golfRows,
+      sheetTotals:golfTotals,
+      warnings:warnings.golf
+    },
+    romme:{
+      rows:rommeRows,
+      sheetTotals:rommeTotals,
+      warnings:warnings.romme,
+      rules
+    }
+  };
+}
+
+/* =====================================================
+   REISETABELLE AUSLESEN
+   ===================================================== */
+
+function readTrip(rows) {
   const sectionNames=[
     "Golfplätze","Flüge","Unterkunft","Mietwagen",
-    "Kostenübersicht","Reservierungen"
+    "Kostenübersicht","Reservierungen",
+    "Scoring Golf","Romme Spielstand","Regelwerk Romme"
   ];
 
   const markers=rows.map((row,index)=>{
@@ -975,7 +1275,9 @@ function readTrip(rows) {
     );
   });
 
-  for(const name of sectionNames.filter(name=>name!=="Reservierungen")) {
+  for(const name of [
+    "Golfplätze","Flüge","Unterkunft","Mietwagen","Kostenübersicht"
+  ]) {
     if(!sections[name]) {
       throw new Error("Tabellenabschnitt fehlt: "+name);
     }
@@ -988,7 +1290,8 @@ function readTrip(rows) {
 
   function status(section) {
     return section.flat()
-      .filter(cell=>/bezahlt|bezahlung/i.test(cell)).join(" · ");
+      .filter(cell=>/bezahlt|bezahlung/i.test(cell))
+      .join(" · ");
   }
 
   const golf=sections["Golfplätze"]
@@ -1007,7 +1310,6 @@ function readTrip(rows) {
 
   function flight(label) {
     const row=flights.find(row=>norm(row[0])===norm(label));
-
     if(!row || !row[1] || !row[2]) {
       throw new Error("Flugdaten fehlen: "+label);
     }
@@ -1021,7 +1323,7 @@ function readTrip(rows) {
 
   const flightPeople=flights.filter(row=>
     row[0] && [row[1],row[2],row[3]]
-      .every(v=>Number.isFinite(amount(v)))
+      .every(value=>Number.isFinite(amount(value)))
   ).map(row=>({
     name:row[0],
     fare:requiredAmount(row[1],"Flugpreis"),
@@ -1053,7 +1355,7 @@ function readTrip(rows) {
 
   const costs=costSection.filter(row=>
     row[0] && [row[1],row[2],row[3]]
-      .every(v=>Number.isFinite(amount(v)))
+      .every(value=>Number.isFinite(amount(value)))
   ).map(row=>({
     name:row[0],
     total:requiredAmount(row[1],"Person gesamt"),
@@ -1067,7 +1369,7 @@ function readTrip(rows) {
 
   const totalsRow=costSection.find(row=>
     !row[0] && [row[1],row[2],row[3]]
-      .every(v=>Number.isFinite(amount(v)))
+      .every(value=>Number.isFinite(amount(value)))
   );
 
   const totals=totalsRow ? {
@@ -1075,20 +1377,11 @@ function readTrip(rows) {
     paid:requiredAmount(totalsRow[2],"Gesamt bezahlt"),
     open:requiredAmount(totalsRow[3],"Gesamt offen")
   } : {
-    total:sum(costs.map(p=>p.total)),
-    paid:sum(costs.map(p=>p.paid)),
-    open:sum(costs.map(p=>p.open))
+    total:sum(costs.map(person=>person.total)),
+    paid:sum(costs.map(person=>person.paid)),
+    open:sum(costs.map(person=>person.open))
   };
 
-  /*
-    Reservierungen:
-    Spalte A: Tag
-    Spalte B: Uhrzeit bzw. Status
-    Spalte C: Restaurant
-    Spalte D: Link
-
-    Zeilen ohne Restaurant werden nicht als Termine übernommen.
-  */
   const reservations=(sections["Reservierungen"]||[])
     .filter(row=>parseDate(row[0]) && String(row[2]||"").trim())
     .map(row=>({
@@ -1099,8 +1392,8 @@ function readTrip(rows) {
     }))
     .sort((a,b)=>{
       const dateDifference=parseDate(a.date)-parseDate(b.date);
-      if(dateDifference) return dateDifference;
-      return timeMinutes(a.time,1440)-timeMinutes(b.time,1440);
+      return dateDifference ||
+        timeMinutes(a.time)-timeMinutes(b.time);
     });
 
   return {
@@ -1132,11 +1425,14 @@ function readTrip(rows) {
     },
     reservations,
     costs,
-    totals
+    totals,
+    games:readGames(sections)
   };
 }
 
-/* ===================== ABLAUFPLAN ===================== */
+/* =====================================================
+   ABLAUFPLAN
+   ===================================================== */
 
 function buildTimeline(trip) {
   const events=[];
@@ -1148,7 +1444,7 @@ function buildTimeline(trip) {
       ...options,
       date,
       dateText:date ? dateLabel(options.dateText) : "Termin noch offen",
-      order:options.order ?? timeMinutes(options.time,1500),
+      order:options.order ?? timeMinutes(options.time),
       pending:options.pending||false
     });
   }
@@ -1165,10 +1461,12 @@ function buildTimeline(trip) {
 
   add({
     dateText:trip.outbound.date,
-    time:CAR_PICKUP.time,
-    title:CAR_PICKUP.title,
+    time:"Nach der Landung",
+    title:"Mietwagen am Flughafen abholen",
     type:"🚗 Mietwagen",
-    description:CAR_PICKUP.location+" · "+CAR_PICKUP.note,
+    description:
+      "Flughafen in Mailand · Geplante Abholung nach Ankunft. "+
+      "Genaue Abholzeit und Station noch offen.",
     page:"car",
     // Nur Sortierposition, keine behauptete Abholzeit.
     order:flightArrivalMinutes(trip.outbound)+0.1
@@ -1189,9 +1487,9 @@ function buildTimeline(trip) {
       time:"Startzeit noch offen",
       title:course.name,
       type:"⛳ Golftag",
-      description:"Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.",
+      description:
+        "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.",
       page:"golf",
-      // Unbekannte Uhrzeiten werden separat ans Tagesende sortiert.
       order:1500
     });
   });
@@ -1233,9 +1531,9 @@ function buildTimeline(trip) {
   });
 
   events.sort((a,b)=>{
-    const aDate=a.date ? a.date.getTime() : Number.MAX_SAFE_INTEGER;
-    const bDate=b.date ? b.date.getTime() : Number.MAX_SAFE_INTEGER;
-    return aDate-bDate || a.order-b.order;
+    const first=a.date ? a.date.getTime() : Number.MAX_SAFE_INTEGER;
+    const second=b.date ? b.date.getTime() : Number.MAX_SAFE_INTEGER;
+    return first-second || a.order-b.order;
   });
 
   const groups=new Map();
@@ -1277,21 +1575,21 @@ function buildTimeline(trip) {
 }
 
 function buildHome(trip) {
-  const inDate=parseDate(trip.hotel.checkin);
-  const outDate=parseDate(trip.hotel.checkout);
+  const checkin=parseDate(trip.hotel.checkin);
+  const checkout=parseDate(trip.hotel.checkout);
 
-  const nights=inDate && outDate
+  const nights=checkin && checkout
     ? Math.round((
-        Date.UTC(outDate.getFullYear(),outDate.getMonth(),outDate.getDate())-
-        Date.UTC(inDate.getFullYear(),inDate.getMonth(),inDate.getDate())
+        Date.UTC(checkout.getFullYear(),checkout.getMonth(),checkout.getDate())-
+        Date.UTC(checkin.getFullYear(),checkin.getMonth(),checkin.getDate())
       )/86400000)
     : null;
 
-  const range=dateLabel(trip.outbound.date)+" – "+
-    dateLabel(trip.inbound.date);
-
   return `
-    ${heading("Unsere gemeinsame Auszeit",range)}
+    ${heading(
+      "Unsere gemeinsame Auszeit",
+      dateLabel(trip.outbound.date)+" – "+dateLabel(trip.inbound.date)
+    )}
 
     <div class="grid stats">
       <div class="card dark">
@@ -1322,20 +1620,23 @@ function buildHome(trip) {
       <div class="card">
         <h3>Gemeinsam unterwegs</h3>
         <p>
-          Nach der Landung holen wir den Mietwagen am Flughafen in
-          Mailand ab. Anschließend geht es weiter nach Bergamo.
-          Uns erwarten Golf, gemeinsame Restaurantbesuche und Familienzeit.
-        </p>
-        ${detailButton("participants","Unser Reiseteam")}
-      </div>
-      <div class="card">
-        <h3>Gut organisiert</h3>
-        <p>
-          Flugzeiten, Unterkunft, Golftermine und Restaurantplanungen
-          kommen direkt aus unserer Reisetabelle. Weitere Details
-          und die Kostenübersicht findest du im Dropdown-Menü.
+          Nach der Landung holen wir den Mietwagen am Flughafen in Mailand ab.
+          Anschließend geht es nach Bergamo. Uns erwarten Golf,
+          gemeinsame Restaurantbesuche und Familienzeit.
         </p>
         ${detailButton("restaurants","Unsere Restaurants")}
+      </div>
+      <div class="card">
+        <h3>Sportlich auf dem Platz, gesellig am Tisch</h3>
+        <p>
+          Unsere Golf-Ergebnisse und die Rommé-Minuspunkte findet ihr
+          in den eigenen Ergebnisbereichen. Die Werte werden direkt
+          aus Google Sheets übernommen.
+        </p>
+        <div class="actions">
+          ${detailButton("golf-results","Golf-Ergebnisse")}
+          ${detailButton("romme","Rommé")}
+        </div>
       </div>
     </div>
 
@@ -1348,15 +1649,17 @@ function buildHome(trip) {
 
     <div class="notice space">
       Termine mit bekannter Uhrzeit werden chronologisch angezeigt.
-      Einträge ohne Uhrzeit stehen am Ende des jeweiligen Tages;
-      daraus ergibt sich keine festgelegte Reihenfolge.
+      Einträge ohne Uhrzeit stehen am Ende des Tages; daraus ergibt
+      sich keine festgelegte Reihenfolge.
       „Noch zu buchen“ ist keine bestätigte Reservierung.
       Der genaue Mailänder Flughafen und die Mietwagenstation
       sind noch nicht hinterlegt.
     </div>`;
 }
 
-/* ===================== RESTAURANTS ===================== */
+/* =====================================================
+   RESTAURANTS
+   ===================================================== */
 
 function buildRestaurants(trip) {
   return `
@@ -1369,33 +1672,28 @@ function buildRestaurants(trip) {
       <div class="grid two">
         ${trip.reservations.map(reservation=>{
           const pending=reservationPending(reservation);
-
           return `
             <article class="card">
               <div class="eyebrow muted">
                 ${esc(weekday(reservation.date))} ·
                 ${esc(dateLabel(reservation.date))}
               </div>
-
               <div class="restaurant-head space">
                 <h3>${esc(reservation.name)}</h3>
                 <span class="badge ${pending?"amber":""}">
                   ${pending ? "Reservierung offen" : "Restaurantplanung"}
                 </span>
               </div>
-
               <dl class="facts">
                 ${fact(
                   "Uhrzeit / Status laut Tabelle",
                   reservation.time||"Uhrzeit noch offen"
                 )}
               </dl>
-
               <div class="space">
                 ${link(reservation.link,"Restaurant öffnen ↗") ||
                   '<p class="small muted">Noch kein Restaurantlink hinterlegt.</p>'}
               </div>
-
               ${pending ? `
                 <p class="table-note">
                   Der Besuch ist geplant, aber noch nicht gebucht.
@@ -1406,25 +1704,404 @@ function buildRestaurants(trip) {
       </div>
     ` : `
       <div class="notice">
-        Aktuell sind noch keine Restaurants in der Reisetabelle eingetragen.
+        Aktuell sind noch keine Restaurants eingetragen.
       </div>
     `}
 
     <div class="notice space">
-      Neue Einträge im Abschnitt „Reservierungen“ werden automatisch
-      übernommen. Trage Tag, Uhrzeit bzw. Status, Restaurant und Link ein.
+      Neue Einträge im Abschnitt „Reservierungen“ werden automatisch übernommen.
       Leere Restaurantzeilen erscheinen nicht als Termine.
       Eine eingetragene Uhrzeit allein bestätigt noch keine Buchung.
     </div>`;
 }
 
-/* ===================== DETAILSEITEN ===================== */
+/* =====================================================
+   ERGEBNISSE UND RANGLISTEN
+   ===================================================== */
+
+function compareTotals(players,columns,sheetTotals) {
+  const warnings=[];
+
+  players.forEach((name,index)=>{
+    const calculated=columns[index].total;
+    const sheetValue=sheetTotals[index];
+
+    if(
+      calculated!==null &&
+      sheetValue!==null &&
+      differs(calculated,sheetValue)
+    ) {
+      warnings.push(
+        `${name}: Die Einzelwerte ergeben ${resultText(calculated)}, `+
+        `die Summenzeile enthält ${resultText(sheetValue)}.`
+      );
+    }
+  });
+
+  return warnings;
+}
+
+function rankingTable(players,totals,formatter,label) {
+  const entries=players.map((name,index)=>({
+    name,total:totals[index]
+  })).sort((a,b)=>a.total-b.total);
+
+  let previousScore=null;
+  let previousRank=0;
+
+  const rows=entries.map((entry,index)=>{
+    const tied=index>0 && !differs(entry.total,previousScore);
+    const rank=tied ? previousRank : index+1;
+
+    previousScore=entry.total;
+    previousRank=rank;
+
+    return [String(rank),entry.name,formatter(entry.total)];
+  });
+
+  return table(["Platz","Teilnehmer",label],rows,null,[0,2]);
+}
+
+function buildGolfResults(trip) {
+  const game=trip.games.golf;
+  const columns=resultColumns(game.rows,GOLF_PLAYERS.length);
+  const complete=game.rows.filter(completeResultRow);
+  const hasResults=columns.some(column=>column.count>0);
+
+  const rankingTotals=GOLF_PLAYERS.map((_,index)=>
+    sum(complete.map(row=>row.values[index]))
+  );
+
+  const warnings=[
+    ...game.warnings,
+    ...compareTotals(GOLF_PLAYERS,columns,game.sheetTotals)
+  ];
+
+  const courseNames=new Map(
+    trip.golf.map(course=>[dateLabel(course.date),course.name])
+  );
+
+  const enteredDays=game.rows.filter(row=>
+    row.values.some(value=>value!==null)
+  ).length;
+
+  return `
+    ${heading(
+      "Golf-Ergebnisse",
+      "Nettoschläge über Par – der niedrigste Wert gewinnt."
+    )}
+
+    <div class="grid two">
+      <div class="card dark">
+        <div class="stat-label">Gemeinsam gewertete Spieltage</div>
+        <div class="stat-value">
+          ${complete.length} von ${game.rows.length}
+        </div>
+        <div class="stat-note">
+          Nur Spieltage mit Ergebnissen für alle drei Spieler
+        </div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Spieltage mit Einträgen</div>
+        <div class="stat-value">${enteredDays}</div>
+        <div class="stat-note">
+          Leere Zellen zählen nicht als 0
+        </div>
+      </div>
+    </div>
+
+    <div class="card space">
+      <div class="results-summary">
+        <h3>Gesamtwertung</h3>
+        <span class="badge">${complete.length} vollständige Spieltage</span>
+      </div>
+
+      ${complete.length ? `
+        ${rankingTable(
+          GOLF_PLAYERS,rankingTotals,golfResultText,"Netto über Par"
+        )}
+        <p class="table-note">
+          Die Rangliste umfasst ausschließlich die Spieltage, an denen
+          für alle drei Spieler Ergebnisse vorliegen.
+          Bei Gleichstand wird derselbe Platz vergeben.
+        </p>
+      ` : `
+        <div class="notice">
+          ${hasResults
+            ? "Erste Ergebnisse sind vorhanden. Die gemeinsame Rangliste erscheint, sobald ein Spieltag vollständig eingetragen ist."
+            : "Noch keine Golfergebnisse eingetragen. Vorbereitete Nullen in der Summenzeile zählen nicht als gespielte Runden."}
+        </div>
+      `}
+    </div>
+
+    <div class="card space">
+      <h3>Ergebnisse je Spieltag</h3>
+
+      ${game.rows.length ? table(
+        ["Spieltag / Course",...GOLF_PLAYERS],
+        game.rows.map(row=>{
+          const course=courseNames.get(dateLabel(row.date));
+          return [
+            dateLabel(row.date)+(course ? " · "+course : ""),
+            ...row.values.map(golfResultText)
+          ];
+        }),
+        [
+          "Summe aller eingetragenen Ergebnisse",
+          ...columns.map(column=>golfResultText(column.total))
+        ]
+      ) : `
+        <div class="notice">
+          Im Abschnitt „Scoring Golf“ sind noch keine Spieltage hinterlegt.
+        </div>
+      `}
+
+      <p class="table-note">
+        ${GOLF_PLAYERS.map((name,index)=>
+          `${esc(name)}: ${columns[index].count} eingetragene Runden`
+        ).join(" · ")}
+      </p>
+      <p class="table-note">
+        Die Summenzeile hier umfasst alle vorhandenen Einzelwerte.
+        Bei unterschiedlich vielen Ergebnissen ist sie nicht direkt
+        mit der gemeinsamen Rangliste vergleichbar.
+      </p>
+    </div>
+
+    ${warningBox(warnings)}
+
+    <div class="grid two space">
+      <div class="card">
+        <h3>Ergebnisse eintragen</h3>
+        <p>
+          Im Google Sheet unter „Scoring Golf“:
+          Datum, Steffen, Julian, Marcel.
+        </p>
+        <p>
+          Beispiele: <strong>+4</strong> oder <strong>4</strong> für
+          vier Nettoschläge über Par, <strong>0</strong> für Even Par,
+          <strong>-2</strong> für zwei unter Par.
+        </p>
+        <p class="small muted">
+          Die Website zeigt 0 als „E“ an.
+          Noch nicht erfasste Ergebnisse bitte leer lassen.
+        </p>
+      </div>
+      <div class="card dark">
+        <h3>Unsere Wertung</h3>
+        <p>Bruttoschläge − Spielvorgabe − Platz-Par</p>
+        <p class="small muted">
+          Die Tabelle erwartet bereits berechnete Nettowerte über Par.
+          Die Website zieht das Handicap nicht noch einmal ab.
+        </p>
+        <div class="chips">
+          ${PARTICIPANTS.filter(person=>person.handicap).map(person=>`
+            <span class="chip">
+              ${esc(person.name)} · HCP ${esc(person.handicap)}
+            </span>
+          `).join("")}
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderRommeRules(lines) {
+  if(!lines.length) {
+    return `<div class="notice">
+      Im Abschnitt „Regelwerk Romme“ sind noch keine Regeln hinterlegt.
+    </div>`;
+  }
+
+  const groups=[];
+  let current=null;
+
+  lines.forEach(line=>{
+    if(/^\d+\.\s/.test(line)) {
+      current={title:line,paragraphs:[]};
+      groups.push(current);
+    } else {
+      if(!current) {
+        current={title:"Allgemeine Regeln",paragraphs:[]};
+        groups.push(current);
+      }
+      current.paragraphs.push(line);
+    }
+  });
+
+  return `<div class="rules-list">
+    ${groups.map((group,index)=>`
+      <details class="rule-section" ${index===0?"open":""}>
+        <summary>${esc(group.title)}</summary>
+        <div class="rule-content">
+          ${group.paragraphs.map(paragraph=>`
+            <p class="${paragraph.endsWith(":")?"rule-label":""}">
+              ${esc(paragraph)}
+            </p>
+          `).join("")}
+        </div>
+      </details>
+    `).join("")}
+  </div>`;
+}
+
+function buildRomme(trip) {
+  const game=trip.games.romme;
+  const columns=resultColumns(game.rows,ROMME_PLAYERS.length);
+  const complete=game.rows.filter(completeResultRow);
+
+  const hasRounds=columns.some(column=>column.count>0);
+  const hasSummary=game.sheetTotals.some(value=>value!==null);
+  const fullSummary=game.sheetTotals.every(value=>
+    value!==null && Number.isFinite(value)
+  );
+
+  const rankingTotals=ROMME_PLAYERS.map((_,index)=>
+    sum(complete.map(row=>row.values[index]))
+  );
+
+  const warnings=[
+    ...game.warnings,
+    ...compareTotals(ROMME_PLAYERS,columns,game.sheetTotals)
+  ];
+
+  let ranking;
+
+  if(complete.length) {
+    ranking=`
+      ${rankingTable(
+        ROMME_PLAYERS,rankingTotals,resultText,"Minuspunkte"
+      )}
+      <p class="table-note">
+        Gewertet werden ${complete.length} vollständig eingetragene Runden.
+        Der niedrigste Minuspunktestand führt.
+        Gleichstände erhalten denselben Platz.
+      </p>`;
+  } else if(!hasRounds && fullSummary) {
+    ranking=`
+      ${rankingTable(
+        ROMME_PLAYERS,game.sheetTotals,resultText,"Minuspunkte laut Sheet"
+      )}
+      <p class="table-note">
+        Dieser Stand stammt ausschließlich aus der Summenzeile.
+        Einzelne Runden sind noch nicht erfasst; ihre Anzahl
+        lässt sich daraus nicht bestimmen.
+      </p>`;
+  } else {
+    ranking=`<div class="notice">
+      ${hasRounds
+        ? "Einzelne Werte sind vorhanden. Die Rundenrangliste erscheint, sobald eine Runde für alle vier Teilnehmer vollständig eingetragen ist."
+        : "Noch kein vollständiger Rommé-Spielstand eingetragen."}
+    </div>`;
+  }
+
+  return `
+    ${heading(
+      "Rommé: Ergebnisse & Regeln",
+      "Winfried, Steffen, Julian und Marcel – der niedrigste Minuspunktestand gewinnt."
+    )}
+
+    <div class="grid two">
+      <div class="card dark">
+        <div class="stat-label">Vollständig erfasste Runden</div>
+        <div class="stat-value">${complete.length}</div>
+        <div class="stat-note">
+          Mit einem Wert für alle vier Teilnehmer
+        </div>
+      </div>
+      <div class="card">
+        <div class="stat-label">Unser Spiel</div>
+        <div class="stat-value">4 Teilnehmer</div>
+        <div class="stat-note">Diesmal spielt Opa Winfried mit</div>
+      </div>
+    </div>
+
+    <div class="card space">
+      <h3>Aktueller Spielstand</h3>
+      ${ranking}
+    </div>
+
+    <div class="card space">
+      <h3>Minuspunkte je Runde</h3>
+      ${game.rows.length ? table(
+        ["Runde",...ROMME_PLAYERS],
+        game.rows.map(row=>[
+          "Runde "+row.round,
+          ...row.values.map(resultText)
+        ]),
+        [
+          "Summe aller eingetragenen Werte",
+          ...columns.map(column=>resultText(column.total))
+        ]
+      ) : `<div class="notice">Noch keine einzelnen Runden eingetragen.</div>`}
+
+      ${hasRounds ? `
+        <p class="table-note">
+          ${ROMME_PLAYERS.map((name,index)=>
+            `${esc(name)}: ${columns[index].count} erfasste Werte`
+          ).join(" · ")}
+        </p>
+      `:""}
+
+      <p class="table-note">
+        „—“ bedeutet: noch kein Wert.
+        Beim Rundengewinner ausdrücklich 0 eintragen.
+        Teilweise ausgefüllte Runden zählen noch nicht zur Rangliste.
+      </p>
+    </div>
+
+    ${hasSummary ? `
+      <div class="card space">
+        <h3>Summenzeile aus Google Sheets</h3>
+        ${table(
+          ["Teilnehmer","Minuspunkte"],
+          ROMME_PLAYERS.map((name,index)=>[
+            name,resultText(game.sheetTotals[index])
+          ])
+        )}
+        <p class="table-note">
+          Die Summenzeile wird unverändert angezeigt.
+          Sind Einzelrunden vorhanden, berechnet die Website
+          deren Summen zusätzlich selbst.
+        </p>
+      </div>
+    `:""}
+
+    ${warningBox(warnings)}
+
+    <div class="notice space">
+      <strong>Weitere Runden hinzufügen:</strong>
+      Neue Zeilen oberhalb von „Summe Minuspunkte“ einfügen.
+      A = Opa, B = Steffen, C = Julian, D = Marcel.
+      Beliebig viele weitere Zeilen sind möglich.
+      Leere Zeilen werden übersprungen.
+      Minuspunkte als positive Zahlen erfassen; 0 ist ein gültiges Ergebnis.
+    </div>
+
+    <div class="section-head" style="margin-top:32px">
+      <h2>Unser Rommé-Regelwerk</h2>
+      <p class="muted">
+        Aus dem Abschnitt „Regelwerk Romme“ in Google Sheets.
+        Zum Lesen die einzelnen Bereiche aufklappen.
+      </p>
+    </div>
+
+    ${renderRommeRules(game.rules)}
+
+    <p class="table-note">
+      Der Regeltext wird aus eurer Tabelle übernommen.
+      Etwaige Quellenverweise wie [1] stammen ebenfalls aus diesem Text.
+    </p>`;
+}
+
+/* =====================================================
+   WEITERE REISESEITEN
+   ===================================================== */
 
 function buildPages(trip) {
-  const golfTotal=sum(trip.golf.map(c=>c.total));
-  const golfShare=sum(trip.golf.map(c=>c.perPerson));
-  const hotelTotal=sum(trip.hotel.rooms.map(r=>r.total));
-  const flightTotal=sum(trip.flightPeople.map(p=>p.total));
+  const golfTotal=sum(trip.golf.map(course=>course.total));
+  const golfShare=sum(trip.golf.map(course=>course.perPerson));
+  const hotelTotal=sum(trip.hotel.rooms.map(room=>room.total));
+  const flightTotal=sum(trip.flightPeople.map(person=>person.total));
   const categoryTotal=sum([golfTotal,hotelTotal,flightTotal,trip.car.total]);
 
   const warnings=[];
@@ -1434,13 +2111,12 @@ function buildPages(trip) {
     ["paid","bezahlten Beträge"],
     ["open","offenen Beträge"]
   ].forEach(([key,label])=>{
-    const personal=sum(trip.costs.map(p=>p[key]));
+    const personal=sum(trip.costs.map(person=>person[key]));
 
     if(differs(personal,trip.totals[key])) {
       warnings.push(
         `Die persönlichen ${label} ergeben ${money(personal)}; `+
-        `die Summenzeile enthält ${money(trip.totals[key])}. `+
-        "Bitte Rundung bzw. Formeln im Sheet prüfen."
+        `die Summenzeile enthält ${money(trip.totals[key])}.`
       );
     }
   });
@@ -1455,7 +2131,9 @@ function buildPages(trip) {
     warnings.push("Bezahlt plus offen entspricht nicht dem Gesamtbudget.");
   }
 
-  if(trip.costs.some(p=>differs(sum([p.paid,p.open]),p.total))) {
+  if(trip.costs.some(person=>
+    differs(sum([person.paid,person.open]),person.total)
+  )) {
     warnings.push(
       "Bei mindestens einer Person stimmen bezahlt plus offen "+
       "nicht mit den Gesamtkosten überein."
@@ -1476,8 +2154,8 @@ function buildPages(trip) {
     )}
 
     <div class="grid stats">
-      ${costStats.map((item,i)=>`
-        <div class="card ${i===0?"dark":""}">
+      ${costStats.map((item,index)=>`
+        <div class="card ${index===0?"dark":""}">
           <div class="stat-label">${esc(item[0])}</div>
           <div class="stat-value">${esc(item[1])}</div>
           <div class="stat-note">Laut Reisetabelle</div>
@@ -1485,19 +2163,17 @@ function buildPages(trip) {
       `).join("")}
     </div>
 
-    ${warnings.length ? `
-      <div class="notice amber space">
-        <strong>Hinweise zur Kostenübersicht</strong>
-        <ul>${warnings.map(w=>`<li>${esc(w)}</li>`).join("")}</ul>
-      </div>
-    `:""}
+    ${warningBox(warnings)}
 
     <div class="card space">
       <h3>Wer zahlt wie viel?</h3>
       ${table(
         ["Person","Gesamt","Bezahlt","Offen / geplant"],
-        trip.costs.map(p=>[
-          p.name,money(p.total),money(p.paid),money(p.open)
+        trip.costs.map(person=>[
+          person.name,
+          money(person.total),
+          money(person.paid),
+          money(person.open)
         ]),
         [
           "Gesamt",money(trip.totals.total),
@@ -1522,7 +2198,7 @@ function buildPages(trip) {
         </dl>
         <p class="table-note">
           Ein erreichtes Zahlungsdatum bedeutet nicht automatisch „bezahlt“.
-          Bitte den tatsächlichen Zahlungsstatus im Sheet pflegen.
+          Maßgeblich ist der gepflegte Status in der Tabelle.
         </p>
       </div>
 
@@ -1537,9 +2213,8 @@ function buildPages(trip) {
 
         <div class="notice space">
           Restaurantbesuche, Verpflegung, Kraftstoff, Parken und
-          weitere Extras sind nur enthalten, wenn ihre Kosten
-          ausdrücklich in der Kostenübersicht berücksichtigt wurden.
-          Die Restaurantliste enthält keine Preisangaben.
+          weitere Extras sind nur enthalten, wenn sie ausdrücklich
+          in der Kostenübersicht berücksichtigt wurden.
         </div>
       </div>
     </div>`;
@@ -1550,10 +2225,15 @@ function buildPages(trip) {
       "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy."
     )}
 
+    <div class="actions" style="margin-bottom:20px">
+      ${detailButton("golf-results","Zu den Golf-Ergebnissen")}
+    </div>
+
     <div class="golf-list">
       ${trip.golf.map(course=>`
         <article class="golf-entry">
           ${travelPhoto(PHOTOS.golf[photoKey(course.name)])}
+
           <div class="golf-card">
             <div class="date-tile">
               <strong>${esc(course.date.split(".")[0])}</strong>
@@ -1587,12 +2267,11 @@ function buildPages(trip) {
         <p class="small muted">
           Die Spielvorgabe hängt vom Handicap, den Platz-/Abschlagsdaten
           und gegebenenfalls der vereinbarten Handicap-Anrechnung ab.
-          Der Handicap-Index wird nicht einfach als Dezimalzahl abgezogen.
         </p>
         <div class="chips">
-          ${PARTICIPANTS.filter(p=>p.handicap).map(p=>`
+          ${PARTICIPANTS.filter(person=>person.handicap).map(person=>`
             <span class="chip">
-              ${esc(p.name)} · HCP ${esc(p.handicap)}
+              ${esc(person.name)} · HCP ${esc(person.handicap)}
             </span>
           `).join("")}
         </div>
@@ -1658,12 +2337,12 @@ function buildPages(trip) {
       ${[
         ["Hinflug",trip.outbound],
         ["Rückflug",trip.inbound]
-      ].map(([label,f])=>`
+      ].map(([label,flight])=>`
         <article class="card">
           <div class="eyebrow muted">${esc(label)}</div>
-          <h3 style="margin-top:16px">${esc(f.date)}</h3>
-          <div class="flight-time">${esc(f.time)}</div>
-          <span class="badge">${esc(f.airline)}</span>
+          <h3 style="margin-top:16px">${esc(flight.date)}</h3>
+          <div class="flight-time">${esc(flight.time)}</div>
+          <span class="badge">${esc(flight.airline)}</span>
         </article>
       `).join("")}
     </div>
@@ -1678,13 +2357,14 @@ function buildPages(trip) {
       <h3>Flug- und Gepäckkosten</h3>
       ${table(
         ["Person","Flugpreis","Gepäck","Gesamt"],
-        trip.flightPeople.map(p=>[
-          p.name,money(p.fare),money(p.baggage),money(p.total)
+        trip.flightPeople.map(person=>[
+          person.name,money(person.fare),
+          money(person.baggage),money(person.total)
         ]),
         [
           "Gesamt",
-          money(sum(trip.flightPeople.map(p=>p.fare))),
-          money(sum(trip.flightPeople.map(p=>p.baggage))),
+          money(sum(trip.flightPeople.map(person=>person.fare))),
+          money(sum(trip.flightPeople.map(person=>person.baggage))),
           money(flightTotal)
         ]
       )}
@@ -1702,18 +2382,18 @@ function buildPages(trip) {
       "Unser Mietwagen für die gemeinsame Zeit in Italien."
     )}
 
-    <div class="card space">
+    <div class="card">
       <h3>Abholung nach der Landung</h3>
       <dl class="facts">
         ${fact("Datum",dateLabel(trip.outbound.date))}
-        ${fact("Ort",CAR_PICKUP.location)}
-        ${fact("Zeitpunkt",CAR_PICKUP.time+" · genaue Uhrzeit noch offen")}
+        ${fact("Ort","Flughafen in Mailand")}
+        ${fact("Zeitpunkt","Nach der Landung · genaue Uhrzeit noch offen")}
         ${fact("Geplante Flugzeiten",trip.outbound.time)}
       </dl>
       <p class="table-note">
-        Die Abholung ist im Ablaufplan vorgesehen.
-        Sie ist keine Bestätigung einer Mietwagenbuchung.
-        Der konkrete Flughafen und die Station müssen noch ergänzt werden.
+        Die Abholung ist im Ablaufplan vorgesehen, aber keine
+        Bestätigung einer Mietwagenbuchung. Der konkrete Flughafen
+        und die Station müssen noch ergänzt werden.
       </p>
     </div>
 
@@ -1760,11 +2440,15 @@ function buildPages(trip) {
   return {
     home:buildHome(trip),
     restaurants:buildRestaurants(trip),
+    "golf-results":buildGolfResults(trip),
+    romme:buildRomme(trip),
     costs,golf,hotel,flights,car
   };
 }
 
-/* ===================== NAVIGATION ===================== */
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 
 const selector=document.getElementById("page-select");
 
@@ -1793,7 +2477,9 @@ document.getElementById("main").addEventListener("click",event=>{
   if(button) showPage(button.dataset.page,true);
 });
 
-/* ===================== AUTOMATISCHE AKTUALISIERUNG ===================== */
+/* =====================================================
+   AUTOMATISCHE AKTUALISIERUNG
+   ===================================================== */
 
 let loading=false;
 let lastSuccess=null;
@@ -1837,9 +2523,26 @@ async function refreshData() {
       const trip=readTrip(parseCsv(text));
       const pages=buildPages(trip);
 
+      // Offene Regelbereiche bei einer Datenaktualisierung erhalten.
+      const oldRules=Array.from(
+        document.querySelectorAll("#romme .rule-section")
+      );
+      const openRuleTitles=new Set(
+        oldRules.filter(detail=>detail.open)
+          .map(detail=>detail.querySelector("summary").textContent.trim())
+      );
+
       Object.entries(pages).forEach(([id,html])=>{
         document.getElementById(id).innerHTML=html;
       });
+
+      if(oldRules.length) {
+        document.querySelectorAll("#romme .rule-section").forEach(detail=>{
+          detail.open=openRuleTitles.has(
+            detail.querySelector("summary").textContent.trim()
+          );
+        });
+      }
 
       document.getElementById("trip-title").textContent=trip.title;
       document.title=trip.title+" · 3 Generationen Urlaub";
@@ -1887,7 +2590,9 @@ async function refreshData() {
   }
 }
 
-/* ===================== START ===================== */
+/* =====================================================
+   START
+   ===================================================== */
 
 loadImage(
   document.getElementById("group-photo"),
