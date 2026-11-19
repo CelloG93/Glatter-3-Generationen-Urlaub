@@ -27,8 +27,7 @@ body {
   font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   line-height:1.6;
 }
-button,select { font:inherit; }
-button,select { cursor:pointer; }
+button,select { font:inherit; cursor:pointer; }
 button:disabled { cursor:wait; opacity:.6; }
 a { color:var(--green); text-underline-offset:4px; }
 img { display:block; max-width:100%; }
@@ -40,8 +39,8 @@ img { display:block; max-width:100%; }
   top:-100px;
   left:16px;
   z-index:10;
-  background:white;
   padding:12px;
+  background:white;
 }
 .skip:focus { top:12px; }
 .topbar {
@@ -91,7 +90,11 @@ h1 {
   height:100%;
   object-fit:cover;
 }
-.photo-placeholder { padding:32px; text-align:center; color:#e1ebe5; }
+.photo-placeholder {
+  padding:32px;
+  text-align:center;
+  color:#e1ebe5;
+}
 .hero-caption {
   position:absolute;
   left:18px;
@@ -111,8 +114,6 @@ h1 {
   background:#ffffff09;
   font-size:.78rem;
 }
-
-/* Navigation per Dropdown */
 .navigation {
   display:flex;
   justify-content:space-between;
@@ -171,9 +172,15 @@ select {
   font-weight:750;
 }
 .button:hover { background:var(--soft); }
+.actions { display:flex; flex-wrap:wrap; gap:8px; }
 main { padding-bottom:36px; }
 .section-head { margin:8px 0 22px; }
-h2 { margin:0; font-size:1.7rem; letter-spacing:-.7px; line-height:1.25; }
+h2 {
+  margin:0;
+  font-size:1.7rem;
+  letter-spacing:-.7px;
+  line-height:1.25;
+}
 h3 { margin:0 0 14px; font-size:1.1rem; }
 p { margin:8px 0 16px; }
 .section-head p { margin-bottom:0; }
@@ -210,6 +217,7 @@ p { margin:8px 0 16px; }
   font-size:.75rem;
   font-weight:750;
 }
+.badge.amber { background:var(--amber-bg); color:var(--amber-text); }
 .notice {
   padding:16px 18px;
   border-radius:14px;
@@ -240,17 +248,13 @@ tfoot td { background:#f1f5ed; font-weight:800; }
 dt { color:var(--muted); font-size:.77rem; margin-bottom:3px; }
 dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
 
-/* Ablaufplan */
 .timeline { display:grid; gap:18px; }
 .day {
   display:grid;
   grid-template-columns:120px 1fr;
   gap:24px;
 }
-.day-date {
-  padding:12px 0;
-  color:var(--green);
-}
+.day-date { padding:12px 0; color:var(--green); }
 .day-date strong { display:block; font-size:1.15rem; }
 .day-date span { font-size:.8rem; color:var(--muted); }
 .day-events {
@@ -288,8 +292,9 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
 .event h3 { margin:0 0 5px; }
 .event p { margin:0 0 12px; font-size:.85rem; color:var(--muted); }
 .event-time { font-weight:800; font-size:.85rem; color:var(--green); }
+.event.pending { border-color:#e6cfaa; }
+.event.pending::before { background:#b38438; }
 
-/* Reisefotos */
 .travel-photo {
   margin:0 0 22px;
   overflow:hidden;
@@ -371,6 +376,14 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
 .participant-body { padding:22px; }
 .participant h3 { margin-bottom:5px; }
 .photo-error { color:var(--amber-text); font-size:.75rem; }
+.restaurant-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:12px;
+}
+.restaurant-head h3 { margin:0; }
 footer {
   padding:22px 0 32px;
   border-top:1px solid var(--line);
@@ -403,7 +416,11 @@ footer {
   .day-date strong { display:inline; margin-right:8px; }
   .day-events { margin-left:6px; padding-left:20px; }
   .event::before { left:-29px; }
-  .event-top { align-items:flex-start; flex-direction:column; gap:3px; }
+  .event-top,.restaurant-head {
+    align-items:flex-start;
+    flex-direction:column;
+    gap:6px;
+  }
   .golf-card { grid-template-columns:58px 1fr; gap:14px; padding:18px; }
   .golf-price { grid-column:2; text-align:left; }
   .golf-price strong { display:inline; margin-right:6px; }
@@ -438,7 +455,7 @@ footer {
 
     <div class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Familienzeit. Fairways. Italien.</div>
+        <div class="eyebrow">Familienzeit. Golf. Italien.</div>
         <h1>3 Generationen<br>Urlaub</h1>
         <p>
           Gemeinsam unterwegs in Bergamo: Golf, Familienzeit
@@ -469,8 +486,9 @@ footer {
   <nav class="navigation" aria-label="Reisenavigation">
     <div>
       <strong>Unsere Reise auf einen Blick</strong>
-      <small>Den Ablauf findest du auf der Startseite, alle Details im Menü.</small>
+      <small>Der Ablauf auf der Startseite, alle Details im Menü.</small>
     </div>
+
     <div class="select-wrap">
       <label for="page-select">Bereich auswählen</label>
       <select id="page-select" aria-controls="main">
@@ -479,7 +497,8 @@ footer {
         <option value="hotel">🏨 Unterkunft</option>
         <option value="flights">✈ Flüge</option>
         <option value="car">🚗 Mietwagen</option>
-        <option value="participants">👨‍👨‍👦 Teilnehmer</option>
+        <option value="restaurants">🍽 Restaurants</option>
+        <option value="participants">👥 Teilnehmer</option>
         <option value="costs">€ Kosten & Fälligkeiten</option>
       </select>
     </div>
@@ -508,6 +527,7 @@ footer {
     <section class="page" id="hotel" aria-label="Unterkunft" hidden></section>
     <section class="page" id="flights" aria-label="Flüge" hidden></section>
     <section class="page" id="car" aria-label="Mietwagen" hidden></section>
+    <section class="page" id="restaurants" aria-label="Restaurants" hidden></section>
     <section class="page" id="participants" aria-label="Teilnehmer" hidden></section>
     <section class="page" id="costs" aria-label="Kosten und Fälligkeiten" hidden></section>
   </main>
@@ -532,6 +552,18 @@ const CSV_URL =
 
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
+/*
+  Die Abholung ist ein geplanter Programmpunkt.
+  Datum und Bezug zur Landung kommen aus dem Hinflug.
+  Ein genauer Mailänder Flughafen ist bislang nicht angegeben.
+*/
+const CAR_PICKUP = {
+  title:"Mietwagen am Flughafen abholen",
+  location:"Flughafen in Mailand",
+  time:"Nach der Landung",
+  note:"Geplante Abholung nach Ankunft. Genaue Abholzeit und Station noch offen."
+};
+
 const PARTICIPANTS = [
   {
     name:"Marcel", initials:"MG", handicap:"5,7",
@@ -552,9 +584,8 @@ const PARTICIPANTS = [
 ];
 
 /*
-  Falls erforderlich, Bildnachweise ergänzen:
-  credit: "Foto: Name"
-  source: "https://..."
+  Bildnachweise bei Bedarf ergänzen.
+  Eine Quellenangabe ersetzt keine Nutzungserlaubnis.
 */
 const PHOTOS = {
   hotel:{
@@ -589,7 +620,9 @@ const PHOTOS = {
   }
 };
 
-const DATA_PAGES = ["home","golf","hotel","flights","car","costs"];
+const DATA_PAGES = [
+  "home","golf","hotel","flights","car","restaurants","costs"
+];
 
 /* ===================== HILFSFUNKTIONEN ===================== */
 
@@ -629,7 +662,8 @@ function requiredAmount(value,label) {
 }
 
 function sum(values) {
-  return values.reduce((total,value) => total + Math.round(value*100),0)/100;
+  return values.reduce((total,value) =>
+    total + Math.round(value*100),0)/100;
 }
 
 function differs(a,b) {
@@ -649,7 +683,7 @@ function link(url,label) {
   const checked = safeUrl(url);
   return checked ? `
     <a class="button" href="${esc(checked)}"
-       target="_blank" rel="noopener noreferrer">${esc(label)}</a>
+      target="_blank" rel="noopener noreferrer">${esc(label)}</a>
   ` : "";
 }
 
@@ -693,13 +727,18 @@ function timestamp(date) {
 function parseDate(text) {
   const match = String(text).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
   if (!match) return null;
-  const day=Number(match[1]), month=Number(match[2]), year=Number(match[3]);
+
+  const day=Number(match[1]);
+  const month=Number(match[2]);
+  const year=Number(match[3]);
   const date = new Date(year,month-1,day);
+
   if (
     date.getFullYear()!==year ||
     date.getMonth()!==month-1 ||
     date.getDate()!==day
   ) return null;
+
   return date;
 }
 
@@ -712,7 +751,9 @@ function dateLabel(text) {
 
 function weekday(text) {
   const date=parseDate(text);
-  return date ? date.toLocaleDateString("de-DE",{weekday:"long"}) : "";
+  return date
+    ? date.toLocaleDateString("de-DE",{weekday:"long"})
+    : "";
 }
 
 function timeOnly(text) {
@@ -721,12 +762,32 @@ function timeOnly(text) {
     .replace(/^[\s·,–-]+/,"").trim();
 }
 
-function timeMinutes(text,fallback) {
+function timeMinutes(text,fallback=Number.POSITIVE_INFINITY) {
   const clean=String(text).replace(/\d{1,2}\.\d{1,2}\.\d{4}/g,"");
-  const colon=clean.match(/\b(\d{1,2}):(\d{2})\b/);
+  const colon=clean.match(/\b([01]?\d|2[0-3]):([0-5]\d)\b/);
+
   if (colon) return Number(colon[1])*60+Number(colon[2]);
-  const hours=clean.match(/\b(\d{1,2})\s*Uhr/i);
+
+  const hours=clean.match(/\b([01]?\d|2[0-3])\s*Uhr/i);
   return hours ? Number(hours[1])*60 : fallback;
+}
+
+function flightArrivalMinutes(flight) {
+  const times=Array.from(
+    String(flight.time).matchAll(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g)
+  );
+
+  if (times.length>=2) {
+    const last=times[times.length-1];
+    return Number(last[1])*60+Number(last[2]);
+  }
+
+  return timeMinutes(flight.time,0)+1;
+}
+
+function reservationPending(reservation) {
+  return /noch\s+zu\s+buchen|nicht\s+gebucht|ausstehend|offen/i
+    .test(reservation.time);
 }
 
 /* ===================== BILDER ===================== */
@@ -753,12 +814,14 @@ function loadImage(image,paths,onFailure,onSuccess) {
     }
     image.src=paths[index++];
   }
+
   next();
 }
 
 function travelPhoto(photo) {
   if(!photo) return "";
   const source=safeUrl(photo.source);
+
   return `
     <figure class="travel-photo">
       <div class="image-placeholder">Bild wird geladen …</div>
@@ -796,20 +859,30 @@ function loadVisiblePhotos() {
 
 function renderParticipants() {
   document.getElementById("participants").innerHTML=`
-    ${heading("Unser Reiseteam","Drei Generationen. Drei Golfer. Ein Lieblings-Caddy.")}
+    ${heading(
+      "Unser Reiseteam",
+      "Drei Generationen. Drei Golfer. Ein Lieblings-Caddy."
+    )}
+
     <div class="participants">
       ${PARTICIPANTS.map((person,index)=>`
         <article class="card participant">
           <div class="portrait">
-            <span class="initials" aria-hidden="true">${esc(person.initials)}</span>
-            <img id="portrait-${index}" alt="Porträt von ${esc(person.name)} Glatter"
+            <span class="initials" aria-hidden="true">
+              ${esc(person.initials)}
+            </span>
+            <img id="portrait-${index}"
+              alt="Porträt von ${esc(person.name)} Glatter"
               decoding="async" hidden>
           </div>
           <div class="participant-body">
             <h3>${esc(person.name)}</h3>
             <p class="muted">${esc(person.role)}</p>
-            <span class="badge">${person.handicap
-              ? "Handicap "+esc(person.handicap) : "Caddy für alle ♥"}</span>
+            <span class="badge">
+              ${person.handicap
+                ? "Handicap "+esc(person.handicap)
+                : "Caddy für alle ♥"}
+            </span>
             <p class="photo-error" id="photo-error-${index}" hidden>
               Foto nicht gefunden: ${esc(person.photos[0])}
             </p>
@@ -817,12 +890,16 @@ function renderParticipants() {
         </article>
       `).join("")}
     </div>
+
     <div class="notice space">
-      Winfried begleitet uns als gemeinsamer Caddy und nimmt nicht an der Golfwertung teil.
+      Winfried begleitet uns als gemeinsamer Caddy und
+      nimmt nicht an der Golfwertung teil.
     </div>`;
 
   PARTICIPANTS.forEach((person,index)=>{
-    loadImage(document.getElementById("portrait-"+index),person.photos,
+    loadImage(
+      document.getElementById("portrait-"+index),
+      person.photos,
       ()=>{document.getElementById("photo-error-"+index).hidden=false;}
     );
   });
@@ -832,14 +909,17 @@ function renderParticipants() {
 
 function parseCsv(text) {
   text=text.replace(/^\uFEFF/,"");
+
   const rows=[];
   let row=[],cell="",quoted=false;
 
   for(let i=0;i<text.length;i++) {
     const char=text[i];
+
     if(char==='"') {
       if(quoted && text[i+1]==='"') {
-        cell+='"'; i++;
+        cell+='"';
+        i++;
       } else if(quoted) {
         quoted=false;
       } else if(cell==="") {
@@ -848,40 +928,58 @@ function parseCsv(text) {
         cell+=char;
       }
     } else if(char==="," && !quoted) {
-      row.push(cell.trim()); cell="";
+      row.push(cell.trim());
+      cell="";
     } else if((char==="\n" || char==="\r") && !quoted) {
       if(char==="\r" && text[i+1]==="\n") i++;
-      row.push(cell.trim()); rows.push(row);
-      row=[]; cell="";
+      row.push(cell.trim());
+      rows.push(row);
+      row=[];
+      cell="";
     } else {
       cell+=char;
     }
   }
+
   if(quoted) throw new Error("Unvollständiges CSV-Textfeld.");
+
   if(cell!=="" || row.length) {
-    row.push(cell.trim()); rows.push(row);
+    row.push(cell.trim());
+    rows.push(row);
   }
+
   return rows.filter(row=>row.some(cell=>cell!==""));
 }
 
 function readTrip(rows) {
-  const names=["Golfplätze","Flüge","Unterkunft","Mietwagen","Kostenübersicht"];
-  const positions=names.map(name=>
-    rows.findIndex(row=>norm(row[0])===norm(name))
-  );
+  /*
+    Abschnitte werden anhand ihrer Überschrift erkannt.
+    "Reservierungen" kann auch an einer anderen Stelle stehen.
+  */
+  const sectionNames=[
+    "Golfplätze","Flüge","Unterkunft","Mietwagen",
+    "Kostenübersicht","Reservierungen"
+  ];
 
-  if(positions.some(p=>p<0) ||
-    positions.some((p,i)=>i>0 && p<=positions[i-1])) {
-    throw new Error("Tabellenabschnitte fehlen oder wurden umgeordnet.");
-  }
+  const markers=rows.map((row,index)=>{
+    const name=sectionNames.find(name=>norm(row[0])===norm(name));
+    return name ? {name,index} : null;
+  }).filter(Boolean);
 
   const sections={};
-  names.forEach((name,i)=>{
-    sections[name]=rows.slice(
-      positions[i]+1,
-      i+1<positions.length ? positions[i+1] : rows.length
+
+  markers.forEach((marker,index)=>{
+    sections[marker.name]=rows.slice(
+      marker.index+1,
+      markers[index+1]?.index ?? rows.length
     );
   });
+
+  for(const name of sectionNames.filter(name=>name!=="Reservierungen")) {
+    if(!sections[name]) {
+      throw new Error("Tabellenabschnitt fehlt: "+name);
+    }
+  }
 
   function field(section,label) {
     const row=section.find(row=>norm(row[0])===norm(label));
@@ -889,7 +987,8 @@ function readTrip(rows) {
   }
 
   function status(section) {
-    return section.flat().filter(cell=>/bezahlt|bezahlung/i.test(cell)).join(" · ");
+    return section.flat()
+      .filter(cell=>/bezahlt|bezahlung/i.test(cell)).join(" · ");
   }
 
   const golf=sections["Golfplätze"]
@@ -908,12 +1007,21 @@ function readTrip(rows) {
 
   function flight(label) {
     const row=flights.find(row=>norm(row[0])===norm(label));
-    if(!row || !row[1] || !row[2]) throw new Error("Flugdaten fehlen: "+label);
-    return {date:row[1],time:row[2],airline:row[3]||"Nicht angegeben"};
+
+    if(!row || !row[1] || !row[2]) {
+      throw new Error("Flugdaten fehlen: "+label);
+    }
+
+    return {
+      date:row[1],
+      time:row[2],
+      airline:row[3]||"Nicht angegeben"
+    };
   }
 
   const flightPeople=flights.filter(row=>
-    row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
+    row[0] && [row[1],row[2],row[3]]
+      .every(v=>Number.isFinite(amount(v)))
   ).map(row=>({
     name:row[0],
     fare:requiredAmount(row[1],"Flugpreis"),
@@ -922,11 +1030,14 @@ function readTrip(rows) {
   }));
 
   const hotel=sections["Unterkunft"];
+
   const rooms=hotel.filter(row=>
     row[0] && row[1] &&
-    Number.isFinite(amount(row[2])) && Number.isFinite(amount(row[3]))
+    Number.isFinite(amount(row[2])) &&
+    Number.isFinite(amount(row[3]))
   ).map(row=>({
-    name:row[0],guests:row[1],
+    name:row[0],
+    guests:row[1],
     perPerson:requiredAmount(row[2],"Zimmer pro Person"),
     total:requiredAmount(row[3],"Zimmer gesamt")
   }));
@@ -939,8 +1050,10 @@ function readTrip(rows) {
   );
 
   const costSection=sections["Kostenübersicht"];
+
   const costs=costSection.filter(row=>
-    row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
+    row[0] && [row[1],row[2],row[3]]
+      .every(v=>Number.isFinite(amount(v)))
   ).map(row=>({
     name:row[0],
     total:requiredAmount(row[1],"Person gesamt"),
@@ -953,7 +1066,8 @@ function readTrip(rows) {
   }
 
   const totalsRow=costSection.find(row=>
-    !row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
+    !row[0] && [row[1],row[2],row[3]]
+      .every(v=>Number.isFinite(amount(v)))
   );
 
   const totals=totalsRow ? {
@@ -965,6 +1079,29 @@ function readTrip(rows) {
     paid:sum(costs.map(p=>p.paid)),
     open:sum(costs.map(p=>p.open))
   };
+
+  /*
+    Reservierungen:
+    Spalte A: Tag
+    Spalte B: Uhrzeit bzw. Status
+    Spalte C: Restaurant
+    Spalte D: Link
+
+    Zeilen ohne Restaurant werden nicht als Termine übernommen.
+  */
+  const reservations=(sections["Reservierungen"]||[])
+    .filter(row=>parseDate(row[0]) && String(row[2]||"").trim())
+    .map(row=>({
+      date:row[0],
+      time:row[1]||"",
+      name:row[2],
+      link:row[3]||""
+    }))
+    .sort((a,b)=>{
+      const dateDifference=parseDate(a.date)-parseDate(b.date);
+      if(dateDifference) return dateDifference;
+      return timeMinutes(a.time,1440)-timeMinutes(b.time,1440);
+    });
 
   return {
     title:rows[0].filter(Boolean).join(" "),
@@ -980,7 +1117,8 @@ function readTrip(rows) {
       checkin:field(hotel,"Checkin"),
       checkout:field(hotel,"Checkout"),
       payment:field(hotel,"Zahlungsbedingungen"),
-      cancellation:field(hotel,"Stornierungsbedingungen") ||
+      cancellation:
+        field(hotel,"Stornierungsbedingungen") ||
         field(hotel,"Stornierungsbedigungen"),
       rooms
     },
@@ -992,47 +1130,107 @@ function readTrip(rows) {
       total:requiredAmount(carPrice?.[1],"Mietwagen"),
       share:amount(carShare?.[1])
     },
-    costs,totals
+    reservations,
+    costs,
+    totals
   };
 }
 
-/* ===================== STARTSEITE / ABLAUFPLAN ===================== */
+/* ===================== ABLAUFPLAN ===================== */
 
 function buildTimeline(trip) {
   const events=[];
 
-  function add(dateText,time,title,type,description,page,order) {
-    const date=parseDate(dateText);
+  function add(options) {
+    const date=parseDate(options.dateText);
+
     events.push({
+      ...options,
       date,
-      dateText:date ? dateLabel(dateText) : "Termin noch offen",
-      time,title,type,description,page,
-      order:timeMinutes(time,order)
+      dateText:date ? dateLabel(options.dateText) : "Termin noch offen",
+      order:options.order ?? timeMinutes(options.time,1500),
+      pending:options.pending||false
     });
   }
 
-  add(trip.outbound.date,trip.outbound.time,
-    "Hinflug nach Italien","✈ Anreise",
-    trip.outbound.airline,"flights",0);
-
-  add(trip.hotel.checkin,timeOnly(trip.hotel.checkin),
-    "Check-in im Hotel","🏨 Unterkunft",
-    trip.hotel.name,"hotel",14*60);
-
-  trip.golf.forEach(course=>{
-    add(course.date,"Startzeit noch offen",
-      course.name,"⛳ Golftag",
-      "Marcel, Julian und Steffen spielen. Winfried begleitet uns als Caddy.",
-      "golf",12*60);
+  add({
+    dateText:trip.outbound.date,
+    time:trip.outbound.time,
+    title:"Hinflug nach Italien",
+    type:"✈ Anreise",
+    description:trip.outbound.airline,
+    page:"flights",
+    order:timeMinutes(trip.outbound.time,0)
   });
 
-  add(trip.hotel.checkout,timeOnly(trip.hotel.checkout),
-    "Check-out im Hotel","🏨 Abreise",
-    trip.hotel.name,"hotel",12*60);
+  add({
+    dateText:trip.outbound.date,
+    time:CAR_PICKUP.time,
+    title:CAR_PICKUP.title,
+    type:"🚗 Mietwagen",
+    description:CAR_PICKUP.location+" · "+CAR_PICKUP.note,
+    page:"car",
+    // Nur Sortierposition, keine behauptete Abholzeit.
+    order:flightArrivalMinutes(trip.outbound)+0.1
+  });
 
-  add(trip.inbound.date,trip.inbound.time,
-    "Rückflug nach Hause","✈ Rückreise",
-    trip.inbound.airline,"flights",23*60);
+  add({
+    dateText:trip.hotel.checkin,
+    time:timeOnly(trip.hotel.checkin),
+    title:"Check-in im Hotel",
+    type:"🏨 Unterkunft",
+    description:trip.hotel.name,
+    page:"hotel"
+  });
+
+  trip.golf.forEach(course=>{
+    add({
+      dateText:course.date,
+      time:"Startzeit noch offen",
+      title:course.name,
+      type:"⛳ Golftag",
+      description:"Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.",
+      page:"golf",
+      // Unbekannte Uhrzeiten werden separat ans Tagesende sortiert.
+      order:1500
+    });
+  });
+
+  add({
+    dateText:trip.hotel.checkout,
+    time:timeOnly(trip.hotel.checkout),
+    title:"Check-out im Hotel",
+    type:"🏨 Abreise",
+    description:trip.hotel.name,
+    page:"hotel"
+  });
+
+  add({
+    dateText:trip.inbound.date,
+    time:trip.inbound.time,
+    title:"Rückflug nach Hause",
+    type:"✈ Rückreise",
+    description:trip.inbound.airline,
+    page:"flights"
+  });
+
+  trip.reservations.forEach(reservation=>{
+    const pending=reservationPending(reservation);
+
+    add({
+      dateText:reservation.date,
+      time:reservation.time||"Uhrzeit noch offen",
+      title:reservation.name,
+      type:"🍽 Restaurant",
+      description:pending
+        ? "Geplanter Restaurantbesuch – Reservierung noch offen."
+        : "Restauranttermin laut Reisetabelle.",
+      page:"restaurants",
+      url:reservation.link,
+      pending,
+      order:timeMinutes(reservation.time,1501)
+    });
+  });
 
   events.sort((a,b)=>{
     const aDate=a.date ? a.date.getTime() : Number.MAX_SAFE_INTEGER;
@@ -1041,6 +1239,7 @@ function buildTimeline(trip) {
   });
 
   const groups=new Map();
+
   events.forEach(event=>{
     if(!groups.has(event.dateText)) groups.set(event.dateText,[]);
     groups.get(event.dateText).push(event);
@@ -1053,16 +1252,22 @@ function buildTimeline(trip) {
           <strong>${esc(date)}</strong>
           <span>${esc(weekday(date))}</span>
         </div>
+
         <div class="day-events">
           ${items.map(event=>`
-            <article class="event">
+            <article class="event ${event.pending?"pending":""}">
               <div class="event-top">
                 <span class="event-type">${esc(event.type)}</span>
-                <span class="event-time">${esc(event.time||"Uhrzeit noch offen")}</span>
+                <span class="event-time">
+                  ${esc(event.time||"Uhrzeit noch offen")}
+                </span>
               </div>
               <h3>${esc(event.title)}</h3>
               <p>${esc(event.description)}</p>
-              ${detailButton(event.page)}
+              <div class="actions">
+                ${detailButton(event.page)}
+                ${event.url ? link(event.url,"Restaurant öffnen ↗") : ""}
+              </div>
             </article>
           `).join("")}
         </div>
@@ -1072,8 +1277,6 @@ function buildTimeline(trip) {
 }
 
 function buildHome(trip) {
-  const start=parseDate(trip.outbound.date);
-  const end=parseDate(trip.inbound.date);
   const inDate=parseDate(trip.hotel.checkin);
   const outDate=parseDate(trip.hotel.checkout);
 
@@ -1084,12 +1287,12 @@ function buildHome(trip) {
       )/86400000)
     : null;
 
-  const range=start && end
-    ? dateLabel(trip.outbound.date)+" – "+dateLabel(trip.inbound.date)
-    : trip.title;
+  const range=dateLabel(trip.outbound.date)+" – "+
+    dateLabel(trip.inbound.date);
 
   return `
     ${heading("Unsere gemeinsame Auszeit",range)}
+
     <div class="grid stats">
       <div class="card dark">
         <div class="stat-label">Unser Reiseziel</div>
@@ -1108,7 +1311,9 @@ function buildHome(trip) {
       </div>
       <div class="card">
         <div class="stat-label">Hotelaufenthalt</div>
-        <div class="stat-value">${nights!==null && nights>=0 ? nights+" Nächte" : "Unser Hotel"}</div>
+        <div class="stat-value">
+          ${nights!==null && nights>=0 ? nights+" Nächte" : "Unser Hotel"}
+        </div>
         <div class="stat-note">${esc(trip.hotel.name)}</div>
       </div>
     </div>
@@ -1117,34 +1322,99 @@ function buildHome(trip) {
       <div class="card">
         <h3>Gemeinsam unterwegs</h3>
         <p>
-          Unsere Reise verbindet Golf auf verschiedenen Plätzen mit
-          gemeinsamer Familienzeit in Bergamo. Hier findest du den
-          geplanten Ablauf – von der Anreise bis zum Rückflug.
+          Nach der Landung holen wir den Mietwagen am Flughafen in
+          Mailand ab. Anschließend geht es weiter nach Bergamo.
+          Uns erwarten Golf, gemeinsame Restaurantbesuche und Familienzeit.
         </p>
         ${detailButton("participants","Unser Reiseteam")}
       </div>
       <div class="card">
         <h3>Gut organisiert</h3>
         <p>
-          Flugzeiten, Unterkunft und Golftermine kommen direkt aus
-          unserer Reisetabelle. Buchungsdetails und die separate
-          Kostenübersicht findest du im Dropdown-Menü.
+          Flugzeiten, Unterkunft, Golftermine und Restaurantplanungen
+          kommen direkt aus unserer Reisetabelle. Weitere Details
+          und die Kostenübersicht findest du im Dropdown-Menü.
         </p>
-        <span class="badge">Aktualisierung aus Google Sheets</span>
+        ${detailButton("restaurants","Unsere Restaurants")}
       </div>
     </div>
 
-    <div class="section-head space" style="margin-top:32px">
+    <div class="section-head" style="margin-top:32px">
       <h2>Unser Ablaufplan</h2>
-      <p class="muted">Alle hinterlegten Reisetermine in zeitlicher Reihenfolge.</p>
+      <p class="muted">Anreise, Golf, Restaurantbesuche und Rückreise.</p>
     </div>
 
     ${buildTimeline(trip)}
 
     <div class="notice space">
-      Die Golf-Startzeiten sind noch nicht hinterlegt.
-      Abhol- und Rückgabezeiten des Mietwagens sind ebenfalls noch offen.
-      Weitere Aktivitäten können wir vor Ort gemeinsam planen.
+      Termine mit bekannter Uhrzeit werden chronologisch angezeigt.
+      Einträge ohne Uhrzeit stehen am Ende des jeweiligen Tages;
+      daraus ergibt sich keine festgelegte Reihenfolge.
+      „Noch zu buchen“ ist keine bestätigte Reservierung.
+      Der genaue Mailänder Flughafen und die Mietwagenstation
+      sind noch nicht hinterlegt.
+    </div>`;
+}
+
+/* ===================== RESTAURANTS ===================== */
+
+function buildRestaurants(trip) {
+  return `
+    ${heading(
+      "Unsere Restaurants",
+      "Gemeinsam essen gehen – geplante Besuche und Reservierungen."
+    )}
+
+    ${trip.reservations.length ? `
+      <div class="grid two">
+        ${trip.reservations.map(reservation=>{
+          const pending=reservationPending(reservation);
+
+          return `
+            <article class="card">
+              <div class="eyebrow muted">
+                ${esc(weekday(reservation.date))} ·
+                ${esc(dateLabel(reservation.date))}
+              </div>
+
+              <div class="restaurant-head space">
+                <h3>${esc(reservation.name)}</h3>
+                <span class="badge ${pending?"amber":""}">
+                  ${pending ? "Reservierung offen" : "Restaurantplanung"}
+                </span>
+              </div>
+
+              <dl class="facts">
+                ${fact(
+                  "Uhrzeit / Status laut Tabelle",
+                  reservation.time||"Uhrzeit noch offen"
+                )}
+              </dl>
+
+              <div class="space">
+                ${link(reservation.link,"Restaurant öffnen ↗") ||
+                  '<p class="small muted">Noch kein Restaurantlink hinterlegt.</p>'}
+              </div>
+
+              ${pending ? `
+                <p class="table-note">
+                  Der Besuch ist geplant, aber noch nicht gebucht.
+                </p>
+              ` : ""}
+            </article>`;
+        }).join("")}
+      </div>
+    ` : `
+      <div class="notice">
+        Aktuell sind noch keine Restaurants in der Reisetabelle eingetragen.
+      </div>
+    `}
+
+    <div class="notice space">
+      Neue Einträge im Abschnitt „Reservierungen“ werden automatisch
+      übernommen. Trage Tag, Uhrzeit bzw. Status, Restaurant und Link ein.
+      Leere Restaurantzeilen erscheinen nicht als Termine.
+      Eine eingetragene Uhrzeit allein bestätigt noch keine Buchung.
     </div>`;
 }
 
@@ -1156,28 +1426,40 @@ function buildPages(trip) {
   const hotelTotal=sum(trip.hotel.rooms.map(r=>r.total));
   const flightTotal=sum(trip.flightPeople.map(p=>p.total));
   const categoryTotal=sum([golfTotal,hotelTotal,flightTotal,trip.car.total]);
+
   const warnings=[];
 
-  [["total","Gesamtkosten"],["paid","bezahlten Beträge"],["open","offenen Beträge"]]
-    .forEach(([key,label])=>{
-      const personal=sum(trip.costs.map(p=>p[key]));
-      if(differs(personal,trip.totals[key])) {
-        warnings.push(
-          `Die persönlichen ${label} ergeben ${money(personal)}; `+
-          `die Summenzeile enthält ${money(trip.totals[key])}. `+
-          "Bitte Rundung bzw. Formeln im Sheet prüfen."
-        );
-      }
-    });
+  [
+    ["total","Gesamtkosten"],
+    ["paid","bezahlten Beträge"],
+    ["open","offenen Beträge"]
+  ].forEach(([key,label])=>{
+    const personal=sum(trip.costs.map(p=>p[key]));
+
+    if(differs(personal,trip.totals[key])) {
+      warnings.push(
+        `Die persönlichen ${label} ergeben ${money(personal)}; `+
+        `die Summenzeile enthält ${money(trip.totals[key])}. `+
+        "Bitte Rundung bzw. Formeln im Sheet prüfen."
+      );
+    }
+  });
 
   if(differs(categoryTotal,trip.totals.total)) {
-    warnings.push("Die Summe der Kostenkategorien weicht von der Kostenübersicht ab.");
+    warnings.push(
+      "Die Summe der Kostenkategorien weicht von der Kostenübersicht ab."
+    );
   }
+
   if(differs(sum([trip.totals.paid,trip.totals.open]),trip.totals.total)) {
     warnings.push("Bezahlt plus offen entspricht nicht dem Gesamtbudget.");
   }
+
   if(trip.costs.some(p=>differs(sum([p.paid,p.open]),p.total))) {
-    warnings.push("Bei mindestens einer Person stimmen bezahlt plus offen nicht mit den Gesamtkosten überein.");
+    warnings.push(
+      "Bei mindestens einer Person stimmen bezahlt plus offen "+
+      "nicht mit den Gesamtkosten überein."
+    );
   }
 
   const costStats=[
@@ -1188,7 +1470,11 @@ function buildPages(trip) {
   ];
 
   const costs=`
-    ${heading("Kosten & Fälligkeiten","Unser Budget, persönliche Anteile und Zahlungsinformationen.")}
+    ${heading(
+      "Kosten & Fälligkeiten",
+      "Unser Budget, persönliche Anteile und Zahlungsinformationen."
+    )}
+
     <div class="grid stats">
       ${costStats.map((item,i)=>`
         <div class="card ${i===0?"dark":""}">
@@ -1198,24 +1484,32 @@ function buildPages(trip) {
         </div>
       `).join("")}
     </div>
+
     ${warnings.length ? `
       <div class="notice amber space">
         <strong>Hinweise zur Kostenübersicht</strong>
         <ul>${warnings.map(w=>`<li>${esc(w)}</li>`).join("")}</ul>
       </div>
     `:""}
+
     <div class="card space">
       <h3>Wer zahlt wie viel?</h3>
       ${table(
         ["Person","Gesamt","Bezahlt","Offen / geplant"],
-        trip.costs.map(p=>[p.name,money(p.total),money(p.paid),money(p.open)]),
-        ["Gesamt",money(trip.totals.total),money(trip.totals.paid),money(trip.totals.open)]
+        trip.costs.map(p=>[
+          p.name,money(p.total),money(p.paid),money(p.open)
+        ]),
+        [
+          "Gesamt",money(trip.totals.total),
+          money(trip.totals.paid),money(trip.totals.open)
+        ]
       )}
       <p class="table-note">
-        Die Werte werden unverändert aus der Kostenübersicht übernommen.
+        Die Werte werden unverändert aus Google Sheets übernommen.
         Es erfolgt kein automatischer Rundungsausgleich.
       </p>
     </div>
+
     <div class="grid two space">
       <div class="card">
         <h3>Zahlungen & Fristen</h3>
@@ -1231,6 +1525,7 @@ function buildPages(trip) {
           Bitte den tatsächlichen Zahlungsstatus im Sheet pflegen.
         </p>
       </div>
+
       <div class="card">
         <h3>Budget nach Kategorien</h3>
         ${table(["Kategorie","Betrag"],[
@@ -1239,15 +1534,22 @@ function buildPages(trip) {
           ["Flüge inklusive Gepäck",money(flightTotal)],
           ["Mietwagen laut Plan",money(trip.car.total)]
         ],["Summe",money(categoryTotal)])}
+
         <div class="notice space">
-          Verpflegung, Kraftstoff, Parken, örtliche Abgaben und weitere
-          Extras sind nur enthalten, wenn sie ausdrücklich erfasst wurden.
+          Restaurantbesuche, Verpflegung, Kraftstoff, Parken und
+          weitere Extras sind nur enthalten, wenn ihre Kosten
+          ausdrücklich in der Kostenübersicht berücksichtigt wurden.
+          Die Restaurantliste enthält keine Preisangaben.
         </div>
       </div>
     </div>`;
 
   const golf=`
-    ${heading("Unsere Fairways","Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.")}
+    ${heading(
+      "Unsere Courses",
+      "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy."
+    )}
+
     <div class="golf-list">
       ${trip.golf.map(course=>`
         <article class="golf-entry">
@@ -1273,10 +1575,14 @@ function buildPages(trip) {
         </article>
       `).join("")}
     </div>
+
     <div class="grid two space">
       <div class="card dark">
         <h3>Unser Spielformat</h3>
-        <p><strong>Nettoschläge über Par</strong> – der niedrigste Wert gewinnt.</p>
+        <p>
+          <strong>Nettoschläge über Par</strong> –
+          der niedrigste Wert gewinnt.
+        </p>
         <p>Bruttoschläge − Spielvorgabe − Platz-Par</p>
         <p class="small muted">
           Die Spielvorgabe hängt vom Handicap, den Platz-/Abschlagsdaten
@@ -1285,10 +1591,13 @@ function buildPages(trip) {
         </p>
         <div class="chips">
           ${PARTICIPANTS.filter(p=>p.handicap).map(p=>`
-            <span class="chip">${esc(p.name)} · HCP ${esc(p.handicap)}</span>
+            <span class="chip">
+              ${esc(p.name)} · HCP ${esc(p.handicap)}
+            </span>
           `).join("")}
         </div>
       </div>
+
       <div class="card">
         <h3>Golfbudget & Organisation</h3>
         <dl class="facts">
@@ -1308,6 +1617,7 @@ function buildPages(trip) {
     ${heading("Unser Zuhause in Bergamo",trip.hotel.name)}
     ${travelPhoto(PHOTOS.hotel)}
     ${link(trip.hotel.map,"Hotel auf Google Maps ↗")}
+
     <div class="grid two space">
       <div class="card">
         <h3>Ankommen & Abreisen</h3>
@@ -1326,26 +1636,29 @@ function buildPages(trip) {
         </dl>
       </div>
     </div>
+
     <div class="grid space">
       ${trip.hotel.rooms.map(room=>`
         <article class="card">
           <h3>${esc(room.name)}</h3>
           <p>${esc(room.guests)}</p>
-          <p><strong>${esc(money(room.total))}</strong> für das Zimmer ·
-            ${esc(money(room.perPerson))} pro Person</p>
+          <p>
+            <strong>${esc(money(room.total))}</strong> für das Zimmer ·
+            ${esc(money(room.perPerson))} pro Person
+          </p>
         </article>
       `).join("")}
-    </div>
-    <div class="notice space">
-      Buchungsnummer und Hotel-PIN gehören in die privaten Reiseunterlagen.
-      Sie werden hier nicht angezeigt.
     </div>`;
 
   const flights=`
     ${heading("Hin und zurück","Unsere Flugdaten und Gepäckkosten.")}
     ${travelPhoto(PHOTOS.flights)}
+
     <div class="grid two">
-      ${[["Hinflug",trip.outbound],["Rückflug",trip.inbound]].map(([label,f])=>`
+      ${[
+        ["Hinflug",trip.outbound],
+        ["Rückflug",trip.inbound]
+      ].map(([label,f])=>`
         <article class="card">
           <div class="eyebrow muted">${esc(label)}</div>
           <h3 style="margin-top:16px">${esc(f.date)}</h3>
@@ -1354,41 +1667,78 @@ function buildPages(trip) {
         </article>
       `).join("")}
     </div>
+
+    <div class="notice space">
+      Nach der Landung holen wir den Mietwagen am Flughafen in Mailand ab.
+      Der genaue Flughafen, die Station und die Abholzeit sind noch offen.
+      <div class="space">${detailButton("car","Zur Mietwagenplanung")}</div>
+    </div>
+
     <div class="card space">
       <h3>Flug- und Gepäckkosten</h3>
       ${table(
         ["Person","Flugpreis","Gepäck","Gesamt"],
-        trip.flightPeople.map(p=>[p.name,money(p.fare),money(p.baggage),money(p.total)]),
-        ["Gesamt",
+        trip.flightPeople.map(p=>[
+          p.name,money(p.fare),money(p.baggage),money(p.total)
+        ]),
+        [
+          "Gesamt",
           money(sum(trip.flightPeople.map(p=>p.fare))),
           money(sum(trip.flightPeople.map(p=>p.baggage))),
-          money(flightTotal)]
+          money(flightTotal)
+        ]
       )}
       <p class="table-note">${esc(trip.flightNote)}</p>
     </div>
+
     <div class="notice space">
-      Flughäfen, Flugnummern, Gepäckarten und Freigepäckgrenzen sind
-      in der bisherigen Tabelle nicht angegeben.
+      Konkrete Flughafencodes, Flugnummern, Gepäckarten und
+      Freigepäckgrenzen sind in der bisherigen Tabelle nicht angegeben.
     </div>`;
 
   const car=`
-    ${heading("Mobil vor Ort","Unser Mietwagen für die gemeinsame Zeit in Italien.")}
-    <div class="grid two">
+    ${heading(
+      "Mobil vor Ort",
+      "Unser Mietwagen für die gemeinsame Zeit in Italien."
+    )}
+
+    <div class="card space">
+      <h3>Abholung nach der Landung</h3>
+      <dl class="facts">
+        ${fact("Datum",dateLabel(trip.outbound.date))}
+        ${fact("Ort",CAR_PICKUP.location)}
+        ${fact("Zeitpunkt",CAR_PICKUP.time+" · genaue Uhrzeit noch offen")}
+        ${fact("Geplante Flugzeiten",trip.outbound.time)}
+      </dl>
+      <p class="table-note">
+        Die Abholung ist im Ablaufplan vorgesehen.
+        Sie ist keine Bestätigung einer Mietwagenbuchung.
+        Der konkrete Flughafen und die Station müssen noch ergänzt werden.
+      </p>
+    </div>
+
+    <div class="grid two space">
       <div class="card dark">
         <div class="eyebrow">Fahrzeug laut Reiseplanung</div>
-        <h3 style="margin-top:18px;font-size:1.6rem">${esc(trip.car.description)}</h3>
+        <h3 style="margin-top:18px;font-size:1.6rem">
+          ${esc(trip.car.description)}
+        </h3>
         <div class="stat-value">${esc(money(trip.car.total))}</div>
         <p class="small muted">
-          Gesamtpreis laut Tabelle. Bei offener Buchung handelt es sich um einen Planwert.
+          Gesamtpreis laut Tabelle.
+          Bei offener Buchung handelt es sich um einen Planwert.
         </p>
       </div>
+
       <div class="card">
         <h3>Buchungsstand</h3>
         <dl class="facts">
           ${fact("Vergleichsportal",trip.car.portal)}
           ${fact("Status",trip.car.status)}
-          ${fact("Pro Person laut Tabelle",
-            Number.isFinite(trip.car.share)?money(trip.car.share):"")}
+          ${fact(
+            "Pro Person laut Tabelle",
+            Number.isFinite(trip.car.share)?money(trip.car.share):""
+          )}
         </dl>
         <div class="space">
           ${link(trip.car.link,"Mietwagenangebot öffnen ↗") ||
@@ -1396,6 +1746,7 @@ function buildPages(trip) {
         </div>
       </div>
     </div>
+
     <div class="card space">
       <h3>Vor der Buchung prüfen</h3>
       <ul>
@@ -1406,7 +1757,11 @@ function buildPages(trip) {
       </ul>
     </div>`;
 
-  return {home:buildHome(trip),costs,golf,hotel,flights,car};
+  return {
+    home:buildHome(trip),
+    restaurants:buildRestaurants(trip),
+    costs,golf,hotel,flights,car
+  };
 }
 
 /* ===================== NAVIGATION ===================== */
@@ -1420,6 +1775,7 @@ function showPage(id,focusHeading=false) {
   document.querySelectorAll(".page").forEach(section=>{
     section.hidden=section.id!==id;
   });
+
   selector.value=id;
   loadVisiblePhotos();
 
@@ -1472,6 +1828,7 @@ async function refreshData() {
     if(!response.ok) throw new Error("HTTP "+response.status);
 
     const text=await response.text();
+
     if(/^\s*</.test(text)) {
       throw new Error("Google hat HTML statt CSV zurückgegeben.");
     }
@@ -1486,6 +1843,7 @@ async function refreshData() {
 
       document.getElementById("trip-title").textContent=trip.title;
       document.title=trip.title+" · 3 Generationen Urlaub";
+
       loadVisiblePhotos();
       lastCsv=text;
     }
@@ -1494,24 +1852,34 @@ async function refreshData() {
     bar.dataset.state="ok";
     status.textContent="Zuletzt erfolgreich abgerufen: "+
       timestamp(lastSuccess)+" · Automatisch alle 5 Minuten";
+
   } catch(error) {
     bar.dataset.state="error";
+
     status.textContent=lastSuccess
       ? "Aktualisierung fehlgeschlagen. Angezeigt werden die Daten vom "+
         timestamp(lastSuccess)+"."
-      : "Reisedaten konnten nicht geladen werden. Bitte Verbindung und Veröffentlichung prüfen.";
+      : "Reisedaten konnten nicht geladen werden. "+
+        "Bitte Verbindung und Veröffentlichung prüfen.";
 
     if(!lastSuccess) {
       DATA_PAGES.forEach(id=>{
         document.getElementById(id).innerHTML=`
           <div class="notice amber">
             <strong>Reiseinformationen gerade nicht verfügbar.</strong>
-            <p>Bitte „Jetzt aktualisieren“ versuchen. Der Teilnehmerbereich bleibt verfügbar.</p>
-            <p class="small">Technischer Hinweis: ${esc(error.message)}</p>
+            <p>
+              Bitte „Jetzt aktualisieren“ versuchen.
+              Der Teilnehmerbereich bleibt verfügbar.
+            </p>
+            <p class="small">
+              Technischer Hinweis: ${esc(error.message)}
+            </p>
           </div>`;
       });
     }
+
     console.error("Google-Sheets-Abruf:",error);
+
   } finally {
     clearTimeout(timeout);
     button.disabled=false;
@@ -1535,7 +1903,8 @@ loadImage(
 
 renderParticipants();
 
-document.getElementById("refresh-button").addEventListener("click",refreshData);
+document.getElementById("refresh-button")
+  .addEventListener("click",refreshData);
 
 setInterval(()=>{
   if(!document.hidden) refreshData();
