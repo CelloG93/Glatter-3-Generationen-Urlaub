@@ -3,87 +3,163 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#183d32">
+<meta name="theme-color" content="#101713">
+<meta name="color-scheme" content="dark">
 <title>Bergamo · 3 Generationen Urlaub</title>
 
 <style>
 :root {
-  --bg:#f5f4ee;
-  --paper:#fffefb;
-  --green:#183d32;
-  --soft:#e7efe8;
-  --text:#25362f;
-  --muted:#68736c;
-  --line:#e1e5dc;
-  --gold:#ebc580;
-  --amber-bg:#fff0d8;
-  --amber-text:#80551a;
+  color-scheme:dark;
+  --bg:#101713;
+  --paper:#19221c;
+  --paper-raised:#202b23;
+  --green:#a9c3ad;
+  --soft:#253229;
+  --text:#eeeade;
+  --muted:#b2b8aa;
+  --line:#384238;
+  --gold:#c7ac73;
+  --gold-soft:#302b20;
+  --amber-bg:#332a1c;
+  --amber-text:#e5c58c;
+  --radius:5px;
 }
+
 * { box-sizing:border-box; }
+
 body {
   margin:0;
-  background:var(--bg);
+  background:
+    radial-gradient(ellipse at top right,#25312655,transparent 55%),
+    var(--bg);
   color:var(--text);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.6;
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.7;
 }
-button,select { font:inherit; cursor:pointer; }
+
+button,select {
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:.84rem;
+  cursor:pointer;
+}
+
 button:disabled { cursor:wait; opacity:.6; }
-a { color:var(--green); text-underline-offset:4px; }
+a { color:var(--gold); text-underline-offset:4px; }
 img { display:block; max-width:100%; }
 [hidden] { display:none !important; }
-:focus-visible { outline:3px solid #b08132; outline-offset:4px; }
-.wrap { max-width:1180px; margin:auto; padding:0 24px; }
+
+:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:5px;
+}
+
+.wrap { max-width:1200px; margin:auto; padding:0 28px; }
+
 .skip {
   position:absolute;
   top:-100px;
   left:16px;
   z-index:10;
   padding:12px;
-  background:white;
+  background:var(--paper);
+  color:var(--text);
 }
 .skip:focus { top:12px; }
+
 .topbar {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:18px;
-  padding:22px 0;
+  gap:22px;
+  padding:30px 0;
 }
-.brand { font-weight:850; letter-spacing:-.5px; }
-.topbar small { color:var(--muted); }
+
+.brand {
+  position:relative;
+  display:inline-block;
+  padding:8px 0 14px;
+  color:var(--text);
+  font-family:Georgia,serif;
+  font-size:1.05rem;
+  font-weight:bold;
+  letter-spacing:3px;
+  white-space:nowrap;
+}
+
+/* Italienische Flagge: von links nach rechts grün, weiß, rot */
+.brand::after {
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:5px;
+  background:linear-gradient(
+    to right,
+    #009246 0%,
+    #009246 33.333%,
+    #f1f2f1 33.333%,
+    #f1f2f1 66.666%,
+    #ce2b37 66.666%,
+    #ce2b37 100%
+  );
+}
+
+.topbar small {
+  color:var(--muted);
+  font-family:system-ui,sans-serif;
+  font-size:.76rem;
+  letter-spacing:.4px;
+}
 
 .hero {
   display:grid;
-  grid-template-columns:1fr 1.1fr;
+  grid-template-columns:1fr 1.15fr;
   overflow:hidden;
-  border-radius:26px;
-  background:var(--green);
-  color:white;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--paper);
 }
-.hero-copy { padding:44px; }
+
+.hero-copy {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:52px 44px;
+}
+
 .eyebrow {
-  font-size:.72rem;
-  font-weight:800;
-  letter-spacing:2px;
+  font-family:system-ui,sans-serif;
+  font-size:.66rem;
+  font-weight:650;
+  letter-spacing:3px;
   text-transform:uppercase;
+  color:var(--gold);
 }
-.hero .eyebrow { color:var(--gold); }
+
 h1 {
-  margin:18px 0;
-  font-family:Georgia,serif;
-  font-size:clamp(2.6rem,5.4vw,4.5rem);
+  margin:24px 0;
+  font-size:clamp(2.8rem,5.5vw,4.8rem);
   font-weight:normal;
-  line-height:1.1;
+  line-height:1.12;
+  letter-spacing:-1px;
 }
-.hero p { color:#deebe2; }
+
+.hero-divider {
+  width:65px;
+  height:1px;
+  background:var(--gold);
+  margin:3px 0 6px;
+}
+
 .hero-photo {
   position:relative;
   display:grid;
   place-items:center;
-  min-height:400px;
-  background:#285143;
+  min-height:430px;
+  background:#26332a;
 }
+
 .hero-photo img {
   position:absolute;
   inset:0;
@@ -91,29 +167,27 @@ h1 {
   height:100%;
   object-fit:cover;
 }
+
 .photo-placeholder {
   padding:32px;
   text-align:center;
-  color:#e1ebe5;
+  color:var(--muted);
 }
-.hero-caption {
-  position:absolute;
-  left:18px;
-  right:18px;
-  bottom:18px;
-  z-index:1;
-  padding:10px 14px;
-  border-radius:12px;
-  background:#15362de6;
-  font-size:.8rem;
+
+.chips {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:25px;
 }
-.chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
+
 .chip {
-  padding:6px 11px;
-  border:1px solid #ffffff35;
-  border-radius:30px;
-  background:#ffffff09;
-  font-size:.78rem;
+  padding:5px 10px;
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-family:system-ui,sans-serif;
+  font-size:.71rem;
+  letter-spacing:.3px;
 }
 
 .navigation {
@@ -121,235 +195,282 @@ h1 {
   justify-content:space-between;
   align-items:center;
   gap:24px;
-  margin:22px 0 14px;
-  padding:18px 22px;
+  margin:25px 0 12px;
+  padding:20px 24px;
   background:var(--paper);
   border:1px solid var(--line);
-  border-radius:18px;
+  border-radius:var(--radius);
 }
-.navigation strong { display:block; }
-.navigation small { color:var(--muted); }
-.select-wrap { width:340px; max-width:100%; }
+
+.navigation strong { display:block; font-size:1.1rem; font-weight:normal; }
+.navigation small { color:var(--muted); font-size:.85rem; }
+.select-wrap { width:345px; max-width:100%; }
+
 .select-wrap label {
   display:block;
-  margin-bottom:5px;
-  font-size:.74rem;
-  font-weight:700;
+  margin-bottom:6px;
   color:var(--muted);
+  font-family:system-ui,sans-serif;
+  font-size:.65rem;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
 }
+
 select {
   width:100%;
   padding:12px 14px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:var(--soft);
-  color:var(--green);
-  font-weight:750;
+  border:1px solid #69705b;
+  border-radius:3px;
+  background:var(--bg);
+  color:var(--text);
 }
+
 .syncbar {
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:14px;
-  margin-bottom:26px;
-  padding:10px 4px;
+  margin-bottom:30px;
+  padding:10px 2px;
   color:var(--muted);
-  font-size:.76rem;
+  font-family:system-ui,sans-serif;
+  font-size:.7rem;
 }
+
 .syncbar[data-state="error"] {
   padding:14px;
-  border-radius:12px;
+  border:1px solid #715b36;
   background:var(--amber-bg);
   color:var(--amber-text);
 }
+
 .button {
   display:inline-block;
-  padding:8px 12px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:var(--paper);
-  color:var(--green);
+  padding:9px 13px;
+  border:1px solid #82714e;
+  border-radius:3px;
+  background:transparent;
+  color:var(--gold);
+  font-family:system-ui,sans-serif;
+  font-size:.73rem;
+  font-weight:550;
+  line-height:1.5;
   text-decoration:none;
-  font-size:.8rem;
-  font-weight:750;
+  transition:background .15s ease;
 }
-.button:hover { background:var(--soft); }
-.actions { display:flex; flex-wrap:wrap; gap:8px; }
 
-main { padding-bottom:36px; }
-.section-head { margin:8px 0 22px; }
+.button:hover { background:var(--gold-soft); }
+.actions { display:flex; flex-wrap:wrap; gap:9px; }
+
+main { padding-bottom:42px; }
+.section-head { margin:8px 0 25px; }
+
 h2 {
   margin:0;
-  font-size:1.7rem;
-  letter-spacing:-.7px;
-  line-height:1.25;
-}
-h3 { margin:0 0 14px; font-size:1.1rem; }
-p { margin:8px 0 16px; }
-.section-head p { margin-bottom:0; }
-.muted { color:var(--muted); }
-.small { font-size:.82rem; }
-.space { margin-top:20px; }
-.grid { display:grid; gap:18px; }
-.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
-.stats { grid-template-columns:repeat(4,minmax(0,1fr)); }
-.card {
-  min-width:0;
-  padding:24px;
-  border:1px solid var(--line);
-  border-radius:20px;
-  background:var(--paper);
-}
-.dark {
-  background:var(--green);
-  border-color:var(--green);
-  color:white;
-}
-.stat-label { color:var(--muted); font-size:.8rem; }
-.stat-note { color:var(--muted); font-size:.75rem; }
-.stat-value {
-  margin:8px 0;
-  font-size:clamp(1.3rem,2.8vw,1.85rem);
-  font-weight:850;
-  letter-spacing:-.7px;
+  font-size:2rem;
+  font-weight:normal;
   line-height:1.3;
 }
-.dark .stat-label,
-.dark .stat-note,
-.dark .muted { color:#d7e4db; }
+
+h3 { margin:0 0 14px; font-size:1.2rem; font-weight:normal; }
+p { margin:8px 0 17px; }
+.section-head p { margin-bottom:0; }
+.muted { color:var(--muted); }
+.small { font-size:.86rem; }
+.space { margin-top:22px; }
+.grid { display:grid; gap:20px; }
+.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.stats { grid-template-columns:repeat(4,minmax(0,1fr)); }
+
+.card {
+  min-width:0;
+  padding:26px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--paper);
+}
+
+.dark {
+  background:#213026;
+  border-color:#51634b;
+}
+
+.stat-label {
+  color:var(--muted);
+  font-family:system-ui,sans-serif;
+  font-size:.65rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.stat-note { color:var(--muted); font-size:.78rem; }
+
+.stat-value {
+  margin:10px 0;
+  color:var(--gold);
+  font-size:clamp(1.4rem,2.8vw,1.95rem);
+  line-height:1.3;
+}
+
 .badge {
   display:inline-block;
-  padding:5px 11px;
-  border-radius:30px;
+  padding:4px 9px;
+  border:1px solid #56664e;
+  border-radius:2px;
   background:var(--soft);
-  color:var(--green);
-  font-size:.75rem;
-  font-weight:750;
+  color:#d0dfc8;
+  font-family:system-ui,sans-serif;
+  font-size:.67rem;
 }
+
 .badge.amber {
   background:var(--amber-bg);
+  border-color:#725d36;
   color:var(--amber-text);
 }
+
 .notice {
-  padding:16px 18px;
-  border-radius:14px;
-  background:var(--soft);
-  font-size:.84rem;
+  padding:17px 19px;
+  border-left:2px solid var(--gold);
+  background:var(--paper-raised);
+  font-size:.86rem;
 }
+
 .notice.amber {
   background:var(--amber-bg);
   color:var(--amber-text);
 }
+
 .table-wrap { overflow-x:auto; }
+
 table {
   width:100%;
   border-collapse:collapse;
-  font-size:.87rem;
+  font-family:system-ui,sans-serif;
+  font-size:.8rem;
   font-variant-numeric:tabular-nums;
 }
+
 th,td {
-  padding:14px 10px;
+  padding:15px 10px;
   border-bottom:1px solid var(--line);
   text-align:left;
   vertical-align:top;
 }
+
 th {
-  color:var(--muted);
-  font-size:.7rem;
-  letter-spacing:.5px;
+  color:var(--gold);
+  font-size:.64rem;
+  font-weight:550;
+  letter-spacing:.8px;
   text-transform:uppercase;
 }
+
 .num { text-align:right; white-space:nowrap; }
-tfoot td { background:#f1f5ed; font-weight:800; }
+tfoot td { background:#263127; font-weight:650; }
+
 .table-note {
   margin-bottom:0;
   color:var(--muted);
-  font-size:.77rem;
+  font-size:.79rem;
 }
+
 .facts { margin:0; }
 .facts > div { padding:12px 0; border-bottom:1px solid var(--line); }
 .facts > div:last-child { border-bottom:0; }
-dt { color:var(--muted); font-size:.77rem; margin-bottom:3px; }
-dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
 
-.timeline { display:grid; gap:18px; }
+dt {
+  color:var(--muted);
+  font-family:system-ui,sans-serif;
+  font-size:.69rem;
+  margin-bottom:4px;
+}
+
+dd { margin:0; overflow-wrap:anywhere; }
+
+.timeline { display:grid; gap:23px; }
+
 .day {
   display:grid;
-  grid-template-columns:120px 1fr;
+  grid-template-columns:125px 1fr;
   gap:24px;
 }
-.day-date { padding:12px 0; color:var(--green); }
-.day-date strong { display:block; font-size:1.15rem; }
-.day-date span { font-size:.8rem; color:var(--muted); }
+
+.day-date { padding:12px 0; color:var(--gold); }
+.day-date strong { display:block; font-size:1.12rem; font-weight:normal; }
+.day-date span { font-size:.82rem; color:var(--muted); }
+
 .day-events {
-  border-left:2px solid var(--line);
-  padding-left:24px;
+  border-left:1px solid #6d654d;
+  padding-left:25px;
   display:grid;
-  gap:12px;
+  gap:13px;
 }
+
 .event {
   position:relative;
-  padding:20px;
+  padding:22px;
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:var(--radius);
   background:var(--paper);
 }
+
 .event::before {
   content:"";
   position:absolute;
-  width:10px;
-  height:10px;
-  border:3px solid var(--bg);
+  width:9px;
+  height:9px;
+  border:2px solid var(--bg);
   border-radius:50%;
-  background:var(--green);
-  left:-33px;
-  top:25px;
+  background:var(--gold);
+  left:-32px;
+  top:27px;
 }
+
 .event-top {
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  margin-bottom:7px;
+  margin-bottom:9px;
 }
+
 .event-type {
-  font-size:.72rem;
   color:var(--muted);
-  font-weight:750;
+  font-family:system-ui,sans-serif;
+  font-size:.64rem;
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
-.event h3 { margin:0 0 5px; }
-.event p {
-  margin:0 0 12px;
-  font-size:.85rem;
-  color:var(--muted);
-}
-.event-time {
-  font-weight:800;
-  font-size:.85rem;
-  color:var(--green);
-}
-.event.pending { border-color:#e6cfaa; }
-.event.pending::before { background:#b38438; }
+
+.event h3 { margin:0 0 7px; }
+.event p { margin:0 0 14px; font-size:.87rem; color:var(--muted); }
+.event-time { color:var(--gold); font-size:.85rem; }
+.event.pending { border-color:#695637; }
+.event.romme-event { background:#24241e; border-color:#5b553d; }
 
 .travel-photo {
-  margin:0 0 22px;
+  margin:0 0 24px;
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:20px;
+  border-radius:var(--radius);
   background:var(--soft);
 }
+
 .travel-photo img {
   width:100%;
   height:clamp(220px,32vw,400px);
   object-fit:cover;
   object-position:center;
 }
+
 .travel-photo figcaption {
   padding:10px 15px;
   background:var(--paper);
   color:var(--muted);
   font-size:.76rem;
 }
+
 .image-placeholder {
   display:grid;
   place-items:center;
@@ -359,56 +480,49 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   color:var(--muted);
   font-size:.85rem;
 }
-.golf-list { display:grid; gap:22px; }
+
+.golf-list { display:grid; gap:24px; }
+
 .golf-entry {
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:20px;
+  border-radius:var(--radius);
   background:var(--paper);
 }
-.golf-entry .travel-photo {
-  margin:0;
-  border:0;
-  border-radius:0;
-}
-.golf-entry .travel-photo img {
-  height:clamp(210px,29vw,350px);
-}
+
+.golf-entry .travel-photo { margin:0; border:0; border-radius:0; }
+.golf-entry .travel-photo img { height:clamp(210px,29vw,350px); }
+
 .golf-card {
   display:grid;
   grid-template-columns:72px 1fr auto;
   align-items:center;
-  gap:20px;
-  padding:24px;
+  gap:22px;
+  padding:26px;
 }
+
 .date-tile {
   padding:12px 7px;
-  border-radius:14px;
-  background:var(--soft);
-  color:var(--green);
+  border:1px solid var(--line);
+  color:var(--gold);
   text-align:center;
 }
-.date-tile strong {
-  display:block;
-  font-size:1.7rem;
-  line-height:1.1;
-}
-.date-tile span { font-size:.7rem; }
+
+.date-tile strong { display:block; font-size:1.8rem; font-weight:normal; line-height:1.1; }
+.date-tile span { color:var(--muted); font-size:.7rem; }
 .golf-card h3 { margin:0 0 4px; }
 .golf-price { text-align:right; }
-.golf-price strong { display:block; font-size:1.35rem; }
-.flight-time {
-  margin:20px 0;
-  font-size:2rem;
-  font-weight:850;
-}
+.golf-price strong { display:block; font-size:1.4rem; color:var(--gold); font-weight:normal; }
+.flight-time { margin:22px 0; font-size:2rem; color:var(--gold); }
 
 .participants {
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:18px;
+  gap:20px;
 }
+
 .participant { padding:0; overflow:hidden; }
+
 .portrait {
   position:relative;
   display:grid;
@@ -416,121 +530,106 @@ dd { margin:0; font-weight:650; overflow-wrap:anywhere; }
   aspect-ratio:1;
   background:var(--soft);
 }
-.initials {
-  color:var(--green);
-  font-family:Georgia,serif;
-  font-size:4rem;
-}
-.portrait img {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.participant-body { padding:22px; }
+
+.initials { color:var(--gold); font-size:4rem; }
+.portrait img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.participant-body { padding:23px; }
 .participant h3 { margin-bottom:5px; }
 .photo-error { color:var(--amber-text); font-size:.75rem; }
 
-.restaurant-head,
-.results-summary {
+.restaurant-head,.results-summary {
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
   flex-wrap:wrap;
   gap:14px;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
-.restaurant-head h3,
-.results-summary h3 { margin:0; }
+
+.restaurant-head h3,.results-summary h3 { margin:0; }
 
 .rules-list { display:grid; gap:12px; }
+
 .rule-section {
   overflow:hidden;
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:var(--radius);
   background:var(--paper);
 }
+
 .rule-section summary {
-  padding:18px 20px;
+  padding:19px 22px;
   cursor:pointer;
-  color:var(--green);
-  font-weight:800;
+  color:var(--gold);
+  font-size:1.05rem;
 }
-.rule-section[open] summary {
-  border-bottom:1px solid var(--line);
-}
-.rule-content { padding:8px 20px 18px; }
-.rule-content p { margin:12px 0; white-space:pre-line; }
-.rule-label { font-weight:750; }
+
+.rule-section[open] summary { border-bottom:1px solid var(--line); }
+.rule-content { padding:8px 22px 20px; }
+.rule-content p { margin:13px 0; white-space:pre-line; }
+.rule-label { color:var(--gold); }
 
 footer {
-  padding:22px 0 32px;
+  padding:25px 0 36px;
   border-top:1px solid var(--line);
   color:var(--muted);
-  font-size:.75rem;
+  font-size:.76rem;
 }
+
 @media(max-width:900px) {
   .hero { grid-template-columns:1fr; }
   .hero-photo { min-height:0; aspect-ratio:16/9; }
-  .stats,.participants {
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
+  .stats,.participants { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .two { grid-template-columns:1fr; }
 }
+
 @media(max-width:560px) {
   .wrap { padding:0 16px; }
-  .topbar { align-items:flex-start; }
-  .topbar small { font-size:.7rem; text-align:right; }
-  .hero-copy { padding:30px 24px; }
-  .hero { border-radius:20px; }
+  .topbar { align-items:flex-start; flex-direction:column; gap:14px; padding:22px 0; }
+  .brand { font-size:.94rem; letter-spacing:2.4px; }
+  .topbar small { font-size:.68rem; }
+  .hero-copy { padding:33px 26px; }
   .hero-photo { aspect-ratio:4/3; }
-  .hero-caption { font-size:.7rem; }
-  .navigation {
-    flex-direction:column;
-    align-items:stretch;
-    gap:12px;
-  }
+  .navigation { flex-direction:column; align-items:stretch; gap:15px; padding:20px; }
   .select-wrap { width:100%; }
-  .card { padding:18px; }
+  .card { padding:20px; }
   .stats { gap:10px; }
-  .stats .card { padding:16px 12px; }
-  .stat-value { font-size:1.3rem; }
+  .stats .card { padding:17px 12px; }
+  .stat-value { font-size:1.35rem; }
+  .stat-label { font-size:.59rem; }
   .syncbar { flex-direction:column; align-items:flex-start; }
-  .day { grid-template-columns:1fr; gap:5px; }
+  .day { grid-template-columns:1fr; gap:9px; }
   .day-date { padding:0; }
   .day-date strong { display:inline; margin-right:8px; }
-  .day-events { margin-left:6px; padding-left:20px; }
-  .event::before { left:-29px; }
-  .event-top,.restaurant-head {
-    align-items:flex-start;
-    flex-direction:column;
-    gap:6px;
-  }
-  .golf-card {
-    grid-template-columns:58px 1fr;
-    gap:14px;
-    padding:18px;
-  }
+  .day-events { margin-left:5px; padding-left:20px; }
+  .event { padding:18px; }
+  .event::before { left:-27px; }
+  .event-top,.restaurant-head { align-items:flex-start; flex-direction:column; gap:6px; }
+  .golf-card { grid-template-columns:58px 1fr; gap:14px; padding:19px; }
   .golf-price { grid-column:2; text-align:left; }
   .golf-price strong { display:inline; margin-right:6px; }
   .participants { grid-template-columns:1fr; }
   .participant { padding:0; }
+  h2 { font-size:1.7rem; }
 }
+
 @media print {
+  :root {
+    color-scheme:light;
+    --bg:#fff; --paper:#fff; --paper-raised:#f3f3f3;
+    --text:#111; --muted:#444; --gold:#55421b; --line:#ccc;
+    --soft:#eee; --amber-bg:#fff; --amber-text:#333;
+  }
   body { background:white; }
   .navigation,.syncbar,.skip,.button { display:none; }
   .page[hidden] { display:block !important; }
   .page { break-before:page; }
   #home { break-before:auto; }
-  .card,.golf-entry,.travel-photo,.event,.rule-section {
-    break-inside:avoid;
-  }
+  .card,.golf-entry,.travel-photo,.event,.rule-section { break-inside:avoid; }
   .hero { display:block; }
   .hero-photo { display:none; }
-  .hero,.dark { background:white; color:black; }
-  .hero p,.hero .eyebrow,.dark .muted,
-  .dark .stat-label,.dark .stat-note { color:black; }
+  .hero,.dark,.event.romme-event { background:white; color:black; }
+  tfoot td { background:#eee; }
 }
 </style>
 </head>
@@ -541,70 +640,57 @@ footer {
 <div class="wrap">
   <header>
     <div class="topbar">
-      <div class="brand">⛳ GLATTER / ON TOUR</div>
+      <div class="brand">GLATTER / ON TOUR</div>
       <small id="trip-title">Bergamo · Unser Familienurlaub</small>
     </div>
 
     <div class="hero">
       <div class="hero-copy">
-        <div class="eyebrow">Familienzeit. Golf. Italien.</div>
+        <div class="eyebrow">Bergamo · Italien</div>
         <h1>3 Generationen<br>Urlaub</h1>
-        <p>
-          Gemeinsam unterwegs in Bergamo: Golf, Familienzeit
-          und Opa Winfried als unser aller Caddy.
-        </p>
+        <div class="hero-divider" aria-hidden="true"></div>
         <div class="chips">
           <span class="chip">Marcel</span>
           <span class="chip">Julian</span>
           <span class="chip">Steffen</span>
-          <span class="chip">Opa Winfried ♥</span>
+          <span class="chip">Opa Winfried</span>
         </div>
       </div>
 
       <div class="hero-photo">
-        <div class="photo-placeholder" id="group-placeholder">
-          Unser Gruppenfoto
-        </div>
+        <div class="photo-placeholder" id="group-placeholder">Unser Gruppenfoto</div>
         <img id="group-photo"
           alt="Unsere Reisegruppe mit Marcel, Julian, Steffen und Winfried"
           fetchpriority="high" hidden>
-        <div class="hero-caption">
-          Gemeinsam unterwegs · Erinnerungen, die bleiben.
-        </div>
       </div>
     </div>
   </header>
 
   <nav class="navigation" aria-label="Reisenavigation">
     <div>
-      <strong>Unsere Reise auf einen Blick</strong>
-      <small>Der Ablauf auf der Startseite, alle Details im Menü.</small>
+      <strong>Unser Reisejournal</strong>
+      <small>Ablauf, Reiseinformationen und gemeinsame Ergebnisse.</small>
     </div>
-
     <div class="select-wrap">
       <label for="page-select">Bereich auswählen</label>
       <select id="page-select" aria-controls="main">
-        <option value="home">🏡 Startseite & Ablaufplan</option>
-        <option value="golf">⛳ Unsere Courses</option>
-        <option value="golf-results">🏆 Golf-Ergebnisse</option>
-        <option value="romme">🃏 Rommé: Ergebnisse & Regeln</option>
-        <option value="hotel">🏨 Unterkunft</option>
-        <option value="flights">✈ Flüge</option>
-        <option value="car">🚗 Mietwagen</option>
-        <option value="restaurants">🍽 Restaurants</option>
-        <option value="participants">👥 Teilnehmer</option>
-        <option value="costs">€ Kosten & Fälligkeiten</option>
+        <option value="home">Startseite & Ablaufplan</option>
+        <option value="golf">Unsere Courses</option>
+        <option value="golf-results">Golf-Ergebnisse</option>
+        <option value="romme">Rommé: Ergebnisse & Regeln</option>
+        <option value="hotel">Unterkunft</option>
+        <option value="flights">Flüge</option>
+        <option value="car">Mietwagen</option>
+        <option value="restaurants">Restaurants</option>
+        <option value="participants">Teilnehmer</option>
+        <option value="costs">Kosten & Fälligkeiten</option>
       </select>
     </div>
   </nav>
 
   <div class="syncbar" id="syncbar">
-    <span id="sync-status" role="status" aria-live="polite">
-      Reisedaten werden geladen …
-    </span>
-    <button class="button" id="refresh-button" type="button">
-      Jetzt aktualisieren
-    </button>
+    <span id="sync-status" role="status" aria-live="polite">Reisedaten werden geladen …</span>
+    <button class="button" id="refresh-button" type="button">Jetzt aktualisieren</button>
   </div>
 
   <noscript>
@@ -630,18 +716,16 @@ footer {
 
   <footer>
     Bergamo · Marcel, Julian, Steffen & Winfried<br>
-    Reisedaten aus dem veröffentlichten Google Sheet.
+    Reiseinformationen aus dem veröffentlichten Google Sheet.
     Automatischer Abruf alle fünf Minuten bei sichtbarer Seite.
-    Bilder und Handicaps werden im Website-Projekt gepflegt.
+    Fotos und Handicaps werden im Website-Projekt gepflegt.
   </footer>
 </div>
 
 <script>
 "use strict";
 
-/* =====================================================
-   EINSTELLUNGEN
-   ===================================================== */
+/* ===================== EINSTELLUNGEN ===================== */
 
 const CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/" +
@@ -651,8 +735,8 @@ const CSV_URL =
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 const DATA_PAGES = [
-  "home", "golf", "golf-results", "romme", "hotel",
-  "flights", "car", "restaurants", "costs"
+  "home","golf","golf-results","romme","hotel",
+  "flights","car","restaurants","costs"
 ];
 
 const PARTICIPANTS = [
@@ -679,65 +763,50 @@ const GOLF_PLAYERS = ["Steffen","Julian","Marcel"];
 const ROMME_PLAYERS = ["Winfried","Steffen","Julian","Marcel"];
 
 /*
-  Bilder werden zuerst im Ordner "bilder" gesucht,
-  alternativ im Hauptverzeichnis.
-
-  Falls nötig, Bildnachweise ergänzen:
-  credit: "Foto: Name"
-  source: "https://..."
+  Reisefotos: zuerst Ordner "bilder", alternativ Hauptverzeichnis.
+  Bei Bedarf Fotograf und Quelle unter credit/source ergänzen.
 */
 const PHOTOS = {
   hotel:{
-    file:"hotel.jpg",
-    alt:"Hotel Cappello D’Oro in Bergamo",
+    file:"hotel.jpg", alt:"Hotel Cappello D’Oro in Bergamo",
     credit:"", source:""
   },
   flights:{
-    file:"eurowings.jpg",
-    alt:"Flugzeug von Eurowings",
+    file:"eurowings.jpg", alt:"Flugzeug von Eurowings",
     credit:"", source:""
   },
   golf:{
     "golfclub milano":{
-      file:"golf-milano.jpg",
-      alt:"Golfplatz des Golfclub Milano",
+      file:"golf-milano.jpg", alt:"Golfplatz des Golfclub Milano",
       credit:"", source:""
     },
     "golf club bergamo l'albenza":{
-      file:"golf-bergamo.jpg",
-      alt:"Golfplatz des Golf Club Bergamo L’Albenza",
+      file:"golf-bergamo.jpg", alt:"Golfplatz des Golf Club Bergamo L’Albenza",
       credit:"", source:""
     },
     "golf brianza country club a.s.d.":{
-      file:"golf-brianza.jpg",
-      alt:"Golfplatz des Golf Brianza Country Club",
+      file:"golf-brianza.jpg", alt:"Golfplatz des Golf Brianza Country Club",
       credit:"", source:""
     },
     "golf club franciacorta":{
-      file:"golf-franciacorta.jpg",
-      alt:"Golfplatz des Golf Club Franciacorta",
+      file:"golf-franciacorta.jpg", alt:"Golfplatz des Golf Club Franciacorta",
       credit:"", source:""
     },
     "golf club villa paradiso":{
-      file:"golf-villa-paradiso.jpg",
-      alt:"Golfplatz des Golf Club Villa Paradiso",
+      file:"golf-villa-paradiso.jpg", alt:"Golfplatz des Golf Club Villa Paradiso",
       credit:"", source:""
     }
   }
 };
 
-/* =====================================================
-   FORMATIERUNG
-   ===================================================== */
+/* ===================== HILFSFUNKTIONEN ===================== */
 
 const euro = new Intl.NumberFormat("de-DE", {
   style:"currency", currency:"EUR"
 });
-
 const resultFormatter = new Intl.NumberFormat("de-DE", {
   maximumFractionDigits:2
 });
-
 const money = value => euro.format(value);
 
 function esc(value) {
@@ -756,44 +825,38 @@ function photoKey(value) {
 }
 
 function amount(value) {
-  const text = String(value ?? "")
-    .replace(/€/g,"")
-    .replace(/\s/g,"")
-    .replace(/\./g,"")
-    .replace(",",".");
-
+  const text=String(value ?? "").replace(/€/g,"")
+    .replace(/\s/g,"").replace(/\./g,"").replace(",",".");
   return /^-?\d+(?:\.\d+)?$/.test(text) ? Number(text) : NaN;
 }
 
 function requiredAmount(value,label) {
-  const result = amount(value);
-  if (!Number.isFinite(result) || result < 0) {
-    throw new Error("Ungültiger Betrag: " + label);
+  const result=amount(value);
+  if(!Number.isFinite(result) || result<0) {
+    throw new Error("Ungültiger Betrag: "+label);
   }
   return result;
 }
 
 function sum(values) {
-  return values.reduce(
-    (total,value) => total + Math.round(value*100),0
-  )/100;
+  return values.reduce((total,value)=>total+Math.round(value*100),0)/100;
 }
 
 function differs(a,b) {
-  return Math.round(a*100) !== Math.round(b*100);
+  return Math.round(a*100)!==Math.round(b*100);
 }
 
 function safeUrl(value) {
   try {
-    const url = new URL(value);
-    return url.protocol === "https:" ? url.href : "";
+    const url=new URL(value);
+    return url.protocol==="https:" ? url.href : "";
   } catch {
     return "";
   }
 }
 
 function link(url,label) {
-  const checked = safeUrl(url);
+  const checked=safeUrl(url);
   return checked ? `
     <a class="button" href="${esc(checked)}"
       target="_blank" rel="noopener noreferrer">${esc(label)}</a>
@@ -817,12 +880,8 @@ function detailButton(page,label="Details ansehen") {
     data-page="${esc(page)}">${esc(label)} →</button>`;
 }
 
-/*
-  numericColumns ist optional.
-  Standard: alle Spalten außer der ersten rechtsbündig.
-*/
 function table(headers,rows,totals=null,numericColumns=null) {
-  const numeric = numericColumns ??
+  const numeric=numericColumns ??
     headers.map((_,index)=>index).filter(index=>index>0);
 
   function cells(row,tag) {
@@ -836,11 +895,17 @@ function table(headers,rows,totals=null,numericColumns=null) {
 
   return `<div class="table-wrap"><table>
     <thead><tr>${cells(headers,"th")}</tr></thead>
-    <tbody>
-      ${rows.map(row=>`<tr>${cells(row,"td")}</tr>`).join("")}
-    </tbody>
+    <tbody>${rows.map(row=>`<tr>${cells(row,"td")}</tr>`).join("")}</tbody>
     ${totals ? `<tfoot><tr>${cells(totals,"td")}</tr></tfoot>` : ""}
   </table></div>`;
+}
+
+function warningBox(messages) {
+  return messages.length ? `
+    <div class="notice amber space">
+      <strong>Bitte im Google Sheet prüfen</strong>
+      <ul>${messages.map(message=>`<li>${esc(message)}</li>`).join("")}</ul>
+    </div>` : "";
 }
 
 function timestamp(date) {
@@ -853,22 +918,18 @@ function parseDate(text) {
   const match=String(text).match(/(\d{1,2})\.(\d{1,2})\.(\d{4})/);
   if(!match) return null;
 
-  const day=Number(match[1]);
-  const month=Number(match[2]);
-  const year=Number(match[3]);
+  const day=Number(match[1]), month=Number(match[2]), year=Number(match[3]);
   const date=new Date(year,month-1,day);
 
-  if(
-    date.getFullYear()!==year ||
-    date.getMonth()!==month-1 ||
-    date.getDate()!==day
-  ) return null;
+  if(date.getFullYear()!==year ||
+     date.getMonth()!==month-1 ||
+     date.getDate()!==day) return null;
 
   return date;
 }
 
 function dateLabel(text) {
-  const date=parseDate(text);
+  const date=text instanceof Date ? text : parseDate(text);
   return date ? date.toLocaleDateString("de-DE",{
     day:"2-digit",month:"2-digit",year:"numeric"
   }) : String(text ?? "");
@@ -876,21 +937,16 @@ function dateLabel(text) {
 
 function weekday(text) {
   const date=parseDate(text);
-  return date
-    ? date.toLocaleDateString("de-DE",{weekday:"long"})
-    : "";
+  return date ? date.toLocaleDateString("de-DE",{weekday:"long"}) : "";
 }
 
 function timeOnly(text) {
-  return String(text)
-    .replace(/\d{1,2}\.\d{1,2}\.\d{4}/,"")
+  return String(text).replace(/\d{1,2}\.\d{1,2}\.\d{4}/,"")
     .replace(/^[\s·,–-]+/,"").trim();
 }
 
 function timeMinutes(text,fallback=1500) {
-  const clean=String(text)
-    .replace(/\d{1,2}\.\d{1,2}\.\d{4}/g,"");
-
+  const clean=String(text).replace(/\d{1,2}\.\d{1,2}\.\d{4}/g,"");
   const colon=clean.match(/\b([01]?\d|2[0-3]):([0-5]\d)\b/);
   if(colon) return Number(colon[1])*60+Number(colon[2]);
 
@@ -902,12 +958,10 @@ function flightArrivalMinutes(flight) {
   const times=Array.from(
     String(flight.time).matchAll(/\b([01]?\d|2[0-3]):([0-5]\d)\b/g)
   );
-
   if(times.length>=2) {
     const last=times[times.length-1];
     return Number(last[1])*60+Number(last[2]);
   }
-
   return timeMinutes(flight.time,0)+1;
 }
 
@@ -916,18 +970,23 @@ function reservationPending(reservation) {
     .test(reservation.time);
 }
 
-function warningBox(messages) {
-  if(!messages.length) return "";
-  return `
-    <div class="notice amber space">
-      <strong>Bitte im Google Sheet prüfen</strong>
-      <ul>${messages.map(message=>`<li>${esc(message)}</li>`).join("")}</ul>
-    </div>`;
+function stayDates(trip) {
+  return {
+    start:parseDate(trip.hotel.checkin)||parseDate(trip.outbound.date),
+    end:parseDate(trip.hotel.checkout)||parseDate(trip.inbound.date)
+  };
 }
 
-/* =====================================================
-   BILDER
-   ===================================================== */
+function nightCount(trip) {
+  const {start,end}=stayDates(trip);
+  if(!start || !end) return null;
+  return Math.round((
+    Date.UTC(end.getFullYear(),end.getMonth(),end.getDate())-
+    Date.UTC(start.getFullYear(),start.getMonth(),start.getDate())
+  )/86400000);
+}
+
+/* ===================== BILDER ===================== */
 
 function loadImage(image,paths,onFailure,onSuccess) {
   let index=0;
@@ -937,7 +996,6 @@ function loadImage(image,paths,onFailure,onSuccess) {
     image.hidden=false;
     if(onSuccess) onSuccess();
   };
-
   image.onerror=()=>{
     image.hidden=true;
     next();
@@ -951,7 +1009,6 @@ function loadImage(image,paths,onFailure,onSuccess) {
     }
     image.src=paths[index++];
   }
-
   next();
 }
 
@@ -981,12 +1038,9 @@ function loadVisiblePhotos() {
       image.dataset.started="true";
 
       const file=image.dataset.travelFile;
-      const placeholder=image.closest("figure")
-        .querySelector(".image-placeholder");
+      const placeholder=image.closest("figure").querySelector(".image-placeholder");
 
-      loadImage(
-        image,
-        ["bilder/"+file,file],
+      loadImage(image,["bilder/"+file,file],
         ()=>{
           placeholder.hidden=false;
           placeholder.textContent="Bild nicht verfügbar: "+file;
@@ -998,29 +1052,20 @@ function loadVisiblePhotos() {
 
 function renderParticipants() {
   document.getElementById("participants").innerHTML=`
-    ${heading(
-      "Unser Reiseteam",
-      "Drei Generationen. Drei Golfer. Ein Lieblings-Caddy."
-    )}
-
+    ${heading("Unser Reiseteam","Drei Generationen. Drei Golfer. Ein gemeinsamer Caddy.")}
     <div class="participants">
       ${PARTICIPANTS.map((person,index)=>`
         <article class="card participant">
           <div class="portrait">
-            <span class="initials" aria-hidden="true">
-              ${esc(person.initials)}
-            </span>
+            <span class="initials" aria-hidden="true">${esc(person.initials)}</span>
             <img id="portrait-${index}"
-              alt="Porträt von ${esc(person.name)} Glatter"
-              decoding="async" hidden>
+              alt="Porträt von ${esc(person.name)} Glatter" decoding="async" hidden>
           </div>
           <div class="participant-body">
             <h3>${esc(person.name)}</h3>
             <p class="muted">${esc(person.role)}</p>
             <span class="badge">
-              ${person.handicap
-                ? "Handicap "+esc(person.handicap)
-                : "Caddy für alle ♥"}
+              ${person.handicap ? "Handicap "+esc(person.handicap) : "Caddy für alle"}
             </span>
             <p class="photo-error" id="photo-error-${index}" hidden>
               Foto nicht gefunden: ${esc(person.photos[0])}
@@ -1029,7 +1074,6 @@ function renderParticipants() {
         </article>
       `).join("")}
     </div>
-
     <div class="notice space">
       Winfried begleitet uns beim Golf als gemeinsamer Caddy.
       Bei Rommé spielt er selbstverständlich mit.
@@ -1044,23 +1088,18 @@ function renderParticipants() {
   });
 }
 
-/* =====================================================
-   CSV-PARSER
-   ===================================================== */
+/* ===================== CSV-PARSER ===================== */
 
 function parseCsv(text) {
   text=text.replace(/^\uFEFF/,"");
-
   const rows=[];
   let row=[],cell="",quoted=false;
 
   for(let i=0;i<text.length;i++) {
     const char=text[i];
-
     if(char==='"') {
       if(quoted && text[i+1]==='"') {
-        cell+='"';
-        i++;
+        cell+='"'; i++;
       } else if(quoted) {
         quoted=false;
       } else if(cell==="") {
@@ -1069,51 +1108,36 @@ function parseCsv(text) {
         cell+=char;
       }
     } else if(char==="," && !quoted) {
-      row.push(cell.trim());
-      cell="";
+      row.push(cell.trim()); cell="";
     } else if((char==="\n" || char==="\r") && !quoted) {
       if(char==="\r" && text[i+1]==="\n") i++;
-      row.push(cell.trim());
-      rows.push(row);
-      row=[];
-      cell="";
+      row.push(cell.trim()); rows.push(row);
+      row=[]; cell="";
     } else {
       cell+=char;
     }
   }
 
   if(quoted) throw new Error("Unvollständiges CSV-Textfeld.");
-
   if(cell!=="" || row.length) {
-    row.push(cell.trim());
-    rows.push(row);
+    row.push(cell.trim()); rows.push(row);
   }
-
   return rows.filter(row=>row.some(cell=>cell!==""));
 }
 
-/* =====================================================
-   ERGEBNISSE AUSLESEN
-   Keine festen Zeilennummern: zusätzliche Runden erlaubt.
-   ===================================================== */
+/* ===================== ERGEBNISSE AUSLESEN ===================== */
 
 function readResultNumber(value) {
-  const text=String(value ?? "")
-    .trim()
-    .replace(/\s/g,"")
-    .replace(/[−–]/g,"-")
-    .replace(",",".");
-
+  const text=String(value ?? "").trim().replace(/\s/g,"")
+    .replace(/[−–]/g,"-").replace(",",".");
   if(text==="") return null;
   if(!/^[+-]?\d+(?:\.\d+)?$/.test(text)) return NaN;
-
   return Number(text);
 }
 
 function resultText(value) {
   return value===null || !Number.isFinite(value)
-    ? "—"
-    : resultFormatter.format(value);
+    ? "—" : resultFormatter.format(value);
 }
 
 function golfResultText(value) {
@@ -1123,20 +1147,14 @@ function golfResultText(value) {
 }
 
 function completeResultRow(row) {
-  return row.values.every(value=>
-    value!==null && Number.isFinite(value)
-  );
+  return row.values.every(value=>value!==null && Number.isFinite(value));
 }
 
 function resultColumns(rows,count) {
   return Array.from({length:count},(_,index)=>{
     const values=rows.map(row=>row.values[index])
       .filter(value=>value!==null && Number.isFinite(value));
-
-    return {
-      count:values.length,
-      total:values.length ? sum(values) : null
-    };
+    return {count:values.length,total:values.length ? sum(values) : null};
   });
 }
 
@@ -1147,7 +1165,6 @@ function readGames(sections) {
     return Array.from({length:count},(_,index)=>{
       const original=cells[index] ?? "";
       const value=readResultNumber(original);
-
       if(value===null) return null;
 
       if(!Number.isFinite(value) || (nonNegative && value<0)) {
@@ -1155,110 +1172,68 @@ function readGames(sections) {
           `${label}: „${original}“ wurde nicht gewertet. `+
           (nonNegative
             ? "Minuspunkte bitte als positive Zahl oder 0 eintragen."
-            : "Bitte ein numerisches Ergebnis eintragen, z. B. +3, 0 oder -2.")
+            : "Bitte eine Zahl eintragen, z. B. +3, 0 oder -2.")
         );
         return null;
       }
-
       return value;
     });
   }
 
   const golfSection=sections["Scoring Golf"]||[];
-
   const golfRows=golfSection
-    .filter(row=>
-      /^\d{1,2}\.\d{1,2}\.\d{4}$/.test(row[0]||"")
-    )
+    .filter(row=>/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(row[0]||""))
     .map(row=>({
       date:row[0],
-      values:values(
-        row.slice(1,4),3,"Golf am "+row[0],"golf"
-      )
+      values:values(row.slice(1,4),3,"Golf am "+row[0],"golf")
     }))
     .sort((a,b)=>
-      (parseDate(a.date)?.getTime()||0)-
-      (parseDate(b.date)?.getTime()||0)
+      (parseDate(a.date)?.getTime()||0)-(parseDate(b.date)?.getTime()||0)
     );
 
-  const golfSum=golfSection.find(row=>
-    norm(row[0])==="summe nettoschläge"
-  );
-
+  const golfSum=golfSection.find(row=>norm(row[0])==="summe nettoschläge");
   const golfTotals=golfSum
     ? values(golfSum.slice(1,4),3,"Golf-Summenzeile","golf")
     : [null,null,null];
 
   const rommeSection=sections["Romme Spielstand"]||[];
+  const headerIndex=rommeSection.findIndex(row=>norm(row[0]).startsWith("minuspunkte"));
+  const sumIndex=rommeSection.findIndex(row=>norm(row[0])==="summe minuspunkte");
 
-  const headerIndex=rommeSection.findIndex(row=>
-    norm(row[0]).startsWith("minuspunkte")
-  );
-
-  const sumIndex=rommeSection.findIndex(row=>
-    norm(row[0])==="summe minuspunkte"
-  );
-
-  /*
-    Alle Zeilen zwischen Überschrift und Summe einlesen.
-    Zusätzliche 20, 50 oder mehr Zeilen funktionieren genauso.
-    Vollständig leere Zeilen werden ignoriert.
-  */
+  // Zusätzliche Runden oberhalb der Summenzeile automatisch einlesen.
   const roundRows=rommeSection.slice(
     headerIndex>=0 ? headerIndex+1 : 0,
     sumIndex>=0 ? sumIndex : rommeSection.length
   );
 
   const rommeRows=roundRows
-    .filter(row=>row.slice(0,4).some(cell=>
-      String(cell ?? "").trim()!==""
-    ))
+    .filter(row=>row.slice(0,4).some(cell=>String(cell ?? "").trim()!==""))
     .map((row,index)=>({
       round:index+1,
-      values:values(
-        row.slice(0,4),4,
-        "Rommé-Runde "+(index+1),"romme",true
-      )
+      values:values(row.slice(0,4),4,"Rommé-Runde "+(index+1),"romme",true)
     }));
 
-  /*
-    A = Beschriftung "Summe Minuspunkte".
-    Optionale vier Summen stehen dann in B–E.
-  */
+  // A enthält die Beschriftung; optionale Summen stehen in B–E.
   const rommeSum=sumIndex>=0 ? rommeSection[sumIndex] : null;
-
   const rommeTotals=rommeSum
     ? values(rommeSum.slice(1,5),4,"Rommé-Summenzeile","romme",true)
     : [null,null,null,null];
 
   const rules=(sections["Regelwerk Romme"]||[])
-    .map(row=>row.filter(Boolean).join(" "))
-    .filter(Boolean);
+    .map(row=>row.filter(Boolean).join(" ")).filter(Boolean);
 
   return {
-    golf:{
-      rows:golfRows,
-      sheetTotals:golfTotals,
-      warnings:warnings.golf
-    },
-    romme:{
-      rows:rommeRows,
-      sheetTotals:rommeTotals,
-      warnings:warnings.romme,
-      rules
-    }
+    golf:{rows:golfRows,sheetTotals:golfTotals,warnings:warnings.golf},
+    romme:{rows:rommeRows,sheetTotals:rommeTotals,warnings:warnings.romme,rules}
   };
 }
 
-/* =====================================================
-   REISETABELLE AUSLESEN
-   ===================================================== */
+/* ===================== REISETABELLE ===================== */
 
 function readTrip(rows) {
   const sectionNames=[
-    "Golfplätze","Flüge","Unterkunft","Mietwagen",
-    "Kostenübersicht","Reservierungen",
-    "Scoring Golf","Romme Spielstand","Regelwerk Romme"
+    "Golfplätze","Flüge","Unterkunft","Mietwagen","Kostenübersicht",
+    "Reservierungen","Scoring Golf","Romme Spielstand","Regelwerk Romme"
   ];
 
   const markers=rows.map((row,index)=>{
@@ -1267,20 +1242,14 @@ function readTrip(rows) {
   }).filter(Boolean);
 
   const sections={};
-
   markers.forEach((marker,index)=>{
     sections[marker.name]=rows.slice(
-      marker.index+1,
-      markers[index+1]?.index ?? rows.length
+      marker.index+1,markers[index+1]?.index ?? rows.length
     );
   });
 
-  for(const name of [
-    "Golfplätze","Flüge","Unterkunft","Mietwagen","Kostenübersicht"
-  ]) {
-    if(!sections[name]) {
-      throw new Error("Tabellenabschnitt fehlt: "+name);
-    }
+  for(const name of ["Golfplätze","Flüge","Unterkunft","Mietwagen","Kostenübersicht"]) {
+    if(!sections[name]) throw new Error("Tabellenabschnitt fehlt: "+name);
   }
 
   function field(section,label) {
@@ -1289,16 +1258,13 @@ function readTrip(rows) {
   }
 
   function status(section) {
-    return section.flat()
-      .filter(cell=>/bezahlt|bezahlung/i.test(cell))
-      .join(" · ");
+    return section.flat().filter(cell=>/bezahlt|bezahlung/i.test(cell)).join(" · ");
   }
 
   const golf=sections["Golfplätze"]
     .filter(row=>/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(row[0]||""))
     .map(row=>({
-      date:row[0],
-      name:row[1],
+      date:row[0],name:row[1],
       perPerson:requiredAmount(row[2],"Greenfee pro Person"),
       total:requiredAmount(row[3],"Greenfees gesamt"),
       map:row.find(cell=>/^https:\/\//i.test(cell))||""
@@ -1310,20 +1276,12 @@ function readTrip(rows) {
 
   function flight(label) {
     const row=flights.find(row=>norm(row[0])===norm(label));
-    if(!row || !row[1] || !row[2]) {
-      throw new Error("Flugdaten fehlen: "+label);
-    }
-
-    return {
-      date:row[1],
-      time:row[2],
-      airline:row[3]||"Nicht angegeben"
-    };
+    if(!row || !row[1] || !row[2]) throw new Error("Flugdaten fehlen: "+label);
+    return {date:row[1],time:row[2],airline:row[3]||"Nicht angegeben"};
   }
 
   const flightPeople=flights.filter(row=>
-    row[0] && [row[1],row[2],row[3]]
-      .every(value=>Number.isFinite(amount(value)))
+    row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
   ).map(row=>({
     name:row[0],
     fare:requiredAmount(row[1],"Flugpreis"),
@@ -1332,14 +1290,11 @@ function readTrip(rows) {
   }));
 
   const hotel=sections["Unterkunft"];
-
   const rooms=hotel.filter(row=>
     row[0] && row[1] &&
-    Number.isFinite(amount(row[2])) &&
-    Number.isFinite(amount(row[3]))
+    Number.isFinite(amount(row[2])) && Number.isFinite(amount(row[3]))
   ).map(row=>({
-    name:row[0],
-    guests:row[1],
+    name:row[0],guests:row[1],
     perPerson:requiredAmount(row[2],"Zimmer pro Person"),
     total:requiredAmount(row[3],"Zimmer gesamt")
   }));
@@ -1352,10 +1307,8 @@ function readTrip(rows) {
   );
 
   const costSection=sections["Kostenübersicht"];
-
   const costs=costSection.filter(row=>
-    row[0] && [row[1],row[2],row[3]]
-      .every(value=>Number.isFinite(amount(value)))
+    row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
   ).map(row=>({
     name:row[0],
     total:requiredAmount(row[1],"Person gesamt"),
@@ -1368,8 +1321,7 @@ function readTrip(rows) {
   }
 
   const totalsRow=costSection.find(row=>
-    !row[0] && [row[1],row[2],row[3]]
-      .every(value=>Number.isFinite(amount(value)))
+    !row[0] && [row[1],row[2],row[3]].every(v=>Number.isFinite(amount(v)))
   );
 
   const totals=totalsRow ? {
@@ -1377,41 +1329,31 @@ function readTrip(rows) {
     paid:requiredAmount(totalsRow[2],"Gesamt bezahlt"),
     open:requiredAmount(totalsRow[3],"Gesamt offen")
   } : {
-    total:sum(costs.map(person=>person.total)),
-    paid:sum(costs.map(person=>person.paid)),
-    open:sum(costs.map(person=>person.open))
+    total:sum(costs.map(p=>p.total)),
+    paid:sum(costs.map(p=>p.paid)),
+    open:sum(costs.map(p=>p.open))
   };
 
   const reservations=(sections["Reservierungen"]||[])
     .filter(row=>parseDate(row[0]) && String(row[2]||"").trim())
-    .map(row=>({
-      date:row[0],
-      time:row[1]||"",
-      name:row[2],
-      link:row[3]||""
-    }))
-    .sort((a,b)=>{
-      const dateDifference=parseDate(a.date)-parseDate(b.date);
-      return dateDifference ||
-        timeMinutes(a.time)-timeMinutes(b.time);
-    });
+    .map(row=>({date:row[0],time:row[1]||"",name:row[2],link:row[3]||""}))
+    .sort((a,b)=>
+      parseDate(a.date)-parseDate(b.date) ||
+      timeMinutes(a.time)-timeMinutes(b.time)
+    );
 
   return {
     title:rows[0].filter(Boolean).join(" "),
-    golf,
-    golfNote:status(sections["Golfplätze"]),
-    outbound:flight("Hinflug"),
-    inbound:flight("Rückflug"),
-    flightPeople,
-    flightNote:status(flights),
+    golf,golfNote:status(sections["Golfplätze"]),
+    outbound:flight("Hinflug"),inbound:flight("Rückflug"),
+    flightPeople,flightNote:status(flights),
     hotel:{
       name:field(hotel,"Hotel"),
       map:field(hotel,"Link"),
       checkin:field(hotel,"Checkin"),
       checkout:field(hotel,"Checkout"),
       payment:field(hotel,"Zahlungsbedingungen"),
-      cancellation:
-        field(hotel,"Stornierungsbedingungen") ||
+      cancellation:field(hotel,"Stornierungsbedingungen") ||
         field(hotel,"Stornierungsbedigungen"),
       rooms
     },
@@ -1423,23 +1365,17 @@ function readTrip(rows) {
       total:requiredAmount(carPrice?.[1],"Mietwagen"),
       share:amount(carShare?.[1])
     },
-    reservations,
-    costs,
-    totals,
-    games:readGames(sections)
+    reservations,costs,totals,games:readGames(sections)
   };
 }
 
-/* =====================================================
-   ABLAUFPLAN
-   ===================================================== */
+/* ===================== ABLAUFPLAN ===================== */
 
 function buildTimeline(trip) {
   const events=[];
 
   function add(options) {
     const date=parseDate(options.dateText);
-
     events.push({
       ...options,
       date,
@@ -1450,85 +1386,94 @@ function buildTimeline(trip) {
   }
 
   add({
-    dateText:trip.outbound.date,
-    time:trip.outbound.time,
-    title:"Hinflug nach Italien",
-    type:"✈ Anreise",
-    description:trip.outbound.airline,
-    page:"flights",
+    dateText:trip.outbound.date,time:trip.outbound.time,
+    title:"Hinflug nach Italien",type:"Anreise",
+    description:trip.outbound.airline,page:"flights",
     order:timeMinutes(trip.outbound.time,0)
   });
 
   add({
-    dateText:trip.outbound.date,
-    time:"Nach der Landung",
-    title:"Mietwagen am Flughafen abholen",
-    type:"🚗 Mietwagen",
-    description:
-      "Flughafen in Mailand · Geplante Abholung nach Ankunft. "+
+    dateText:trip.outbound.date,time:"Nach der Landung",
+    title:"Mietwagen am Flughafen abholen",type:"Mietwagen",
+    description:"Flughafen in Mailand · Geplante Abholung nach Ankunft. "+
       "Genaue Abholzeit und Station noch offen.",
     page:"car",
-    // Nur Sortierposition, keine behauptete Abholzeit.
     order:flightArrivalMinutes(trip.outbound)+0.1
   });
 
   add({
-    dateText:trip.hotel.checkin,
-    time:timeOnly(trip.hotel.checkin),
-    title:"Check-in im Hotel",
-    type:"🏨 Unterkunft",
-    description:trip.hotel.name,
-    page:"hotel"
+    dateText:trip.hotel.checkin,time:timeOnly(trip.hotel.checkin),
+    title:"Check-in im Hotel",type:"Unterkunft",
+    description:trip.hotel.name,page:"hotel"
   });
 
   trip.golf.forEach(course=>{
     add({
-      dateText:course.date,
-      time:"Startzeit noch offen",
-      title:course.name,
-      type:"⛳ Golftag",
-      description:
-        "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.",
-      page:"golf",
-      order:1500
+      dateText:course.date,time:"Startzeit noch offen",
+      title:course.name,type:"Golftag",
+      description:"Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.",
+      page:"golf",order:1500
     });
   });
 
   add({
-    dateText:trip.hotel.checkout,
-    time:timeOnly(trip.hotel.checkout),
-    title:"Check-out im Hotel",
-    type:"🏨 Abreise",
-    description:trip.hotel.name,
-    page:"hotel"
+    dateText:trip.hotel.checkout,time:timeOnly(trip.hotel.checkout),
+    title:"Check-out im Hotel",type:"Abreise",
+    description:trip.hotel.name,page:"hotel"
   });
 
   add({
-    dateText:trip.inbound.date,
-    time:trip.inbound.time,
-    title:"Rückflug nach Hause",
-    type:"✈ Rückreise",
-    description:trip.inbound.airline,
-    page:"flights"
+    dateText:trip.inbound.date,time:trip.inbound.time,
+    title:"Rückflug nach Hause",type:"Rückreise",
+    description:trip.inbound.airline,page:"flights"
   });
 
   trip.reservations.forEach(reservation=>{
     const pending=reservationPending(reservation);
-
     add({
       dateText:reservation.date,
       time:reservation.time||"Uhrzeit noch offen",
-      title:reservation.name,
-      type:"🍽 Restaurant",
+      title:reservation.name,type:"Restaurant",
       description:pending
         ? "Geplanter Restaurantbesuch – Reservierung noch offen."
         : "Restauranttermin laut Reisetabelle.",
-      page:"restaurants",
-      url:reservation.link,
-      pending,
-      order:timeMinutes(reservation.time,1501)
+      page:"restaurants",url:reservation.link,pending,
+      order:timeMinutes(reservation.time,1600)
     });
   });
+
+  /*
+    Rommé an jedem Übernachtungsabend.
+    Automatische Anpassung bei geänderten Hotel-Reisedaten.
+    Der Check-out-/Rückreisetag erhält keinen Abendtermin.
+  */
+  const {start,end}=stayDates(trip);
+
+  if(start && end && end>start) {
+    const current=new Date(start);
+
+    while(current<end) {
+      const dateText=dateLabel(current);
+      const hasRestaurant=trip.reservations.some(reservation=>
+        dateLabel(reservation.date)===dateText
+      );
+
+      add({
+        dateText,
+        time:hasRestaurant ? "Abends · nach dem Restaurant" : "Abends",
+        title:"Rommé spielen",
+        type:"Gemeinsamer Ausklang",
+        description:"Eine gemeinsame Runde mit Winfried, Steffen, Julian und Marcel. "+
+          "Die genaue Uhrzeit bleibt flexibel.",
+        page:"romme",
+        romme:true,
+        // Bewusst als letzter Programmpunkt des Abends.
+        order:2000
+      });
+
+      current.setDate(current.getDate()+1);
+    }
+  }
 
   events.sort((a,b)=>{
     const first=a.date ? a.date.getTime() : Number.MAX_SAFE_INTEGER;
@@ -1537,7 +1482,6 @@ function buildTimeline(trip) {
   });
 
   const groups=new Map();
-
   events.forEach(event=>{
     if(!groups.has(event.dateText)) groups.set(event.dateText,[]);
     groups.get(event.dateText).push(event);
@@ -1550,20 +1494,20 @@ function buildTimeline(trip) {
           <strong>${esc(date)}</strong>
           <span>${esc(weekday(date))}</span>
         </div>
-
         <div class="day-events">
           ${items.map(event=>`
-            <article class="event ${event.pending?"pending":""}">
+            <article class="event ${event.pending?"pending":""} ${event.romme?"romme-event":""}">
               <div class="event-top">
                 <span class="event-type">${esc(event.type)}</span>
-                <span class="event-time">
-                  ${esc(event.time||"Uhrzeit noch offen")}
-                </span>
+                <span class="event-time">${esc(event.time||"Uhrzeit noch offen")}</span>
               </div>
               <h3>${esc(event.title)}</h3>
               <p>${esc(event.description)}</p>
               <div class="actions">
-                ${detailButton(event.page)}
+                ${detailButton(
+                  event.page,
+                  event.romme ? "Spielstand & Regeln" : "Details ansehen"
+                )}
                 ${event.url ? link(event.url,"Restaurant öffnen ↗") : ""}
               </div>
             </article>
@@ -1575,15 +1519,7 @@ function buildTimeline(trip) {
 }
 
 function buildHome(trip) {
-  const checkin=parseDate(trip.hotel.checkin);
-  const checkout=parseDate(trip.hotel.checkout);
-
-  const nights=checkin && checkout
-    ? Math.round((
-        Date.UTC(checkout.getFullYear(),checkout.getMonth(),checkout.getDate())-
-        Date.UTC(checkin.getFullYear(),checkin.getMonth(),checkin.getDate())
-      )/86400000)
-    : null;
+  const nights=nightCount(trip);
 
   return `
     ${heading(
@@ -1600,38 +1536,35 @@ function buildHome(trip) {
       <div class="card">
         <div class="stat-label">Unser Team</div>
         <div class="stat-value">${PARTICIPANTS.length} Reisende</div>
-        <div class="stat-note">3 Generationen gemeinsam unterwegs</div>
+        <div class="stat-note">Drei Generationen</div>
       </div>
       <div class="card">
         <div class="stat-label">Golfprogramm</div>
         <div class="stat-value">${trip.golf.length} Golftermine</div>
-        <div class="stat-note">3 Spieler und unser Lieblings-Caddy</div>
+        <div class="stat-note">Drei Spieler und unser Caddy</div>
       </div>
       <div class="card">
         <div class="stat-label">Hotelaufenthalt</div>
-        <div class="stat-value">
-          ${nights!==null && nights>=0 ? nights+" Nächte" : "Unser Hotel"}
-        </div>
+        <div class="stat-value">${nights!==null && nights>=0 ? nights+" Nächte" : "Unser Hotel"}</div>
         <div class="stat-note">${esc(trip.hotel.name)}</div>
       </div>
     </div>
 
     <div class="grid two space">
       <div class="card">
-        <h3>Gemeinsam unterwegs</h3>
+        <h3>Unsere Reise</h3>
         <p>
           Nach der Landung holen wir den Mietwagen am Flughafen in Mailand ab.
-          Anschließend geht es nach Bergamo. Uns erwarten Golf,
-          gemeinsame Restaurantbesuche und Familienzeit.
+          Anschließend geht es nach Bergamo. Golf, Restaurantbesuche
+          und gemeinsame Zeit stehen auf unserem Programm.
         </p>
         ${detailButton("restaurants","Unsere Restaurants")}
       </div>
       <div class="card">
-        <h3>Sportlich auf dem Platz, gesellig am Tisch</h3>
+        <h3>Der Abend gehört den Karten</h3>
         <p>
-          Unsere Golf-Ergebnisse und die Rommé-Minuspunkte findet ihr
-          in den eigenen Ergebnisbereichen. Die Werte werden direkt
-          aus Google Sheets übernommen.
+          Nach dem Essen lassen wir die Übernachtungsabende bei Rommé
+          ausklingen. Ergebnisse und Regeln findet ihr im eigenen Bereich.
         </p>
         <div class="actions">
           ${detailButton("golf-results","Golf-Ergebnisse")}
@@ -1640,33 +1573,26 @@ function buildHome(trip) {
       </div>
     </div>
 
-    <div class="section-head" style="margin-top:32px">
+    <div class="section-head" style="margin-top:36px">
       <h2>Unser Ablaufplan</h2>
-      <p class="muted">Anreise, Golf, Restaurantbesuche und Rückreise.</p>
+      <p class="muted">Von der Anreise bis zum gemeinsamen Ausklang am Abend.</p>
     </div>
 
     ${buildTimeline(trip)}
 
     <div class="notice space">
-      Termine mit bekannter Uhrzeit werden chronologisch angezeigt.
-      Einträge ohne Uhrzeit stehen am Ende des Tages; daraus ergibt
-      sich keine festgelegte Reihenfolge.
-      „Noch zu buchen“ ist keine bestätigte Reservierung.
-      Der genaue Mailänder Flughafen und die Mietwagenstation
-      sind noch nicht hinterlegt.
+      Bekannte Uhrzeiten werden berücksichtigt. Einträge ohne genaue
+      Uhrzeit sind noch flexibel; Rommé steht als letzter Abendtermin
+      nach dem Restaurant. „Noch zu buchen“ ist keine bestätigte
+      Reservierung. Für den Rückreisetag ist kein Rommé-Abend eingeplant.
     </div>`;
 }
 
-/* =====================================================
-   RESTAURANTS
-   ===================================================== */
+/* ===================== RESTAURANTS ===================== */
 
 function buildRestaurants(trip) {
   return `
-    ${heading(
-      "Unsere Restaurants",
-      "Gemeinsam essen gehen – geplante Besuche und Reservierungen."
-    )}
+    ${heading("Unsere Restaurants","Geplante Besuche und Reservierungen.")}
 
     ${trip.reservations.length ? `
       <div class="grid two">
@@ -1674,9 +1600,8 @@ function buildRestaurants(trip) {
           const pending=reservationPending(reservation);
           return `
             <article class="card">
-              <div class="eyebrow muted">
-                ${esc(weekday(reservation.date))} ·
-                ${esc(dateLabel(reservation.date))}
+              <div class="eyebrow">
+                ${esc(weekday(reservation.date))} · ${esc(dateLabel(reservation.date))}
               </div>
               <div class="restaurant-head space">
                 <h3>${esc(reservation.name)}</h3>
@@ -1685,77 +1610,53 @@ function buildRestaurants(trip) {
                 </span>
               </div>
               <dl class="facts">
-                ${fact(
-                  "Uhrzeit / Status laut Tabelle",
-                  reservation.time||"Uhrzeit noch offen"
-                )}
+                ${fact("Uhrzeit / Status laut Tabelle",reservation.time||"Uhrzeit noch offen")}
               </dl>
               <div class="space">
                 ${link(reservation.link,"Restaurant öffnen ↗") ||
                   '<p class="small muted">Noch kein Restaurantlink hinterlegt.</p>'}
               </div>
-              ${pending ? `
-                <p class="table-note">
-                  Der Besuch ist geplant, aber noch nicht gebucht.
-                </p>
-              ` : ""}
+              ${pending ? '<p class="table-note">Geplant, aber noch nicht gebucht.</p>' : ""}
             </article>`;
         }).join("")}
       </div>
-    ` : `
-      <div class="notice">
-        Aktuell sind noch keine Restaurants eingetragen.
-      </div>
-    `}
+    ` : '<div class="notice">Aktuell sind noch keine Restaurants eingetragen.</div>'}
 
     <div class="notice space">
-      Neue Einträge im Abschnitt „Reservierungen“ werden automatisch übernommen.
+      Einträge aus „Reservierungen“ werden automatisch übernommen.
       Leere Restaurantzeilen erscheinen nicht als Termine.
-      Eine eingetragene Uhrzeit allein bestätigt noch keine Buchung.
+      Eine Uhrzeit allein bestätigt noch keine Buchung.
     </div>`;
 }
 
-/* =====================================================
-   ERGEBNISSE UND RANGLISTEN
-   ===================================================== */
+/* ===================== ERGEBNISSE ===================== */
 
 function compareTotals(players,columns,sheetTotals) {
   const warnings=[];
-
   players.forEach((name,index)=>{
     const calculated=columns[index].total;
     const sheetValue=sheetTotals[index];
-
-    if(
-      calculated!==null &&
-      sheetValue!==null &&
-      differs(calculated,sheetValue)
-    ) {
+    if(calculated!==null && sheetValue!==null && differs(calculated,sheetValue)) {
       warnings.push(
-        `${name}: Die Einzelwerte ergeben ${resultText(calculated)}, `+
+        `${name}: Einzelwerte ergeben ${resultText(calculated)}, `+
         `die Summenzeile enthält ${resultText(sheetValue)}.`
       );
     }
   });
-
   return warnings;
 }
 
 function rankingTable(players,totals,formatter,label) {
-  const entries=players.map((name,index)=>({
-    name,total:totals[index]
-  })).sort((a,b)=>a.total-b.total);
+  const entries=players.map((name,index)=>({name,total:totals[index]}))
+    .sort((a,b)=>a.total-b.total);
 
-  let previousScore=null;
-  let previousRank=0;
+  let previousScore=null,previousRank=0;
 
   const rows=entries.map((entry,index)=>{
     const tied=index>0 && !differs(entry.total,previousScore);
     const rank=tied ? previousRank : index+1;
-
     previousScore=entry.total;
     previousRank=rank;
-
     return [String(rank),entry.name,formatter(entry.total)];
   });
 
@@ -1767,7 +1668,6 @@ function buildGolfResults(trip) {
   const columns=resultColumns(game.rows,GOLF_PLAYERS.length);
   const complete=game.rows.filter(completeResultRow);
   const hasResults=columns.some(column=>column.count>0);
-
   const rankingTotals=GOLF_PLAYERS.map((_,index)=>
     sum(complete.map(row=>row.values[index]))
   );
@@ -1786,27 +1686,18 @@ function buildGolfResults(trip) {
   ).length;
 
   return `
-    ${heading(
-      "Golf-Ergebnisse",
-      "Nettoschläge über Par – der niedrigste Wert gewinnt."
-    )}
+    ${heading("Golf-Ergebnisse","Nettoschläge über Par – der niedrigste Wert gewinnt.")}
 
     <div class="grid two">
       <div class="card dark">
         <div class="stat-label">Gemeinsam gewertete Spieltage</div>
-        <div class="stat-value">
-          ${complete.length} von ${game.rows.length}
-        </div>
-        <div class="stat-note">
-          Nur Spieltage mit Ergebnissen für alle drei Spieler
-        </div>
+        <div class="stat-value">${complete.length} von ${game.rows.length}</div>
+        <div class="stat-note">Ergebnisse für alle drei Spieler vorhanden</div>
       </div>
       <div class="card">
         <div class="stat-label">Spieltage mit Einträgen</div>
         <div class="stat-value">${enteredDays}</div>
-        <div class="stat-note">
-          Leere Zellen zählen nicht als 0
-        </div>
+        <div class="stat-note">Leere Zellen zählen nicht als 0</div>
       </div>
     </div>
 
@@ -1815,28 +1706,23 @@ function buildGolfResults(trip) {
         <h3>Gesamtwertung</h3>
         <span class="badge">${complete.length} vollständige Spieltage</span>
       </div>
-
       ${complete.length ? `
-        ${rankingTable(
-          GOLF_PLAYERS,rankingTotals,golfResultText,"Netto über Par"
-        )}
+        ${rankingTable(GOLF_PLAYERS,rankingTotals,golfResultText,"Netto über Par")}
         <p class="table-note">
-          Die Rangliste umfasst ausschließlich die Spieltage, an denen
-          für alle drei Spieler Ergebnisse vorliegen.
+          Nur Spieltage mit Ergebnissen für alle drei Spieler zählen zur Rangliste.
           Bei Gleichstand wird derselbe Platz vergeben.
         </p>
       ` : `
         <div class="notice">
           ${hasResults
-            ? "Erste Ergebnisse sind vorhanden. Die gemeinsame Rangliste erscheint, sobald ein Spieltag vollständig eingetragen ist."
-            : "Noch keine Golfergebnisse eingetragen. Vorbereitete Nullen in der Summenzeile zählen nicht als gespielte Runden."}
+            ? "Erste Werte sind vorhanden. Die Rangliste erscheint, sobald ein Spieltag vollständig eingetragen ist."
+            : "Noch keine Golfergebnisse eingetragen. Nullen in der Summenzeile zählen nicht als gespielte Runden."}
         </div>
       `}
     </div>
 
     <div class="card space">
       <h3>Ergebnisse je Spieltag</h3>
-
       ${game.rows.length ? table(
         ["Spieltag / Course",...GOLF_PLAYERS],
         game.rows.map(row=>{
@@ -1846,15 +1732,8 @@ function buildGolfResults(trip) {
             ...row.values.map(golfResultText)
           ];
         }),
-        [
-          "Summe aller eingetragenen Ergebnisse",
-          ...columns.map(column=>golfResultText(column.total))
-        ]
-      ) : `
-        <div class="notice">
-          Im Abschnitt „Scoring Golf“ sind noch keine Spieltage hinterlegt.
-        </div>
-      `}
+        ["Summe aller eingetragenen Ergebnisse",...columns.map(c=>golfResultText(c.total))]
+      ) : '<div class="notice">Noch keine Spieltage unter „Scoring Golf“ hinterlegt.</div>'}
 
       <p class="table-note">
         ${GOLF_PLAYERS.map((name,index)=>
@@ -1862,7 +1741,7 @@ function buildGolfResults(trip) {
         ).join(" · ")}
       </p>
       <p class="table-note">
-        Die Summenzeile hier umfasst alle vorhandenen Einzelwerte.
+        Die Summenzeile umfasst alle vorhandenen Einzelwerte.
         Bei unterschiedlich vielen Ergebnissen ist sie nicht direkt
         mit der gemeinsamen Rangliste vergleichbar.
       </p>
@@ -1873,18 +1752,13 @@ function buildGolfResults(trip) {
     <div class="grid two space">
       <div class="card">
         <h3>Ergebnisse eintragen</h3>
+        <p>Unter „Scoring Golf“: Datum, Steffen, Julian, Marcel.</p>
         <p>
-          Im Google Sheet unter „Scoring Golf“:
-          Datum, Steffen, Julian, Marcel.
-        </p>
-        <p>
-          Beispiele: <strong>+4</strong> oder <strong>4</strong> für
-          vier Nettoschläge über Par, <strong>0</strong> für Even Par,
-          <strong>-2</strong> für zwei unter Par.
+          +4 oder 4 bedeutet vier Nettoschläge über Par,
+          0 bedeutet Even Par, -2 bedeutet zwei unter Par.
         </p>
         <p class="small muted">
-          Die Website zeigt 0 als „E“ an.
-          Noch nicht erfasste Ergebnisse bitte leer lassen.
+          0 wird als „E“ angezeigt. Noch nicht erfasste Ergebnisse leer lassen.
         </p>
       </div>
       <div class="card dark">
@@ -1892,13 +1766,11 @@ function buildGolfResults(trip) {
         <p>Bruttoschläge − Spielvorgabe − Platz-Par</p>
         <p class="small muted">
           Die Tabelle erwartet bereits berechnete Nettowerte über Par.
-          Die Website zieht das Handicap nicht noch einmal ab.
+          Die Website zieht das Handicap nicht erneut ab.
         </p>
         <div class="chips">
-          ${PARTICIPANTS.filter(person=>person.handicap).map(person=>`
-            <span class="chip">
-              ${esc(person.name)} · HCP ${esc(person.handicap)}
-            </span>
+          ${PARTICIPANTS.filter(p=>p.handicap).map(p=>`
+            <span class="chip">${esc(p.name)} · HCP ${esc(p.handicap)}</span>
           `).join("")}
         </div>
       </div>
@@ -1906,11 +1778,8 @@ function buildGolfResults(trip) {
 }
 
 function renderRommeRules(lines) {
-  if(!lines.length) {
-    return `<div class="notice">
-      Im Abschnitt „Regelwerk Romme“ sind noch keine Regeln hinterlegt.
-    </div>`;
-  }
+  if(!lines.length) return `
+    <div class="notice">Unter „Regelwerk Romme“ sind noch keine Regeln hinterlegt.</div>`;
 
   const groups=[];
   let current=null;
@@ -1934,9 +1803,7 @@ function renderRommeRules(lines) {
         <summary>${esc(group.title)}</summary>
         <div class="rule-content">
           ${group.paragraphs.map(paragraph=>`
-            <p class="${paragraph.endsWith(":")?"rule-label":""}">
-              ${esc(paragraph)}
-            </p>
+            <p class="${paragraph.endsWith(":")?"rule-label":""}">${esc(paragraph)}</p>
           `).join("")}
         </div>
       </details>
@@ -1951,10 +1818,7 @@ function buildRomme(trip) {
 
   const hasRounds=columns.some(column=>column.count>0);
   const hasSummary=game.sheetTotals.some(value=>value!==null);
-  const fullSummary=game.sheetTotals.every(value=>
-    value!==null && Number.isFinite(value)
-  );
-
+  const fullSummary=game.sheetTotals.every(value=>value!==null && Number.isFinite(value));
   const rankingTotals=ROMME_PLAYERS.map((_,index)=>
     sum(complete.map(row=>row.values[index]))
   );
@@ -1968,28 +1832,23 @@ function buildRomme(trip) {
 
   if(complete.length) {
     ranking=`
-      ${rankingTable(
-        ROMME_PLAYERS,rankingTotals,resultText,"Minuspunkte"
-      )}
+      ${rankingTable(ROMME_PLAYERS,rankingTotals,resultText,"Minuspunkte")}
       <p class="table-note">
-        Gewertet werden ${complete.length} vollständig eingetragene Runden.
+        ${complete.length} vollständig eingetragene Runden.
         Der niedrigste Minuspunktestand führt.
         Gleichstände erhalten denselben Platz.
       </p>`;
   } else if(!hasRounds && fullSummary) {
     ranking=`
-      ${rankingTable(
-        ROMME_PLAYERS,game.sheetTotals,resultText,"Minuspunkte laut Sheet"
-      )}
+      ${rankingTable(ROMME_PLAYERS,game.sheetTotals,resultText,"Minuspunkte laut Sheet")}
       <p class="table-note">
-        Dieser Stand stammt ausschließlich aus der Summenzeile.
-        Einzelne Runden sind noch nicht erfasst; ihre Anzahl
-        lässt sich daraus nicht bestimmen.
+        Stand ausschließlich aus der Summenzeile.
+        Einzelrunden und deren Anzahl sind noch nicht erfasst.
       </p>`;
   } else {
     ranking=`<div class="notice">
       ${hasRounds
-        ? "Einzelne Werte sind vorhanden. Die Rundenrangliste erscheint, sobald eine Runde für alle vier Teilnehmer vollständig eingetragen ist."
+        ? "Einzelne Werte sind vorhanden. Die Rangliste erscheint, sobald eine Runde für alle vier Teilnehmer vollständig ist."
         : "Noch kein vollständiger Rommé-Spielstand eingetragen."}
     </div>`;
   }
@@ -2004,14 +1863,12 @@ function buildRomme(trip) {
       <div class="card dark">
         <div class="stat-label">Vollständig erfasste Runden</div>
         <div class="stat-value">${complete.length}</div>
-        <div class="stat-note">
-          Mit einem Wert für alle vier Teilnehmer
-        </div>
+        <div class="stat-note">Mit einem Wert für alle vier Teilnehmer</div>
       </div>
       <div class="card">
-        <div class="stat-label">Unser Spiel</div>
+        <div class="stat-label">Unsere Abendrunde</div>
         <div class="stat-value">4 Teilnehmer</div>
-        <div class="stat-note">Diesmal spielt Opa Winfried mit</div>
+        <div class="stat-note">Nach dem Essen wird gespielt</div>
       </div>
     </div>
 
@@ -2024,15 +1881,9 @@ function buildRomme(trip) {
       <h3>Minuspunkte je Runde</h3>
       ${game.rows.length ? table(
         ["Runde",...ROMME_PLAYERS],
-        game.rows.map(row=>[
-          "Runde "+row.round,
-          ...row.values.map(resultText)
-        ]),
-        [
-          "Summe aller eingetragenen Werte",
-          ...columns.map(column=>resultText(column.total))
-        ]
-      ) : `<div class="notice">Noch keine einzelnen Runden eingetragen.</div>`}
+        game.rows.map(row=>["Runde "+row.round,...row.values.map(resultText)]),
+        ["Summe aller eingetragenen Werte",...columns.map(c=>resultText(c.total))]
+      ) : '<div class="notice">Noch keine einzelnen Runden eingetragen.</div>'}
 
       ${hasRounds ? `
         <p class="table-note">
@@ -2043,8 +1894,7 @@ function buildRomme(trip) {
       `:""}
 
       <p class="table-note">
-        „—“ bedeutet: noch kein Wert.
-        Beim Rundengewinner ausdrücklich 0 eintragen.
+        „—“ bedeutet: noch kein Wert. Beim Gewinner ausdrücklich 0 eintragen.
         Teilweise ausgefüllte Runden zählen noch nicht zur Rangliste.
       </p>
     </div>
@@ -2054,14 +1904,10 @@ function buildRomme(trip) {
         <h3>Summenzeile aus Google Sheets</h3>
         ${table(
           ["Teilnehmer","Minuspunkte"],
-          ROMME_PLAYERS.map((name,index)=>[
-            name,resultText(game.sheetTotals[index])
-          ])
+          ROMME_PLAYERS.map((name,index)=>[name,resultText(game.sheetTotals[index])])
         )}
         <p class="table-note">
-          Die Summenzeile wird unverändert angezeigt.
-          Sind Einzelrunden vorhanden, berechnet die Website
-          deren Summen zusätzlich selbst.
+          Unverändert aus dem Sheet. Einzelrunden werden zusätzlich selbst summiert.
         </p>
       </div>
     `:""}
@@ -2069,39 +1915,31 @@ function buildRomme(trip) {
     ${warningBox(warnings)}
 
     <div class="notice space">
-      <strong>Weitere Runden hinzufügen:</strong>
-      Neue Zeilen oberhalb von „Summe Minuspunkte“ einfügen.
+      Weitere Runden als neue Zeilen oberhalb von „Summe Minuspunkte“ einfügen:
       A = Opa, B = Steffen, C = Julian, D = Marcel.
-      Beliebig viele weitere Zeilen sind möglich.
-      Leere Zeilen werden übersprungen.
-      Minuspunkte als positive Zahlen erfassen; 0 ist ein gültiges Ergebnis.
+      Leere Zeilen werden übersprungen. Minuspunkte positiv eintragen;
+      0 ist ein gültiges Ergebnis. Zusätzliche Zeilen erfordern keine Codeänderung.
     </div>
 
-    <div class="section-head" style="margin-top:32px">
+    <div class="section-head" style="margin-top:34px">
       <h2>Unser Rommé-Regelwerk</h2>
-      <p class="muted">
-        Aus dem Abschnitt „Regelwerk Romme“ in Google Sheets.
-        Zum Lesen die einzelnen Bereiche aufklappen.
-      </p>
+      <p class="muted">Aus Google Sheets übernommen. Bereiche zum Lesen aufklappen.</p>
     </div>
 
     ${renderRommeRules(game.rules)}
 
     <p class="table-note">
-      Der Regeltext wird aus eurer Tabelle übernommen.
-      Etwaige Quellenverweise wie [1] stammen ebenfalls aus diesem Text.
+      Der Regeltext einschließlich etwaiger Quellenverweise stammt aus eurer Tabelle.
     </p>`;
 }
 
-/* =====================================================
-   WEITERE REISESEITEN
-   ===================================================== */
+/* ===================== DETAILSEITEN ===================== */
 
 function buildPages(trip) {
-  const golfTotal=sum(trip.golf.map(course=>course.total));
-  const golfShare=sum(trip.golf.map(course=>course.perPerson));
-  const hotelTotal=sum(trip.hotel.rooms.map(room=>room.total));
-  const flightTotal=sum(trip.flightPeople.map(person=>person.total));
+  const golfTotal=sum(trip.golf.map(c=>c.total));
+  const golfShare=sum(trip.golf.map(c=>c.perPerson));
+  const hotelTotal=sum(trip.hotel.rooms.map(r=>r.total));
+  const flightTotal=sum(trip.flightPeople.map(p=>p.total));
   const categoryTotal=sum([golfTotal,hotelTotal,flightTotal,trip.car.total]);
 
   const warnings=[];
@@ -2111,8 +1949,7 @@ function buildPages(trip) {
     ["paid","bezahlten Beträge"],
     ["open","offenen Beträge"]
   ].forEach(([key,label])=>{
-    const personal=sum(trip.costs.map(person=>person[key]));
-
+    const personal=sum(trip.costs.map(p=>p[key]));
     if(differs(personal,trip.totals[key])) {
       warnings.push(
         `Die persönlichen ${label} ergeben ${money(personal)}; `+
@@ -2122,42 +1959,28 @@ function buildPages(trip) {
   });
 
   if(differs(categoryTotal,trip.totals.total)) {
-    warnings.push(
-      "Die Summe der Kostenkategorien weicht von der Kostenübersicht ab."
-    );
+    warnings.push("Die Summe der Kostenkategorien weicht von der Kostenübersicht ab.");
   }
-
   if(differs(sum([trip.totals.paid,trip.totals.open]),trip.totals.total)) {
     warnings.push("Bezahlt plus offen entspricht nicht dem Gesamtbudget.");
   }
-
-  if(trip.costs.some(person=>
-    differs(sum([person.paid,person.open]),person.total)
-  )) {
-    warnings.push(
-      "Bei mindestens einer Person stimmen bezahlt plus offen "+
-      "nicht mit den Gesamtkosten überein."
-    );
+  if(trip.costs.some(p=>differs(sum([p.paid,p.open]),p.total))) {
+    warnings.push("Bei mindestens einer Person stimmen bezahlt plus offen nicht mit den Gesamtkosten überein.");
   }
 
-  const costStats=[
-    ["Gesamtbudget",money(trip.totals.total)],
-    ["Bereits bezahlt",money(trip.totals.paid)],
-    ["Offen / geplant",money(trip.totals.open)],
-    ["Golfbudget",money(golfTotal)]
-  ];
-
   const costs=`
-    ${heading(
-      "Kosten & Fälligkeiten",
-      "Unser Budget, persönliche Anteile und Zahlungsinformationen."
-    )}
+    ${heading("Kosten & Fälligkeiten","Budget, persönliche Anteile und Zahlungsinformationen.")}
 
     <div class="grid stats">
-      ${costStats.map((item,index)=>`
+      ${[
+        ["Gesamtbudget",trip.totals.total],
+        ["Bereits bezahlt",trip.totals.paid],
+        ["Offen / geplant",trip.totals.open],
+        ["Golfbudget",golfTotal]
+      ].map((item,index)=>`
         <div class="card ${index===0?"dark":""}">
           <div class="stat-label">${esc(item[0])}</div>
-          <div class="stat-value">${esc(item[1])}</div>
+          <div class="stat-value">${esc(money(item[1]))}</div>
           <div class="stat-note">Laut Reisetabelle</div>
         </div>
       `).join("")}
@@ -2169,20 +1992,11 @@ function buildPages(trip) {
       <h3>Wer zahlt wie viel?</h3>
       ${table(
         ["Person","Gesamt","Bezahlt","Offen / geplant"],
-        trip.costs.map(person=>[
-          person.name,
-          money(person.total),
-          money(person.paid),
-          money(person.open)
-        ]),
-        [
-          "Gesamt",money(trip.totals.total),
-          money(trip.totals.paid),money(trip.totals.open)
-        ]
+        trip.costs.map(p=>[p.name,money(p.total),money(p.paid),money(p.open)]),
+        ["Gesamt",money(trip.totals.total),money(trip.totals.paid),money(trip.totals.open)]
       )}
       <p class="table-note">
-        Die Werte werden unverändert aus Google Sheets übernommen.
-        Es erfolgt kein automatischer Rundungsausgleich.
+        Unverändert aus Google Sheets. Kein automatischer Rundungsausgleich.
       </p>
     </div>
 
@@ -2198,10 +2012,9 @@ function buildPages(trip) {
         </dl>
         <p class="table-note">
           Ein erreichtes Zahlungsdatum bedeutet nicht automatisch „bezahlt“.
-          Maßgeblich ist der gepflegte Status in der Tabelle.
+          Maßgeblich ist der Status im Sheet.
         </p>
       </div>
-
       <div class="card">
         <h3>Budget nach Kategorien</h3>
         ${table(["Kategorie","Betrag"],[
@@ -2210,22 +2023,16 @@ function buildPages(trip) {
           ["Flüge inklusive Gepäck",money(flightTotal)],
           ["Mietwagen laut Plan",money(trip.car.total)]
         ],["Summe",money(categoryTotal)])}
-
         <div class="notice space">
-          Restaurantbesuche, Verpflegung, Kraftstoff, Parken und
-          weitere Extras sind nur enthalten, wenn sie ausdrücklich
-          in der Kostenübersicht berücksichtigt wurden.
+          Restaurantbesuche, Verpflegung, Kraftstoff, Parken und weitere Extras
+          sind nur enthalten, wenn sie ausdrücklich berücksichtigt wurden.
         </div>
       </div>
     </div>`;
 
   const golf=`
-    ${heading(
-      "Unsere Courses",
-      "Marcel, Julian und Steffen spielen. Winfried ist unser Caddy."
-    )}
-
-    <div class="actions" style="margin-bottom:20px">
+    ${heading("Unsere Courses","Marcel, Julian und Steffen spielen. Winfried ist unser Caddy.")}
+    <div class="actions" style="margin-bottom:22px">
       ${detailButton("golf-results","Zu den Golf-Ergebnissen")}
     </div>
 
@@ -2233,7 +2040,6 @@ function buildPages(trip) {
       ${trip.golf.map(course=>`
         <article class="golf-entry">
           ${travelPhoto(PHOTOS.golf[photoKey(course.name)])}
-
           <div class="golf-card">
             <div class="date-tile">
               <strong>${esc(course.date.split(".")[0])}</strong>
@@ -2259,24 +2065,18 @@ function buildPages(trip) {
     <div class="grid two space">
       <div class="card dark">
         <h3>Unser Spielformat</h3>
-        <p>
-          <strong>Nettoschläge über Par</strong> –
-          der niedrigste Wert gewinnt.
-        </p>
+        <p>Nettoschläge über Par – der niedrigste Wert gewinnt.</p>
         <p>Bruttoschläge − Spielvorgabe − Platz-Par</p>
         <p class="small muted">
           Die Spielvorgabe hängt vom Handicap, den Platz-/Abschlagsdaten
           und gegebenenfalls der vereinbarten Handicap-Anrechnung ab.
         </p>
         <div class="chips">
-          ${PARTICIPANTS.filter(person=>person.handicap).map(person=>`
-            <span class="chip">
-              ${esc(person.name)} · HCP ${esc(person.handicap)}
-            </span>
+          ${PARTICIPANTS.filter(p=>p.handicap).map(p=>`
+            <span class="chip">${esc(p.name)} · HCP ${esc(p.handicap)}</span>
           `).join("")}
         </div>
       </div>
-
       <div class="card">
         <h3>Golfbudget & Organisation</h3>
         <dl class="facts">
@@ -2315,7 +2115,6 @@ function buildPages(trip) {
         </dl>
       </div>
     </div>
-
     <div class="grid space">
       ${trip.hotel.rooms.map(room=>`
         <article class="card">
@@ -2332,56 +2131,42 @@ function buildPages(trip) {
   const flights=`
     ${heading("Hin und zurück","Unsere Flugdaten und Gepäckkosten.")}
     ${travelPhoto(PHOTOS.flights)}
-
     <div class="grid two">
-      ${[
-        ["Hinflug",trip.outbound],
-        ["Rückflug",trip.inbound]
-      ].map(([label,flight])=>`
+      ${[["Hinflug",trip.outbound],["Rückflug",trip.inbound]].map(([label,f])=>`
         <article class="card">
-          <div class="eyebrow muted">${esc(label)}</div>
-          <h3 style="margin-top:16px">${esc(flight.date)}</h3>
-          <div class="flight-time">${esc(flight.time)}</div>
-          <span class="badge">${esc(flight.airline)}</span>
+          <div class="eyebrow">${esc(label)}</div>
+          <h3 style="margin-top:16px">${esc(f.date)}</h3>
+          <div class="flight-time">${esc(f.time)}</div>
+          <span class="badge">${esc(f.airline)}</span>
         </article>
       `).join("")}
     </div>
-
     <div class="notice space">
       Nach der Landung holen wir den Mietwagen am Flughafen in Mailand ab.
       Der genaue Flughafen, die Station und die Abholzeit sind noch offen.
       <div class="space">${detailButton("car","Zur Mietwagenplanung")}</div>
     </div>
-
     <div class="card space">
       <h3>Flug- und Gepäckkosten</h3>
       ${table(
         ["Person","Flugpreis","Gepäck","Gesamt"],
-        trip.flightPeople.map(person=>[
-          person.name,money(person.fare),
-          money(person.baggage),money(person.total)
-        ]),
+        trip.flightPeople.map(p=>[p.name,money(p.fare),money(p.baggage),money(p.total)]),
         [
           "Gesamt",
-          money(sum(trip.flightPeople.map(person=>person.fare))),
-          money(sum(trip.flightPeople.map(person=>person.baggage))),
+          money(sum(trip.flightPeople.map(p=>p.fare))),
+          money(sum(trip.flightPeople.map(p=>p.baggage))),
           money(flightTotal)
         ]
       )}
       <p class="table-note">${esc(trip.flightNote)}</p>
     </div>
-
     <div class="notice space">
-      Konkrete Flughafencodes, Flugnummern, Gepäckarten und
-      Freigepäckgrenzen sind in der bisherigen Tabelle nicht angegeben.
+      Flughafencodes, Flugnummern, Gepäckarten und Freigepäckgrenzen
+      sind in der bisherigen Tabelle nicht angegeben.
     </div>`;
 
   const car=`
-    ${heading(
-      "Mobil vor Ort",
-      "Unser Mietwagen für die gemeinsame Zeit in Italien."
-    )}
-
+    ${heading("Mobil vor Ort","Unser Mietwagen für die gemeinsame Zeit in Italien.")}
     <div class="card">
       <h3>Abholung nach der Landung</h3>
       <dl class="facts">
@@ -2391,34 +2176,26 @@ function buildPages(trip) {
         ${fact("Geplante Flugzeiten",trip.outbound.time)}
       </dl>
       <p class="table-note">
-        Die Abholung ist im Ablaufplan vorgesehen, aber keine
-        Bestätigung einer Mietwagenbuchung. Der konkrete Flughafen
-        und die Station müssen noch ergänzt werden.
+        Die geplante Abholung ist keine Buchungsbestätigung.
+        Der konkrete Flughafen und die Station müssen ergänzt werden.
       </p>
     </div>
-
     <div class="grid two space">
       <div class="card dark">
         <div class="eyebrow">Fahrzeug laut Reiseplanung</div>
-        <h3 style="margin-top:18px;font-size:1.6rem">
-          ${esc(trip.car.description)}
-        </h3>
+        <h3 style="margin-top:18px;font-size:1.6rem">${esc(trip.car.description)}</h3>
         <div class="stat-value">${esc(money(trip.car.total))}</div>
         <p class="small muted">
-          Gesamtpreis laut Tabelle.
-          Bei offener Buchung handelt es sich um einen Planwert.
+          Gesamtpreis laut Tabelle. Bei offener Buchung ein Planwert.
         </p>
       </div>
-
       <div class="card">
         <h3>Buchungsstand</h3>
         <dl class="facts">
           ${fact("Vergleichsportal",trip.car.portal)}
           ${fact("Status",trip.car.status)}
-          ${fact(
-            "Pro Person laut Tabelle",
-            Number.isFinite(trip.car.share)?money(trip.car.share):""
-          )}
+          ${fact("Pro Person laut Tabelle",
+            Number.isFinite(trip.car.share)?money(trip.car.share):"")}
         </dl>
         <div class="space">
           ${link(trip.car.link,"Mietwagenangebot öffnen ↗") ||
@@ -2426,7 +2203,6 @@ function buildPages(trip) {
         </div>
       </div>
     </div>
-
     <div class="card space">
       <h3>Vor der Buchung prüfen</h3>
       <ul>
@@ -2446,9 +2222,7 @@ function buildPages(trip) {
   };
 }
 
-/* =====================================================
-   NAVIGATION
-   ===================================================== */
+/* ===================== NAVIGATION ===================== */
 
 const selector=document.getElementById("page-select");
 
@@ -2477,9 +2251,7 @@ document.getElementById("main").addEventListener("click",event=>{
   if(button) showPage(button.dataset.page,true);
 });
 
-/* =====================================================
-   AUTOMATISCHE AKTUALISIERUNG
-   ===================================================== */
+/* ===================== AKTUALISIERUNG ===================== */
 
 let loading=false;
 let lastSuccess=null;
@@ -2514,7 +2286,6 @@ async function refreshData() {
     if(!response.ok) throw new Error("HTTP "+response.status);
 
     const text=await response.text();
-
     if(/^\s*</.test(text)) {
       throw new Error("Google hat HTML statt CSV zurückgegeben.");
     }
@@ -2523,11 +2294,11 @@ async function refreshData() {
       const trip=readTrip(parseCsv(text));
       const pages=buildPages(trip);
 
-      // Offene Regelbereiche bei einer Datenaktualisierung erhalten.
       const oldRules=Array.from(
         document.querySelectorAll("#romme .rule-section")
       );
-      const openRuleTitles=new Set(
+
+      const openTitles=new Set(
         oldRules.filter(detail=>detail.open)
           .map(detail=>detail.querySelector("summary").textContent.trim())
       );
@@ -2538,7 +2309,7 @@ async function refreshData() {
 
       if(oldRules.length) {
         document.querySelectorAll("#romme .rule-section").forEach(detail=>{
-          detail.open=openRuleTitles.has(
+          detail.open=openTitles.has(
             detail.querySelector("summary").textContent.trim()
           );
         });
@@ -2546,7 +2317,6 @@ async function refreshData() {
 
       document.getElementById("trip-title").textContent=trip.title;
       document.title=trip.title+" · 3 Generationen Urlaub";
-
       loadVisiblePhotos();
       lastCsv=text;
     }
@@ -2558,7 +2328,6 @@ async function refreshData() {
 
   } catch(error) {
     bar.dataset.state="error";
-
     status.textContent=lastSuccess
       ? "Aktualisierung fehlgeschlagen. Angezeigt werden die Daten vom "+
         timestamp(lastSuccess)+"."
@@ -2574,9 +2343,7 @@ async function refreshData() {
               Bitte „Jetzt aktualisieren“ versuchen.
               Der Teilnehmerbereich bleibt verfügbar.
             </p>
-            <p class="small">
-              Technischer Hinweis: ${esc(error.message)}
-            </p>
+            <p class="small">Technischer Hinweis: ${esc(error.message)}</p>
           </div>`;
       });
     }
@@ -2590,9 +2357,7 @@ async function refreshData() {
   }
 }
 
-/* =====================================================
-   START
-   ===================================================== */
+/* ===================== START ===================== */
 
 loadImage(
   document.getElementById("group-photo"),
